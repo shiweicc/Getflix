@@ -1,0 +1,37 @@
+{
+  "name": "getflix",
+  "version": "1.0.0",
+  "description": "Getflix is an online database of information about movies. The user can create an account and keep track of movies watched.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpp36-boc-catamaran/getflix.git"
+  },
+  "author": "Team Catamaran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpp36-boc-catamaran/getflix/issues"
+  },
+  "homepage": "https://github.com/rpp36-boc-catamaran/getflix#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^4.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.5.0",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
