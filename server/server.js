@@ -13,6 +13,7 @@ app.get('/test', (req, res)=>{
 })
 
 app.get('/main', (req,res) => {
+  //set up to go to microservice later
   res.send(fakeData.movies)
 })
 
