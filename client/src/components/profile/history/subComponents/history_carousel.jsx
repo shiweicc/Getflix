@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import "../main.css";
 import { Pagination } from "swiper";
 
 
@@ -11,7 +10,7 @@ const Carousel = (props) => {
     <div className='carousel'>
       <Swiper
         slidesPerView={6}
-        spaceBetween={50}
+        spaceBetween={30}
         pagination={{
           clickable: true,
         }}
