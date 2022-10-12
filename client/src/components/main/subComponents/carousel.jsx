@@ -7,26 +7,40 @@ import { Pagination } from "swiper";
 
 
 const Carousel = (props) => {
+  console.log(props.movies)
   return (
     <div className='carousel'>
       <Swiper
         slidesPerView={6}
-        spaceBetween={30}
+        spaceBetween={50}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        {
+          props.movies.map(movie => {
+            return (
+            <SwiperSlide>
+              <div>
+                <div>
+                  <img
+                    src={"https://image.tmdb.org/t/p/w400" + movie.backdrop_path}
+                    alt = {movie.original_title}
+                  />
+                </div>
+                <div>
+                  {movie.original_title}
+                </div>
+                <div>
+                  Watchlist
+                </div>
+              </div>
+              </SwiperSlide>
+            )
+          })
+        }
       </Swiper>
     </div>
   )

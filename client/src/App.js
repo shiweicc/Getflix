@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
+import Profile from "./components/profile/Profile.js";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -38,6 +39,10 @@ function App() {
     {
       path: "/login",
       element: <Login />
+    },
+    {
+      path: "/profile",
+      element: <Profile />
     }
   ]);
 
