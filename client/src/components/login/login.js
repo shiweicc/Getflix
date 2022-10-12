@@ -55,11 +55,11 @@ const Login = () => {
     <div className='form'>
       <form onSubmit={handleSubmit}>
         <div className='input-container'>
-          <input type='text' name='uname' placeholder='Username' required />
+          <input className='user-inp' type='text' name='uname' placeholder='Username' required />
           {renderErrorMessage('uname')}
         </div>
         <div className='input-container'>
-          <input type='password' name='pass' placeholder='Password' required />
+          <input className='user-inp' type='password' name='pass' placeholder='Password' required />
           {renderErrorMessage('pass')}
         </div>
         <div className='button-container'>
