@@ -2,23 +2,22 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import "../main.css";
-import { Pagination, Navigation } from "swiper";
+import { Navigation, Scrollbar } from "swiper";
 
 
 const Carousel = (props) => {
   return (
     <div className='carousel'>
       <Swiper
-        slidesPerView={6}
-        spaceBetween={30}
-        loop={true}
-        pagination={{
-          clickable: true,
+        scrollbar={{
+          hide: true,
         }}
+        slidesPerView={6}
+        spaceBetween={50}
         navigation={true}
-        modules={[Pagination, Navigation]}
+        modules={[Navigation, Scrollbar]}
         className="mySwiper"
       >
         <SwiperSlide>

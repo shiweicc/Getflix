@@ -10,6 +10,10 @@
 
 }
 
+.main-sb {
+  display: inline-block;
+}
+
 .main-profile-btn ,.main-logout-btn {
   float: right;
   padding-top: 10px;
@@ -50,4 +54,13 @@
   object-fit: cover;
 }
 
-.swiper-button-next { color: red; }
+.swiper-button-next {
+  color: red;
+}
+
+.main-genre {
+  padding-left: 120px;
+  font-size: 1.5em;
+  font-weight: bold;
+  /* color: white; */
+}

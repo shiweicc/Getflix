@@ -5,19 +5,19 @@ import Carousel from './carousel.jsx';
 const movies = (props) => {
   return (
     <div className='main-movie-carousels'>
-      <div> Genre </div>
+      <div className='main-genre'> Thriller </div>
       <Carousel />
       <br></br>
-      <div> Genre </div>
+      <div className='main-genre'> Comedy </div>
       <Carousel />
       <br></br>
-      <div> Genre </div>
+      <div className='main-genre'> Action </div>
       <Carousel />
       <br></br>
-      <div> Genre </div>
+      <div className='main-genre'> Animation </div>
       <Carousel />
       <br></br>
-      <div> Genre </div>
+      <div className='main-genre'> Romance </div>
       <Carousel />
     </div>
   )
