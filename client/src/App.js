@@ -2,45 +2,49 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Main from "./components/main/main.js";
+import Signup from './components/signup/Signup.js';
+import { useCookies } from 'react-cookie';
 import {
-  createBrowserRouter,
-  RouterProvider,
+  Router,
   Route,
 } from "react-router-dom";
+export const AuthContext = React.createContext();
 
-
-
-function App() {
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch("/test")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element:
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>{!data ? "Loading..." : data}</p>
-          </header>
-        </div>,
-    },
-    {
-      path: "/main",
-      element: <Main />
-    }
-  ]);
-
+function App(){
   return (
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  );
+    // <Routes>
+    //   <Route exact path='/signup' element = {<Signup/>}/>
+    //   {/* <Route exact path='/login' element = {<Chris' component/>}/> */}
+    //   <Route element {<ReqAuth/>}>
+    //     {/* <Route exact path='/shiwei' element = {<Shiwei's component/>}/> */}
+    //     {/* <Route exact path='/gene' element = {<Gene's component/>}/> */}
+    //     {/* <Route exact path='/david' element = {<David's component/>}/> */}
+    //     {/* <Route exact path='/andrew' element = {<Andrew's component/>}/> */}
+    //   </Route>
+    // </Routes>
+    <Router>
+      <Switch>
+        <Route exact path="/login">
+          <Login login={this.handleLogin}/>
+        </Route>
+
+        <Route exact path="/signup">
+          <Register login={this.handleLogin}/>
+        </Route>
+
+        <AuthContext.Provider value={this.state} >
+          <PrivateRoute exact path="/" component={Main} userId={id} />
+          <PrivateRoute exact path="/" component={Main} userId={id} />
+          <PrivateRoute exact path="/" component={Main} userId={id} />
+          <PrivateRoute exact path="/" component={Main} userId={id} />
+        </AuthContext.Provider>
+
+        <Route path="/">
+          <div>404 Not Found</div>
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
-export default App;
+export default App;2
