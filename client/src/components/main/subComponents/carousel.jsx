@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/scrollbar";
 import "../main.css";
-import { Pagination } from "swiper";
+import { Navigation, Scrollbar } from "swiper";
 
 
 const Carousel = (props) => {
@@ -11,18 +12,19 @@ const Carousel = (props) => {
   return (
     <div className='carousel'>
       <Swiper
+        scrollbar={{
+          hide: true,
+        }}
         slidesPerView={6}
         spaceBetween={50}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
+        navigation={true}
+        modules={[Navigation, Scrollbar]}
         className="mySwiper"
       >
         {
           props.movies.map(movie => {
             return (
-            <SwiperSlide>
+            <SwiperSlide  className='main-slide'>
               <div>
                 <div>
                   <img
@@ -30,11 +32,11 @@ const Carousel = (props) => {
                     alt = {movie.original_title}
                   />
                 </div>
-                <div>
+                <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <div>
-                  Watchlist
+                <div className="main-card-watch">
+                  Watchlist Button
                 </div>
               </div>
               </SwiperSlide>

@@ -1,5 +1,5 @@
 .Main {
-  /* background-color: black; */
+  background-color: black;
 }
 
 .Navigation-Bar {
@@ -8,6 +8,10 @@
 
 .main-logo {
 
+}
+
+.main-sb {
+  display: inline-block;
 }
 
 .main-profile-btn ,.main-logout-btn {
@@ -20,7 +24,7 @@
 
 .swiper {
   width: 90%;
-  height:200px;
+  height:225px;
 }
 
 .swiper-slide {
@@ -48,4 +52,23 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.swiper-button-next {
+  color: red;
+}
+
+.main-genre {
+  padding-left: 120px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+
+.main-slide {
+  background-color: black;
+}
+
+.main-card-title, .main-card-watch {
+  color: white;
 }
