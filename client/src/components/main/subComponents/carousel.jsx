@@ -8,6 +8,7 @@ import { Navigation, Scrollbar } from "swiper";
 
 
 const Carousel = (props) => {
+  console.log(props.movies)
   return (
     <div className='carousel'>
       <Swiper
@@ -20,33 +21,28 @@ const Carousel = (props) => {
         modules={[Navigation, Scrollbar]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
+        {
+          props.movies.map(movie => {
+            return (
+            <SwiperSlide  className='main-slide'>
+              <div>
+                <div>
+                  <img
+                    src={"https://image.tmdb.org/t/p/w400" + movie.backdrop_path}
+                    alt = {movie.original_title}
+                  />
+                </div>
+                <div className="main-card-title">
+                  {movie.original_title}
+                </div>
+                <div className="main-card-watch">
+                  Watchlist Button
+                </div>
+              </div>
+              </SwiperSlide>
+            )
+          })
+        }
       </Swiper>
     </div>
   )

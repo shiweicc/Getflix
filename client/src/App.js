@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Main from "./components/main/main.js";
+import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
 import {
   createBrowserRouter,
@@ -34,6 +35,10 @@ function App() {
     {
       path: "/main",
       element: <Main />
+    },
+    {
+      path: "/login",
+      element: <Login />
     },
     {
       path: "/profile",

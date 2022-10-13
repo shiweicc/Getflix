@@ -1,5 +1,5 @@
 .Main {
-  /* background-color: black; */
+  background-color: black;
 }
 
 .Navigation-Bar {
@@ -24,7 +24,7 @@
 
 .swiper {
   width: 90%;
-  height:200px;
+  height:225px;
 }
 
 .swiper-slide {
@@ -62,5 +62,13 @@
   padding-left: 120px;
   font-size: 1.5em;
   font-weight: bold;
-  /* color: white; */
+  color: white;
+}
+
+.main-slide {
+  background-color: black;
+}
+
+.main-card-title, .main-card-watch {
+  color: white;
 }
