@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
-import logo from '../../logo.svg';
+import logo from '/Users/chrisbaharians/RPP36/getflix/client/src/getflixLogo.png'
 
 import './login.css'
 
@@ -39,15 +39,18 @@ const Login = () => {
     var { uname, pass } = document.forms[0];
 
     const userData = database.find((user) => user.username === uname.value)
+    console.log('this is the userData', userData)
 
     if (userData) {
       if (userData.password !== pass.value) {
         setErrorMessages({name: 'pass', message: errors.pass});
+
       } else {
         setIsSubmitted(true);
       }
     } else {
       setErrorMessages({name: "uname", message: errors.uname});
+      alert('Username does not exist')
     }
   };
 
@@ -63,7 +66,7 @@ const Login = () => {
           {renderErrorMessage('pass')}
         </div>
         <div className='button-container'>
-          <input type='submit' />
+          <input type='submit' onSubmit={handleSubmit}/>
         </div>
       </form>
     </div>
@@ -72,12 +75,12 @@ const Login = () => {
   return (
     <div className='app'>
       <div className='top'>
-        <img src='https://lynnliu0429.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F27f894d3-3b7e-4a6f-8648-585a802320f0%2FScreen_Shot_2022-10-05_at_7.10.18_PM.png?table=block&id=ee5194fc-b065-40fa-ab0e-484f664e7647&spaceId=06601d8e-4fb7-4a87-9521-6c0a0765f4e7&width=960&userId=&cache=v2' className='logo' alt='logo'></img>
+        <img src={logo} alt='getflix-logo' className='logo' />
         <button type='button' className='back-btn'>Back</button>
       </div>
       <div className='login-form'>
         <div className='title'>LOG IN</div>
-        {renderForm}
+        {isSubmitted ? <div>User is successfully logged in!</div> : renderForm}
       </div>
     </div>
   )
