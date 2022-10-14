@@ -17,6 +17,11 @@ app.get('/main', (req,res) => {
   res.send(fakeData.movies)
 })
 
+app.get('/profile', (req,res) => {
+  //set up to go to microservice later
+  res.send(fakeData.history)
+})
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 })

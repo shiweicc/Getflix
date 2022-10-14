@@ -2,41 +2,48 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Main from "./components/main/main.js";
-import Signup from './components/signup/Signup.js';
-import { useCookies } from 'react-cookie';
+import Login from "./components/login/login.js";
+import Profile from "./components/profile/Profile.js";
 import {
   Router,
   Route,
 } from "react-router-dom";
 export const AuthContext = React.createContext();
 
-function App(){
-  return (
-    // <Routes>
-    //   <Route exact path='/signup' element = {<Signup/>}/>
-    //   {/* <Route exact path='/login' element = {<Chris' component/>}/> */}
-    //   <Route element {<ReqAuth/>}>
-    //     {/* <Route exact path='/shiwei' element = {<Shiwei's component/>}/> */}
-    //     {/* <Route exact path='/gene' element = {<Gene's component/>}/> */}
-    //     {/* <Route exact path='/david' element = {<David's component/>}/> */}
-    //     {/* <Route exact path='/andrew' element = {<Andrew's component/>}/> */}
-    //   </Route>
-    // </Routes>
+class App extends React.Component{
+  constructor(props) {
+    super(props);
+    this.
+    this.state = {
+      email: this.props.data?.email || '',
+      username: this.props.data?.username || '',
+      id: this.props.data?.id || ''
+    }
+  }
+  handleAuthorization(userData) {
+    for(var keys in userData) {
+      this.setState({
+        [keys]: userData[keys] === null ? 0 : userData[keys]
+      })
+    }
+  }
+
+  return () {
+    const { id } = this.state;
+
     <Router>
       <Switch>
         <Route exact path="/login">
-          <Login login={this.handleLogin}/>
+          <Login login={this.handleAuthorization}/>
         </Route>
 
         <Route exact path="/signup">
-          <Register login={this.handleLogin}/>
+          <Register signup={this.handleAuthorization}/>
         </Route>
 
         <AuthContext.Provider value={this.state} >
           <PrivateRoute exact path="/" component={Main} userId={id} />
-          <PrivateRoute exact path="/" component={Main} userId={id} />
-          <PrivateRoute exact path="/" component={Main} userId={id} />
-          <PrivateRoute exact path="/" component={Main} userId={id} />
+          <PrivateRoute exact path="/" component={Profile} userId={id} />
         </AuthContext.Provider>
 
         <Route path="/">
@@ -44,7 +51,7 @@ function App(){
         </Route>
       </Switch>
     </Router>
-  )
+  }
 }
 
-export default App;2
+export default App;
