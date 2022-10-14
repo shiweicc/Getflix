@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
-import pic from './getflixLogo.png';
+import pic from './getfilxLogo.png';
+import SearchBar from './Searchbar.jsx';
 
 const NavigationBar = (props) => {
   return (
     <div className='Navigation-Bar'>
-      <img className='main-logo' alt='logo' src={pic} ></img>
-      <button className='main-profile-btn'> Profile</button>
-      <button className='main-logout-btn'>Logout</button>
+      <div className='main-logo'>
+        <img  alt='logo' src={pic} ></img>
+      </div>
+      <SearchBar search={props.search}/>
+      <div className='main-buttons'>
+        <button className='main-logout-btn' onClick={() => {props.logout()}}> Logout</button>
+        <button className='main-profile-btn' onClick={() => {props.profile()}}>Profile</button>
+      </div>
     </div>
   )
 }

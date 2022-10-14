@@ -4,7 +4,7 @@
   "description": "Getflix is an online database of information about movies. The user can create an account and keep track of movies watched.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
