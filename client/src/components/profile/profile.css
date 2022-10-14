@@ -1,9 +1,19 @@
-/* .profile {
-  position: relative;
-} */
+.profile {
+  /* position: relative; */
+  background-color: black;
+}
 .history {
   /* position: absolute;
   bottom: 10px; */
-  height:270px;
-  background-color: rgb(63, 16, 4);
+  color: white;
+  /* height:270px; */
+  /* background-color: rgb(94, 52, 42); */
+}
+.watched_btn{
+  background-color:rgb(123, 16, 16);
+  color: white;
+  border: none;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 0px;
 }

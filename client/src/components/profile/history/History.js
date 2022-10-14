@@ -1,13 +1,15 @@
-import React from "react";
-import Carousel from "./subComponents/history_carousel.jsx";
-import fakeData from "../../../fakeData/fakeHistory.js";
+import React, { useState, useEffect } from "react";
+import Movielist from "./subComponents/history_movieList.jsx";
 
-function History() {
+
+
+const History = (props) => {
+  // const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.movies);
 
   return (
     <div className="history">
-      <h3>History</h3>
-      <Carousel />
+      <h2>History</h2>
+      <Movielist movies={props.watchedList}/>
     </div>
   );
 }
