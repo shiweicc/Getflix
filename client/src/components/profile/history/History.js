@@ -8,7 +8,7 @@ const History = (props) => {
 
   return (
     <div className="history">
-      <h2>History</h2>
+      <h2 className='history-title'>History</h2>
       <Movielist movies={props.watchedList}/>
     </div>
   );
