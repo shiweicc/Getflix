@@ -7,6 +7,8 @@ const Profile = (props) => {
   return (
     <div className="profile">
      <img className='profile-logo' alt='logo' src={pic} ></img>
+    <button className='profile-backBtn' onClick={() => {props.logout()}}> Home </button>
+
       <History watchedMovies={props.watchedList}/>
     </div>
   );

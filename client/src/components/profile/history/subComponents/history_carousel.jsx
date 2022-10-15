@@ -7,7 +7,7 @@ import { Navigation, Scrollbar } from "swiper";
 
 
 const Carousel = (props) => {
-  console.log('history carousel: ', props.movies)
+  // console.log('history carousel: ', props.movies)
   return (
     <div className='carousel'>
       <Swiper
