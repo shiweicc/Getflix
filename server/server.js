@@ -10,8 +10,10 @@ const fakeData = require('../client/src/fakeData/fakeMovies.js')
 const cors = require('cors');
 const { pool } = require('./authConfig.js');
 const bcrypt = require('bcrypt');
+const fakeHistoryData = require('../client/src/fakeData/fakeHistory.js');
 
 app.use(cors());
+
 
 app.get('/test', (req, res)=>{
   res.json({message:'Welcome to Getflix!'})
@@ -24,7 +26,7 @@ app.get('/main', checkNotAuthenticated, (req,res) => {
 
 app.get('/profile', (req,res) => {
   //set up to go to microservice later
-  res.send(fakeData.history)
+  res.send(fakeHistoryData.history)
 })
 
 app.post('/login', async (req, res) => {

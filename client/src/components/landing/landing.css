@@ -1,0 +1,43 @@
+body {
+  background-color: black;
+}
+
+.Navigation-Bar {
+  display: inline-block;
+  width: 100%;
+}
+
+.landing-logo {
+  float:left;
+}
+
+.landing-button-container {
+  padding-top: 3%;
+  padding-right:30px;
+}
+
+.main-logout-btn {
+  float: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: transparent;
+  color: white;
+  border-color: transparent;
+  font-size: 1.5em;
+}
+
+.slogan {
+  color:white;
+  position: absolute;
+  top: 40%;
+  left: 34%;
+  font-size: xx-large;
+}
+
+.get-started {
+  position: absolute;
+  top: 50%;
+  left: 48%;
+}

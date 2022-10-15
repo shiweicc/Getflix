@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
+import Landing from "./components/landing/landing.js";
+import Details from "./components/details/details.js";
+import fakeHistoryData from "./fakeData/fakeHistory.js";
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,28 +17,34 @@ import {
 
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [data, setData] = useState(null);
+  const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.history);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("/test")
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
 
+  const WatchedBtnClick = (movieID) => {
+    setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
+    console.log('updated watchedlist: ', watchedMovies)
+  }
+
   const router = createBrowserRouter([
-    {
-      path: "/",
-      element:
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>{!data ? "Loading..." : data}</p>
-          </header>
-        </div>,
-    },
+    // {
+    //   path: "/",
+    //   element:
+    //     <div className="App">
+    //       <header className="App-header">
+    //         <img src={logo} className="App-logo" alt="logo" />
+    //         <p>{!data ? "Loading..." : data}</p>
+    //       </header>
+    //     </div>,
+    // },
     {
       path: "/main",
-      element: <Main />
+      element: <Main updateWatchedList={WatchedBtnClick}/>
     },
     {
       path: "/login",
@@ -42,7 +52,15 @@ function App() {
     },
     {
       path: "/profile",
-      element: <Profile />
+      element: <Profile watchedList={watchedMovies}/> // arr of moviesID
+    },
+    {
+      path: "/",
+      element: <Landing />
+    },
+    {
+      path: "/details",
+      element: <Details />
     }
   ]);
 

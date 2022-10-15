@@ -1,0 +1,98 @@
+.body {
+  background-color: black;
+}
+
+.logo {
+  position:fixed;
+	top:0;
+	left:0;
+}
+
+.title{
+  position:fixed;
+  margin-top: 120px;
+	padding-left:100px;
+  font-size:25px;
+}
+
+.post img{
+  width: 280px;
+  position:fixed;
+  margin-top: 200px;
+	padding-left:100px;
+  font-size:25px;
+}
+
+.overview h1 {
+  position:fixed;
+  margin-top: 650px;
+	padding-left:100px;
+  font-size:15px;
+  color:white;
+  max-width:500px;
+}
+.overview p {
+  position:fixed;
+  margin-top: 675px;
+	padding-left:100px;
+  font-size:15px;
+  color:white;
+  max-width:500px;
+}
+
+.trailer{
+  position:fixed;
+	top:180px;
+	left:800px;
+  width:1000px;
+}
+
+.watchNow button{
+  position:fixed;
+	top:600px;
+	left:800px;
+  text-align: center;
+  background-color: #8A1E1E;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.home button{
+  position:fixed;
+	top:20px;
+	right:30px;
+  text-align: center;
+  background-color: #8A1E1E;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.price{
+  position:fixed;
+	top:600px;
+	left:1100px;
+  font-size:18px;
+  color:white;
+}
+
+.watched{
+  position:fixed;
+    top:600px;
+    left:1300px;
+    font-size:18px;
+    color:white;
+}
