@@ -4,7 +4,9 @@ import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
+import Details from "./components/details/details.js";
 import fakeHistoryData from "./fakeData/fakeHistory.js";
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -49,7 +51,13 @@ function App() {
     },
     {
       path: "/profile",
+
       element: <Profile watchedList={watchedMovies}/> // arr of moviesID
+    },
+    {
+      path: "/details",
+      element: <Details />
+
     }
   ]);
 

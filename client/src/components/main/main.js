@@ -25,7 +25,9 @@ function Main(props) {
           id: movie.id,
           original_title: movie.original_title,
           popularity: movie.popularity,
-          backdrop_path: movie.backdrop_path
+          backdrop_path: movie.backdrop_path,
+          poster_path: movie.poster_path,
+          overview: movie.overview
         }
         if (moviesObj[genre] === undefined) {
           moviesObj[genre] = [moviedata]
