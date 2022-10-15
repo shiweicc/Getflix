@@ -1,15 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import logo from './getfilxLogo.png';
-
 import './landing.css';
 
 const Landing = () => {
+  const navigate = useNavigate();
+
   const logout = () => {
     console.log('logout')
   }
-
+  const navigateSignup = () => {
+    navigate('/signup');
+  };
   return (
     <div>
       <div className='Navigation-Bar'>
@@ -24,7 +28,7 @@ const Landing = () => {
         Find, track, and watch your movies.
       </div>
       <div className='get-started'>
-        <button>Get Started</button>
+          <button onClick={navigateSignup}>Get Started</button>
       </div>
     </div>
   )

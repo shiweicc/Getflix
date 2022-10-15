@@ -6,6 +6,7 @@ import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
 import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
+import Signup from "./components/signup/Signup.js";
 import fakeHistoryData from "./fakeData/fakeHistory.js";
 
 import {
@@ -42,6 +43,11 @@ function App() {
     //       </header>
     //     </div>,
     // },
+    {
+      path: "/signup",
+      element: <Signup/>
+    },
+
     {
       path: "/main",
       element: <Main updateWatchedList={WatchedBtnClick}/>
