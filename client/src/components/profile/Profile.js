@@ -3,12 +3,13 @@ import History from "./history/History.js";
 import pic from '../../getflixLogo.png';
 import './profile.css';
 
-function Profile() {
-
+const Profile = (props) => {
   return (
     <div className="profile">
      <img className='profile-logo' alt='logo' src={pic} ></img>
-      <History />
+    <button className='profile-backBtn' onClick={() => {props.logout()}}> Home </button>
+
+      <History watchedMovies={props.watchedList}/>
     </div>
   );
 }
