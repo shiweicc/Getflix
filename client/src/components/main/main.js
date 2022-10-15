@@ -38,9 +38,24 @@ function Main(props) {
     setgroupedMovies(moviesObj)
   }, []);
 
+  const search = (e) => {
+    console.log(e.target.value)
+  }
+
+  const profile = () => {
+    console.log('profile button')
+  }
+
+  const logout = () => {
+    console.log('logout button')
+  }
+
   return (
     <div className="Main">
-      <NavigationBar />
+      <NavigationBar
+        search = {search}
+        profile = {profile}
+        logout = {logout}/>
       <Movies
         movieList = {groupedMovies}
         updateWatchedList={props.updateWatchedList}

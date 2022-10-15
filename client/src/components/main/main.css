@@ -4,22 +4,47 @@
 
 .Navigation-Bar {
   display: inline-block;
+  width: 100%;
 }
 
 .main-logo {
+  float:left;
+}
 
+input {
+  width: 220%;
+  height: 50px;
+  font-size: 3em;
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+}
+
+input:focus {
+  outline-width: 0;
 }
 
 .main-sb {
-  display: inline-block;
+  float:left;
+  padding-top: 3.5%;
+  padding-left: 80px;
 }
 
-.main-profile-btn ,.main-logout-btn {
+.main-buttons {
+  padding-top: 3%;
+  padding-right:30px;
+}
+
+.main-logout-btn , .main-profile-btn{
   float: right;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: transparent;
+  color: white;
+  border-color: transparent;
+  font-size: 1.5em;
 }
 
 .swiper {
