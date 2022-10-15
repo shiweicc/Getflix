@@ -4,6 +4,7 @@ import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
+import Landing from "./components/landing/landing.js";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,16 +23,16 @@ function App() {
   }, []);
 
   const router = createBrowserRouter([
-    {
-      path: "/",
-      element:
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>{!data ? "Loading..." : data}</p>
-          </header>
-        </div>,
-    },
+    // {
+    //   path: "/",
+    //   element:
+    //     <div className="App">
+    //       <header className="App-header">
+    //         <img src={logo} className="App-logo" alt="logo" />
+    //         <p>{!data ? "Loading..." : data}</p>
+    //       </header>
+    //     </div>,
+    // },
     {
       path: "/main",
       element: <Main />
@@ -43,6 +44,10 @@ function App() {
     {
       path: "/profile",
       element: <Profile />
+    },
+    {
+      path: "/",
+      element: <Landing />
     }
   ]);
 
