@@ -8,7 +8,7 @@ import { Navigation, Scrollbar } from "swiper";
 
 
 const Carousel = (props) => {
-  console.log(props.movies)
+
   return (
     <div className='carousel'>
       <Swiper
@@ -35,9 +35,10 @@ const Carousel = (props) => {
                 <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <div className="main-card-watch">
+                <button className="watched_btn" onClick={() => props.updateWatchedList(movie.id)}>Watched</button>
+                {/* <div className="main-card-watch">
                   Watchlist Button
-                </div>
+                </div> */}
               </div>
               </SwiperSlide>
             )
