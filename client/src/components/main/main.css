@@ -11,7 +11,7 @@
   float:left;
 }
 
-input {
+/* input {
   width: 220%;
   height: 50px;
   font-size: 3em;
@@ -22,7 +22,7 @@ input {
 
 input:focus {
   outline-width: 0;
-}
+} */
 
 .main-sb {
   float:left;

@@ -65,6 +65,8 @@ input[type='submit'] {
   flex-direction: column;
   gap: 8px;
   margin: 30px;
+  background-color: #fff;
+  border: none;
 }
 
 .top {
