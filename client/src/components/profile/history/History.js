@@ -4,6 +4,7 @@ import Movielist from "./subComponents/history_movieList.jsx";
 
 
 const History = (props) => {
+  console.log('history here: ', props)
   // const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.movies);
 
   return (

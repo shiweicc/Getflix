@@ -7,7 +7,7 @@ const Profile = (props) => {
   return (
     <div className="profile">
      <img className='profile-logo' alt='logo' src={pic} ></img>
-      <History watchedMovies={props.watchedMovies}/>
+      <History watchedMovies={props.watchedList}/>
     </div>
   );
 }

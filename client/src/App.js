@@ -25,7 +25,7 @@ function App() {
 
   const WatchedBtnClick = (movieID) => {
     setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
-    // console.log('updated watchedlist: ', watchedMovies)
+    console.log('updated watchedlist: ', watchedMovies)
   }
 
   const router = createBrowserRouter([
