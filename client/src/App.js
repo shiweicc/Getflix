@@ -4,6 +4,7 @@ import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
+import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
 import fakeHistoryData from "./fakeData/fakeHistory.js";
 
@@ -31,16 +32,16 @@ function App() {
   }
 
   const router = createBrowserRouter([
-    {
-      path: "/",
-      element:
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>{!data ? "Loading..." : data}</p>
-          </header>
-        </div>,
-    },
+    // {
+    //   path: "/",
+    //   element:
+    //     <div className="App">
+    //       <header className="App-header">
+    //         <img src={logo} className="App-logo" alt="logo" />
+    //         <p>{!data ? "Loading..." : data}</p>
+    //       </header>
+    //     </div>,
+    // },
     {
       path: "/main",
       element: <Main updateWatchedList={WatchedBtnClick}/>
@@ -51,13 +52,15 @@ function App() {
     },
     {
       path: "/profile",
-
       element: <Profile watchedList={watchedMovies}/> // arr of moviesID
+    },
+    {
+      path: "/",
+      element: <Landing />
     },
     {
       path: "/details",
       element: <Details />
-
     }
   ]);
 
