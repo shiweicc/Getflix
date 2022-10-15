@@ -1,4 +1,4 @@
-import * as Cookies from "js-cookie";
+import Cookies from "js-cookie";
 export const setSessionCookie = (session) => {
   Cookies.remove("session");
   Cookies.set("session", session, { expires: 7 });

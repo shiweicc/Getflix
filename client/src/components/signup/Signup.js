@@ -1,12 +1,13 @@
 import { useRef, useState, useEffect } from "react";
+import { Navigate }  from 'react-router-dom';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const axios = require('axios');
-import useAuth from './signupHooks/useAuth';
+import axios from 'axios';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const SIGNUP_URL = '/signup';
+const SIGNUP_URL = 'http://localhost:3001/signup';
 
 const Signup = () => {
     const userRef = useRef();
@@ -15,6 +16,10 @@ const Signup = () => {
     const [user, setUser] = useState('');
     const [validName, setValidName] = useState(false);
     const [userFocus, setUserFocus] = useState(false);
+
+    const [useremail, setEmail] = useState('');
+    const [validEmail, setValidEmail] = useState(false);
+    const [emailFocus, setEmailFocus] = useState(false);
 
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(false);
@@ -33,7 +38,8 @@ const Signup = () => {
 
     useEffect(() => {
         setValidName(USER_REGEX.test(user));
-    }, [user])
+        setValidEmail(EMAIL_REGEX.test(useremail));
+    }, [user, useremail])
 
     useEffect(() => {
         setValidPwd(PWD_REGEX.test(pwd));
@@ -42,22 +48,23 @@ const Signup = () => {
 
     useEffect(() => {
         setErrMsg('');
-    }, [user, pwd, matchPwd])
+    }, [user, useremail, pwd, matchPwd])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const v1 = USER_REGEX.test(user);
         const v2 = PWD_REGEX.test(pwd);
-        if (!v1 || !v2) {
+        const v3 = EMAIL_REGEX.test(useremail);
+        if (!v1 || !v2 || !v3) {
             setErrMsg("invalid input");
             return;
         }
         try {
             const response = await axios.post(SIGNUP_URL,
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({ user, useremail, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    withCredentials: false
                 }
             );
             console.log(response?.data);
@@ -69,9 +76,9 @@ const Signup = () => {
             setMatchPwd('');
         } catch (err) {
             if (!err?.response) {
-                setErrMsg('No response from server');
+                setErrMsg('No response');
             } else if (err.response?.status === 409) {
-                setErrMsg('Username is taken');
+                setErrMsg('There is an account linked to this email');
             } else {
                 setErrMsg('Signup failed')
             }
@@ -82,16 +89,11 @@ const Signup = () => {
     return (
         <>
             {success ? (
-                <section>
-                    <h1>Success!</h1>
-                    <p>
-                        <a href="#">Sign In</a>
-                    </p>
-                </section>
+                <Navigate to='/main'/>
             ) : (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Register</h1>
+                    <h1>Create an account</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="username">
                             Username:
@@ -115,6 +117,31 @@ const Signup = () => {
                             <FontAwesomeIcon icon={faInfoCircle} />
                             4 to 24 characters.<br />
                             Your username must begin with a letter.<br />
+                            Letters, numbers, underscores are allowed.
+                        </p>
+
+                        <label htmlFor="useremail">
+                            Email:
+                            <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
+                            <FontAwesomeIcon icon={faTimes} className={validEmail || !useremail ? "hide" : "invalid"} />
+                        </label>
+                        <input
+                            type="text"
+                            id="useremail"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={useremail}
+                            required
+                            aria-invalid={validEmail ? "false" : "true"}
+                            aria-describedby="uemailnote"
+                            onFocus={() => setEmailFocus(true)}
+                            onBlur={() => setEmailFocus(false)}
+                        />
+                        <p id="uemailnote" className={emailFocus && useremail && !validEmail ? "instructions" : "offscreen"}>
+                            <FontAwesomeIcon icon={faInfoCircle} />
+                            4 to 24 characters.<br />
+                            Your useremail must be a valid email.<br />
                             Letters, numbers, underscores are allowed.
                         </p>
 
@@ -164,7 +191,7 @@ const Signup = () => {
                             It must match your password.
                         </p>
 
-                        <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        <button disabled={!validName || !validEmail || !validPwd || !validMatch ? true : false}>Sign Up</button>
                     </form>
                     <p>
                         Already registered?<br />
