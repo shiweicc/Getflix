@@ -4,6 +4,7 @@ import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
+import Details from "./components/details/details.js";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -43,6 +44,10 @@ function App() {
     {
       path: "/profile",
       element: <Profile />
+    },
+    {
+      path: "/details",
+      element: <Details />
     }
   ]);
 

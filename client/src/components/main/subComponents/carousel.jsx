@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,7 +9,14 @@ import { Navigation, Scrollbar } from "swiper";
 
 
 const Carousel = (props) => {
-  console.log(props.movies)
+  //console.log(props.movies);
+
+  const navigate = useNavigate();
+  const navigateMovieDetail = (data) => {
+    console.log(data);
+    navigate('/details', { state: data });
+  }
+
   return (
     <div className='carousel'>
       <Swiper
@@ -27,10 +35,13 @@ const Carousel = (props) => {
             <SwiperSlide  className='main-slide'>
               <div>
                 <div>
+
                   <img
                     src={"https://image.tmdb.org/t/p/w400" + movie.backdrop_path}
                     alt = {movie.original_title}
+                      onClick={() => { navigateMovieDetail(movie) }}
                   />
+
                 </div>
                 <div className="main-card-title">
                   {movie.original_title}
