@@ -9,11 +9,11 @@ import { Navigation, Scrollbar } from "swiper";
 
 
 const Carousel = (props) => {
-  //console.log(props.movies);
+  console.log(props.movies);
 
   const navigate = useNavigate();
   const navigateMovieDetail = (data) => {
-    console.log(data);
+    //console.log(data);
     navigate('/details', { state: data });
   }
 
