@@ -4,7 +4,7 @@ import fakeData from "../../fakeData/fakeMovies.js";
 import './main.css';
 import Movies from "./subComponents/movies.jsx";
 
-function Main() {
+function Main(props) {
   // const [data, setData] = React.useState(null);
   const [groupedMovies, setgroupedMovies] = React.useState({
     35: [],
@@ -25,7 +25,9 @@ function Main() {
           id: movie.id,
           original_title: movie.original_title,
           popularity: movie.popularity,
-          backdrop_path: movie.backdrop_path
+          backdrop_path: movie.backdrop_path,
+          poster_path: movie.poster_path,
+          overview: movie.overview
         }
         if (moviesObj[genre] === undefined) {
           moviesObj[genre] = [moviedata]
@@ -33,7 +35,7 @@ function Main() {
           moviesObj[genre].push(moviedata)
         }
       })
-      console.log(moviesObj)
+      // console.log(moviesObj)
     })
     setgroupedMovies(moviesObj)
   }, []);
@@ -56,7 +58,10 @@ function Main() {
         search = {search}
         profile = {profile}
         logout = {logout}/>
-      <Movies movieList = {groupedMovies}/>
+      <Movies
+        movieList = {groupedMovies}
+        updateWatchedList={props.updateWatchedList}
+      />
     </div>
   );
 }
