@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 // import logo from "./logo.svg";
 import "./App.css";
@@ -11,6 +12,79 @@ import AuthContextProvider from "./AuthContext.js";
 // import PrivateRoute from './components/PrivateRoute.jsx';
 
 const App = () => {
+=======
+import React, { useState, useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Main from "./components/main/main.js";
+import Login from "./components/login/login.js";
+import Profile from "./components/profile/Profile.js";
+import Landing from "./components/landing/landing.js";
+import Details from "./components/details/details.js";
+import Signup from "./components/signup/Signup.js";
+import fakeHistoryData from "./fakeData/fakeHistory.js";
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+
+
+
+function App() {
+  const [data, setData] = useState(null);
+  const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.history);
+
+  // useEffect(() => {
+  //   fetch("/test")
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data.message));
+  // }, []);
+
+  const WatchedBtnClick = (movieID) => {
+    setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
+    console.log('updated watchedlist: ', watchedMovies)
+  }
+
+  const router = createBrowserRouter([
+    // {
+    //   path: "/",
+    //   element:
+    //     <div className="App">
+    //       <header className="App-header">
+    //         <img src={logo} className="App-logo" alt="logo" />
+    //         <p>{!data ? "Loading..." : data}</p>
+    //       </header>
+    //     </div>,
+    // },
+    {
+      path: "/",
+      element: <Landing />
+    },
+    {
+      path: "/signup",
+      element: <Signup/>
+    },
+
+    {
+      path: "/main",
+      element: <Main updateWatchedList={WatchedBtnClick}/>
+    },
+    {
+      path: "/login",
+      element: <Login />
+    },
+    {
+      path: "/profile",
+      element: <Profile watchedList={watchedMovies}/> // arr of moviesID
+    },
+    {
+      path: "/details",
+      element: <Details />
+    }
+  ]);
+>>>>>>> 744bf7a9f8e30c8c894f1a4f8b3142f7d6871e5d
 
   return (
     <main className = 'App'>

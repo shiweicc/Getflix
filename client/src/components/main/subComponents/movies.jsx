@@ -6,7 +6,7 @@ const movies = (props) => {
   return (
     <div className='main-movie-carousels'>
       <h2 className='main-genre'>Comedy</h2>
-      <Carousel movies = {props.movieList[35]}/>
+      <Carousel movies = {props.movieList[35]} updateWatchedList={props.updateWatchedList}/>
       <h2 className='main-genre'>Thriller</h2>
       <Carousel movies = {props.movieList[53]}/>
       <h2 className='main-genre'>Action</h2>
