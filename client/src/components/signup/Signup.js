@@ -203,7 +203,7 @@ const Signup = () => {
                       Already registered?<br />
                       <Link to='/login'>
                         <span className="line">
-                            <a href="#login">Log In</a>
+                            <a href="#">Log In</a>
                         </span>
                       </Link>
                   </p>
