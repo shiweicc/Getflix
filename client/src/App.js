@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-// import logo from "./logo.svg";
-import "./App.css";
-import Main from "./components/main/main.js";
-import Login from "./components/login/login.js";
-import Signup from "./components/signup/Signup.js";
-// import Profile from "./components/profile/Profile.js";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// export const AuthContext = React.createContext();
-import AuthContextProvider from "./AuthContext.js";
-// import PrivateRoute from './components/PrivateRoute.jsx';
-
-const App = () => {
-=======
 import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
@@ -84,7 +69,6 @@ function App() {
       element: <Details />
     }
   ]);
->>>>>>> 744bf7a9f8e30c8c894f1a4f8b3142f7d6871e5d
 
   return (
     <main className = 'App'>
