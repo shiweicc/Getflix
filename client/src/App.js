@@ -21,11 +21,11 @@ function App() {
   const [data, setData] = useState(null);
   const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.history);
 
-  useEffect(() => {
-    fetch("/test")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/test")
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data.message));
+  // }, []);
 
   const WatchedBtnClick = (movieID) => {
     setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
@@ -44,6 +44,10 @@ function App() {
     //     </div>,
     // },
     {
+      path: "/",
+      element: <Landing />
+    },
+    {
       path: "/signup",
       element: <Signup/>
     },
@@ -59,10 +63,6 @@ function App() {
     {
       path: "/profile",
       element: <Profile watchedList={watchedMovies}/> // arr of moviesID
-    },
-    {
-      path: "/",
-      element: <Landing />
     },
     {
       path: "/details",

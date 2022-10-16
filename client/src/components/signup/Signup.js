@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Navigate }  from 'react-router-dom';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import './signup.css'
+// import './signup.css'
 import axios from 'axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{3,23}$/;
@@ -60,16 +60,16 @@ const Signup = () => {
             return;
         }
         try {
-            const response = await axios.post(SIGNUP_URL,
+            await axios.post(SIGNUP_URL,
                 JSON.stringify({ user, useremail, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: false
                 }
             );
-            console.log(response?.data);
-            console.log(response?.accessToken);
-            console.log(JSON.stringify(response))
+            // console.log(response?.data);
+            // console.log(response?.accessToken);
+            // console.log(JSON.stringify(response))
             setSuccess(true);
             setUser('');
             setPwd('');
@@ -89,7 +89,7 @@ const Signup = () => {
     return (
         <>
             {success ? (
-                <Navigate to='/main'/>
+                <Navigate to='/login'/>
             ) : (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
@@ -191,7 +191,7 @@ const Signup = () => {
                             It must match your password.
                         </p>
 
-                        <button disabled={!validName || !validEmail || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        <button disabled={!validName || !validEmail || !validPwd || !validMatch ? true : false} className="sign-up-button">Sign Up</button>
                     </form>
                     <p>
                         Already registered?<br />

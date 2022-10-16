@@ -12,8 +12,18 @@ body {
 }
 
 .landing-button-container {
-  padding-top: 3%;
-  padding-right:30px;
+  display: flex;
+  justify-content: center;
+}
+
+.get-started-button {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  background: #8A1E1E;
+  border: 1px solid #8A1E1E;
+  color: #fff;
+  padding: 10px 20px;
 }
 
 .main-logout-btn {
@@ -26,18 +36,25 @@ body {
   color: white;
   border-color: transparent;
   font-size: 1.5em;
+
+  cursor: pointer;
+  font-size: 24px;
+  background: #8A1E1E;
+  border: 1px solid #8A1E1E;
+  color: #fff;
+  padding: 10px 20px;
 }
 
 .slogan {
   color:white;
   position: absolute;
   top: 40%;
-  left: 34%;
+  left: 33.5%;
   font-size: xx-large;
 }
 
 .get-started {
   position: absolute;
   top: 50%;
-  left: 48%;
+  left: 46.5%;
 }
