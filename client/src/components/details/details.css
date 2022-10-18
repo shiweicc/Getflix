@@ -96,3 +96,11 @@
     font-size:18px;
     color:white;
 }
+
+.recommended{
+  position:fixed;
+    top:800px;
+    left:100px;
+    width:90%;
+    color:white;
+}
