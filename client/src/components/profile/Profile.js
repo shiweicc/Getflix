@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import History from "./history/History.js";
 import pic from '../../getflixLogo.png';
 import { useLocation, useNavigate } from 'react-router-dom';
