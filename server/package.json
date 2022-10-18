@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.1.3",
-<<<<<<< HEAD
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
@@ -20,8 +19,5 @@
     "jquery": "^3.6.1",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3"
-=======
-    "express": "^4.18.1"
->>>>>>> 079d8d0 (Update watch history in progress)
   }
 }

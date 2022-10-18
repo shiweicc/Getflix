@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import History from "./history/History.js";
 import { useNavigate } from 'react-router-dom'
 import pic from '../../getflixLogo.png';
@@ -18,7 +18,7 @@ const Profile = (props) => {
     <button className='profile-backBtn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
     <button className='profile-backBtn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
 
-      <History watchedMovies={props.watchedList}/>
+      <History watchedList={props.watchedList}/>
     </div>
   );
 }
