@@ -10,7 +10,7 @@ import { Navigation, Scrollbar } from "swiper";
 
 const Carousel = (props) => {
 
-  console.log(props.movies);
+  // console.log(props.movies);
 
   const navigate = useNavigate();
   const navigateMovieDetail = (data) => {
@@ -48,9 +48,7 @@ const Carousel = (props) => {
                 <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <button className="watched_btn" onClick={() => props.updateWatchedList(movie.id)}>
-                  <i class="fa fa-eye"></i>
-                </button>
+                <button className="watched_btn" onClick={() => props.updateWatchedList(movie.id)}>👁️</button>
                 {/* <div className="main-card-watch">
                   Watchlist Button
                 </div> */}

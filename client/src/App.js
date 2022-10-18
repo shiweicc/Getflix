@@ -1,33 +1,47 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
 import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
-import fakeHistoryData from "./fakeData/fakeHistory.js";
+// import fakeHistoryData from "./fakeData/fakeHistory.js";
+import axios from 'axios';
 
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
 } from "react-router-dom";
 
 
-
 function App() {
-  const [data, setData] = useState(null);
-  const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.history);
+  // const [data, setData] = useState(null);
+
+  // useEffect(() => {
+  //     fetch("/test")
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data.message));
+  // }, []);
+
+  const [watchedMovies, setwatchedMovies] = useState(null);
 
   useEffect(() => {
-    fetch("/test")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+    getWatchedMovies(1);
+  }, [])
 
-  const WatchedBtnClick = (movieID) => {
-    setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
+  const getWatchedMovies = (userId) => {
+    axios.get('/profile', {params: {userId: userId,}})
+    .then(watchedMoviesList => {
+      console.log('GET at APP: ', watchedMoviesList)
+      setwatchedMovies(watchedMoviesList.data)
+    })
+    .catch(err => {
+      console.log('fail to get watched movies list!!!', err);
+    })
+  }
+
+  const watchedBtnClick = (movieId) => {
+    setwatchedMovies(prevWatchedList => [...prevWatchedList, movieId])
     console.log('updated watchedlist: ', watchedMovies)
   }
 
@@ -44,7 +58,7 @@ function App() {
     // },
     {
       path: "/main",
-      element: <Main updateWatchedList={WatchedBtnClick}/>
+      element: <Main updateWatchedList={watchedBtnClick}/>
     },
     {
       path: "/login",
@@ -52,7 +66,7 @@ function App() {
     },
     {
       path: "/profile",
-      element: <Profile watchedList={watchedMovies}/> // arr of moviesID
+      element: <Profile watchedList={watchedMovies}/>
     },
     {
       path: "/",
