@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Getflix is an online database of information about movies. The user can create an account and keep track of movies watched.",
   "main": "index.js",
+<<<<<<< HEAD
   "scripts": {},
+=======
+  "scripts": {
+
+  },
+>>>>>>> 079d8d0 (Update watch history in progress)
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpp36-boc-catamaran/getflix.git"
