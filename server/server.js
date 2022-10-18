@@ -5,6 +5,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 const path = require('path');
 const fakeData = require('../client/src/fakeData/fakeMovies.js');
+const getHistory = require('./routes/profile.js').getHistory;
 const { pool } = require('./authConfig.js');
 
 const bcrypt = require('bcrypt');
@@ -16,6 +17,10 @@ const axios = require('axios');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+
+
+
 
 app.post('/signup', async(req, res)=>{
   let  { user, useremail, pwd } = req.body;
@@ -36,9 +41,21 @@ app.get('/main', (req,res) => {
   res.send(fakeData.movies)
 })
 
+
 app.get('/profile', (req,res) => {
-  //set up to go to microservice later
-  res.send(fakeHistoryData.history)
+  let userId = Number(req.query.userId);
+  let url = 'http://localhost:8000/profile';
+
+  getHistory(url, userId)
+    .then((data) => {
+      console.log('Success get history data: ', data.data);
+      res.status(201).send(data.data);
+    })
+    .catch((err) => {
+      console.log('Fail to get product data!', err);
+      res.status(500).send('Fail to get history data!');
+    })
+  // res.send(fakeHistoryData.history)
 })
 
 
