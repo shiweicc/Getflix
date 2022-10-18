@@ -4,10 +4,11 @@ import fakeHistoryData from "../../../../fakeData/fakeHistory.js";
 
 
 const Movielist = (props) => {
-  console.log('Movielist here: ', props);
+  // console.log('Movielist here: ', props);
   return (
     <div className='main-movie-carousels'>
-      <Carousel movies = {fakeHistoryData.movies}/>
+      {/* <Carousel movies = {fakeHistoryData.movies}/> */}
+      <Carousel movies = {props.movies}/>
     </div>
   )
 }

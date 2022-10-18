@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
@@ -6,7 +6,8 @@ import Profile from "./components/profile/Profile.js";
 import Signup from "./components/signup/Signup.js";
 import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
-import fakeHistoryData from "./fakeData/fakeHistory.js";
+// import fakeHistoryData from "./fakeData/fakeHistory.js";
+import axios from 'axios';
 
 import {
   createBrowserRouter,
@@ -15,7 +16,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.history);
+  const [watchedMovies, setwatchedMovies] = useState(null);
   const [user, setUser] = useState({})
 
   const NotFound = () => {
@@ -30,9 +31,27 @@ function App() {
             <Link to='/signup'>Create a new account</Link>
         </div>
     )
-}
-  const WatchedBtnClick = (movieID) => {
-    setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
+  }
+
+  useEffect(() => {
+    getWatchedMovies(1);
+  }, [])
+
+
+  const getWatchedMovies = (userId) => {
+    axios.get('/profile', {params: {userId: userId,}})
+    .then(watchedMoviesList => {
+      console.log('GET at APP: ', watchedMoviesList)
+      setwatchedMovies(watchedMoviesList.data)
+    })
+    .catch(err => {
+      console.log('fail to get watched movies list!!!', err);
+    })
+  }
+
+  const watchedBtnClick = (movieId) => {
+    setwatchedMovies(prevWatchedList => [...prevWatchedList, movieId])
+    console.log('updated watchedlist: ', watchedMovies)
   }
 
   const router = createBrowserRouter([
@@ -72,6 +91,9 @@ function App() {
       <RouterProvider router={router} />
     </React.StrictMode>
   );
+
 }
 
 export default App;
+
+
