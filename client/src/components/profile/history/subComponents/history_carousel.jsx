@@ -22,6 +22,7 @@ const Carousel = (props) => {
       >
         {
           props.movies.map(movie => {
+            console.log('here: ', movie)
             return (
             <SwiperSlide  className='main-slide'>
               <div>

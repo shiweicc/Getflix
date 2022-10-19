@@ -9,13 +9,15 @@ const History = (props) => {
 
   // console.log('History here: ', props.watchedList)
 
-  const [moviesArr, setmoviesArr] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     getMoviesInfo(props.watchedList);
   }, [])
 
   const getMoviesInfo = (moviesIDList) => {
+    console.log('moviesIDList: ', moviesIDList)
+    let storage = [];
 
     moviesIDList.map(movieID => {
       axios.get(`${API_URL}/${movieID}`, {
@@ -24,7 +26,8 @@ const History = (props) => {
         }
       })
       .then(movie => {
-        // console.log('Movie Info: ', movie.data)
+        console.log('movies info: ', movie.data)
+
         let data = movie.data;
         let movieObj = {
           "backdrop_path": data.backdrop_path,
@@ -32,8 +35,9 @@ const History = (props) => {
           "poster_path": data.poster_path,
           "original_title": data.original_title,
         }
-        moviesArr.push(movieObj);
-        setmoviesArr(moviesArr)
+        storage.push(movieObj);
+        console.log('movies: ', storage)
+        setMovies(storage)
       })
       .catch(err => {
         console.log('fail to get movies info!!!', err);
@@ -45,8 +49,7 @@ const History = (props) => {
   return (
     <div className="history">
       <h2 className='history-title'>History</h2>
-      {/* <Movielist movies={props.watchedList}/> */}
-      <Movielist movies={moviesArr}/>
+      <Movielist movies={movies}/>
     </div>
   );
 }
