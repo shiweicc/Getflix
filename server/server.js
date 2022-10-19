@@ -49,12 +49,12 @@ app.get('/profile', (req,res) => {
 
   getHistory(url, userId)
     .then((data) => {
-      console.log('Success get history data: ', data.data);
+      console.log('Success GET history data at server: ', data.data);
       res.status(201).send(data.data);
     })
     .catch((err) => {
       console.log('Fail to GET history data!', err);
-      res.status(500).send('Fail to GET history data!');
+      res.status(500).send('Fail to GET history data at server!');
     })
   // res.send(fakeHistoryData.history)
 })
