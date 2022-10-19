@@ -10,7 +10,6 @@ const profile = require('./routes/profile.js');
 const { pool } = require('./authConfig.js');
 
 const bcrypt = require('bcrypt');
-const fakeHistoryData = require('../client/src/fakeData/fakeHistory.js');
 const SIGNUP_URL = 'http://107.23.252.158:3001/signup'
 const cors = require('cors');
 const axios = require('axios');
@@ -137,6 +136,23 @@ app.delete('/profile/clearhistory', (req, res) => {
     })
 })
 
+app.post('/main', (req,res) => {
+  let userId = Number(req.body.userId);
+  let movieId = Number(req.body.movieId);
+  let data = {userId: userId, movieId: movieId}
+
+  let url = 'http://localhost:8000/main';
+
+  postHistory(url, data)
+    .then((data) => {
+      console.log(data.data);
+      res.status(201).send(data.data);
+    })
+    .catch((err) => {
+      console.log('Fail to POST history data!', err);
+      res.status(500).send('Fail to POST history data!');
+    })
+})
 
 
 app.listen(port, () => {
