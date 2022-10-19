@@ -17,6 +17,7 @@ const axios = require('axios');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+const postHistory = require('./routes/profile.js').postHistory;
 
 
 
@@ -52,12 +53,29 @@ app.get('/profile', (req,res) => {
       res.status(201).send(data.data);
     })
     .catch((err) => {
-      console.log('Fail to get product data!', err);
-      res.status(500).send('Fail to get history data!');
+      console.log('Fail to GET history data!', err);
+      res.status(500).send('Fail to GET history data!');
     })
   // res.send(fakeHistoryData.history)
 })
 
+app.post('/main', (req,res) => {
+  let userId = Number(req.body.userId);
+  let movieId = Number(req.body.movieId);
+  let data = {userId: userId, movieId: movieId}
+
+  let url = 'http://localhost:8000/main';
+
+  postHistory(url, data)
+    .then((data) => {
+      console.log(data.data);
+      res.status(201).send(data.data);
+    })
+    .catch((err) => {
+      console.log('Fail to POST history data!', err);
+      res.status(500).send('Fail to POST history data!');
+    })
+})
 
 app.post('/login', async (req, res) => {
   let {

@@ -4,12 +4,20 @@ const getHistory = (url) => {
   let options = {
     method: 'get',
     url: `${url}`,
-    // headers: headers,
-    // params: userId
+  };
+  return axios(options);
+}
+
+const postHistory = (url, data) => {
+  let options = {
+    method: 'post',
+    url: `${url}`,
+    data:data,
   };
   return axios(options);
 }
 
 module.exports = {
-  getHistory
+  getHistory,
+  postHistory
 }
