@@ -16,7 +16,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [watchedMovies, setwatchedMovies] = useState(null);
+  const [watchedList, setWatchedList] = useState([]);
   const [user, setUser] = useState({})
 
   const NotFound = () => {
@@ -34,24 +34,31 @@ function App() {
   }
 
   useEffect(() => {
-    getWatchedMovies(1);
+    getHistory(1);
   }, [])
 
-
-  const getWatchedMovies = (userId) => {
+  const getHistory = (userId) => {
     axios.get('/profile', {params: {userId: userId,}})
-    .then(watchedMoviesList => {
-      console.log('GET at APP: ', watchedMoviesList)
-      setwatchedMovies(watchedMoviesList.data)
-    })
-    .catch(err => {
-      console.log('fail to get watched movies list!!!', err);
-    })
+      .then(history => {
+        console.log('success GET history data: ', history)
+        setWatchedList(history.data)
+      })
+      .catch(err => {
+        console.log('fail to GET history data: ', err);
+      })
   }
 
-  const watchedBtnClick = (movieId) => {
-    setwatchedMovies(prevWatchedList => [...prevWatchedList, movieId])
-    console.log('updated watchedlist: ', watchedMovies)
+  const watchedBtnClick = (userId, movieId) => {
+    // setwatchedMovies([...watchedMovies, movieId])
+    // console.log('updated watchedlist: ', watchedMovies)
+
+    axios.post('/main', {userId: userId, movieId: movieId})
+      .then(data => {
+        console.log('success POST the watched movie: ', data)
+      })
+      .catch(err => {
+        console.log('fail to POST the watched movie:', err);
+      })
   }
 
   const router = createBrowserRouter([
