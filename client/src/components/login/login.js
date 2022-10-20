@@ -8,7 +8,7 @@ import axios from 'axios';
 
 import './login.css'
 
-const Login = () => {
+const Login = ({setLogged, setUser}) => {
   const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isClicked, setClicked] = useState(false)
@@ -19,17 +19,6 @@ const Login = () => {
       <div classname="error">{errorMessages.message}</div>
     )
   }
-
-  const database = [
-    {
-      username: 'user1',
-      password: 'pass1'
-    },
-    {
-      username: 'user2',
-      password: 'pass2'
-    }
-  ]
 
   const errors = {
     uname: 'invalid username',
@@ -59,7 +48,13 @@ const Login = () => {
           }
       );
       if(response.status === 200) {
+        let temp = {
+          username: username,
+          id: response.data
+        }
+        setUser(temp)
         setIsSubmitted(true);
+        setLogged(true);
       } else {
         console.log('incorrect credentials');
       }
@@ -67,20 +62,6 @@ const Login = () => {
   catch(err) {
     console.log(err);
   }
-
-    // const userData = database.find((user) => user.username === uname.value)
-
-    // if (userData) {
-    //   if (userData.password !== pass.value) {
-    //     setErrorMessages({name: 'pass', message: errors.pass});
-    //     alert('Password does not match')
-    //   } else {
-        // setIsSubmitted(true);
-    //   }
-    // } else {
-    //   setErrorMessages({name: "uname", message: errors.uname});
-    //   alert('Username does not exist')
-    // }
   };
 
   const renderForm = (

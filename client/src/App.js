@@ -19,6 +19,8 @@ import {
 function App() {
   const [data, setData] = useState(null);
   const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.history);
+  const [logged, isLogged] = useState(false) // to track if user is logged in
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     fetch("/test")
@@ -28,7 +30,6 @@ function App() {
 
   const WatchedBtnClick = (movieID) => {
     setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
-    console.log('updated watchedlist: ', watchedMovies)
   }
 
   const router = createBrowserRouter([
@@ -44,15 +45,15 @@ function App() {
     // },
     {
       path: "/main",
-      element: <Main updateWatchedList={WatchedBtnClick}/>
+      element: logged ? <Main updateWatchedList={WatchedBtnClick}/> : <Login setLogged={isLogged} setUser={setUser}/> // if user is logged, continue, if not redirect to login page
     },
     {
       path: "/login",
-      element: <Login />
+      element: <Login setLogged={isLogged} setUser={setUser}/>
     },
     {
       path: "/profile",
-      element: <Profile watchedList={watchedMovies}/> // arr of moviesID
+      element: logged ? <Profile watchedList={watchedMovies}/> : <Login setLogged={isLogged} setUser={setUser} /> // arr of moviesID
     },
     {
       path: "/",
@@ -60,7 +61,7 @@ function App() {
     },
     {
       path: "/details",
-      element: <Details />
+      element: logged ? <Details /> : <Login setLogged={isLogged} setUser={setUser} />
     }
   ]);
 

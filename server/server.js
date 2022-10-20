@@ -19,7 +19,7 @@ app.get('/test', (req, res)=>{
   res.json({message:'Welcome to Getflix!'})
 })
 
-app.get('/main', checkNotAuthenticated, (req,res) => {
+app.get('/main', (req,res) => {
   //set up to go to microservice later
   res.send(fakeData.movies)
 })
@@ -50,7 +50,8 @@ app.post('/login', async (req, res) => {
         }
         if (compareHash(password, hashed)) {
           isAuthenticated = true;
-          res.status(200).send('something')
+          console.log(results.rows[0])
+          res.status(200).send(results.rows[0].id)
         } else {
           res.status(400)
         }
@@ -58,20 +59,6 @@ app.post('/login', async (req, res) => {
     }
   )
 })
-
-function checkAuthenticated(req, res, next){
-  if (req.isAuthenticated()){
-    return res.redirect('/profile');
-  }
-  next();
-}
-
-function checkNotAuthenticated(req, res, next){
-  if (req.isAuthenticated()){
-    return next();
-  }
-  res.redirect('/login');
-}
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
