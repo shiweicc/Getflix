@@ -1,16 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import logo from './getfilxLogo.png';
 import movies from './movies.png';
-
 import './landing.css';
 
 const Landing = () => {
+  const navigate = useNavigate();
+
   const login = () => {
     console.log('logout')
   }
-
+  const navigateSignup = () => {
+    navigate('/signup');
+  };
   return (
     <div>
       <div className='Navigation-Bar'>
@@ -20,12 +24,15 @@ const Landing = () => {
         <div className="landing-button-container">
           <button className='main-logout-btn' onClick={() => {login()}}> Login</button>
         </div>
+        {/* <div className="landing-button-container">
+          <button className='main-logout-btn' onClick={() => {logout()}}> Logout</button>
+        </div> */}
       </div>
       <div className='slogan'>
         Find, track, and watch your movies.
       </div>
       <div className='get-started'>
-        <button>Get Started</button>
+          <button className='get-started-button' onClick={navigateSignup}>Get Started</button>
       </div>
       <div>
         <img  className='landing-movies' alt='movies' src={movies} ></img>
@@ -33,5 +40,6 @@ const Landing = () => {
     </div>
   )
 }
+
 
 export default Landing;

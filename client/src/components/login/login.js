@@ -1,13 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
-import logo from '../../logo.svg';
+import logo from '../../getflixLogo.png'
+import Main from '../main/main.js'
+import { Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 import './login.css'
 
 const Login = () => {
   const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isClicked, setClicked] = useState(false)
+  const LOGIN_URL = 'http://localhost:3001/login'
 
   const renderErrorMessage = (name) => {
     name === errorMessages.name && (
@@ -15,40 +20,30 @@ const Login = () => {
     )
   }
 
-  const database = [
-    {
-      username: 'user1',
-      password: 'pass1'
-    },
-    {
-      username: 'user2',
-      password: 'pass2'
-    }
-  ]
-
-  const errors = {
-    uname: 'invalid username',
-    pass: 'invalid password'
-  }
-
-
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     var { uname, pass } = document.forms[0];
+    var username = uname.value;
+    var password = pass.value;
 
-    const userData = database.find((user) => user.username === uname.value)
-
-    if (userData) {
-      if (userData.password !== pass.value) {
-        setErrorMessages({name: 'pass', message: errors.pass});
-      } else {
+    try {
+      const response = await axios.post(LOGIN_URL,
+          JSON.stringify({ username, password }),
+          {
+              headers: { 'Content-Type': 'application/json' },
+              withCredentials: false
+          }
+      );
+      if(response.status === 200) {
         setIsSubmitted(true);
+      } else {
+        console.log('incorrect credentials');
       }
-    } else {
-      setErrorMessages({name: "uname", message: errors.uname});
-    }
+  }
+  catch(err) {
+    console.log(err);
+  }
   };
 
   const renderForm = (
@@ -63,24 +58,28 @@ const Login = () => {
           {renderErrorMessage('pass')}
         </div>
         <div className='button-container'>
-          <input type='submit' />
+          <input type='submit' onSubmit={handleSubmit}/>
         </div>
       </form>
     </div>
   )
 
   return (
-    <div className='app'>
-      <div className='top'>
-        <img src='https://lynnliu0429.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F27f894d3-3b7e-4a6f-8648-585a802320f0%2FScreen_Shot_2022-10-05_at_7.10.18_PM.png?table=block&id=ee5194fc-b065-40fa-ab0e-484f664e7647&spaceId=06601d8e-4fb7-4a87-9521-6c0a0765f4e7&width=960&userId=&cache=v2' className='logo' alt='logo'></img>
-        <button type='button' className='back-btn'>Back</button>
-      </div>
-      <div className='login-form'>
-        <div className='title'>LOG IN</div>
-        {renderForm}
-      </div>
+    <>
+    {isSubmitted ? <Navigate to='/main' /> :  <div className='app'>
+    <div className='top'>
+      <img src={logo} alt='getflix-logo' className='logo' />
+      {isClicked ? <Navigate to='main' /> : <button type='button' className='back-btn'>Back</button>}
     </div>
-  )
+    <div className='login-form'>
+      <div className='title'>LOG IN</div>
+      {isSubmitted ? <div>User is successfully logged in!</div> : renderForm}
+    </div>
+  </div>
+    }
+    </>
+)
+
 }
 
 export default Login;
