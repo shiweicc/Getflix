@@ -4,8 +4,8 @@ import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
-import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
+import Landing from "./components/landing/landing.js";
 import fakeHistoryData from "./fakeData/fakeHistory.js";
 
 import {
@@ -33,16 +33,17 @@ function App() {
   }
 
   const router = createBrowserRouter([
-    // {
-    //   path: "/",
-    //   element:
-    //     <div className="App">
-    //       <header className="App-header">
-    //         <img src={logo} className="App-logo" alt="logo" />
-    //         <p>{!data ? "Loading..." : data}</p>
-    //       </header>
-    //     </div>,
-    // },
+    {
+      path: "/",
+      // element:
+      //   <div className="App">
+      //     <header className="App-header">
+      //       <img src={logo} className="App-logo" alt="logo" />
+      //       <p>{!data ? "Loading..." : data}</p>
+      //     </header>
+      //   </div>,
+      element: <Landing />
+    },
     {
       path: "/main",
       element: logged ? <Main updateWatchedList={WatchedBtnClick}/> : <Login setLogged={isLogged} setUser={setUser}/> // if user is logged, continue, if not redirect to login page
@@ -54,10 +55,6 @@ function App() {
     {
       path: "/profile",
       element: logged ? <Profile watchedList={watchedMovies}/> : <Login setLogged={isLogged} setUser={setUser} /> // arr of moviesID
-    },
-    {
-      path: "/",
-      element: <Landing />
     },
     {
       path: "/details",
