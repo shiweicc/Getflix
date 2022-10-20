@@ -11,7 +11,6 @@ const SIGNUP_URL = 'http://localhost:3001/signup';
 
 const Signup = () => {
 
-<<<<<<< HEAD
   const userRef = useRef();
   const errRef = useRef();
 
@@ -33,88 +32,10 @@ const Signup = () => {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-      userRef.current.focus();
-  }, [])
-
-  useEffect(() => {
-      setValidName(USER_REGEX.test(user));
-      setValidEmail(EMAIL_REGEX.test(useremail));
-  }, [user, useremail])
-
-  useEffect(() => {
-      setValidPwd(PWD_REGEX.test(pwd));
-      setValidMatch(pwd === matchPwd);
-  }, [pwd, matchPwd])
-
-  useEffect(() => {
-      setErrMsg('');
-  }, [user, useremail, pwd, matchPwd])
-
-  const handleSubmit = async (e) => {
-      e.preventDefault();
-      const v1 = USER_REGEX.test(user);
-      const v2 = PWD_REGEX.test(pwd);
-      const v3 = EMAIL_REGEX.test(useremail);
-      if (!v1 || !v2 || !v3) {
-          setErrMsg("invalid input");
-          return;
-      }
-      try {
-          await axios.post(SIGNUP_URL,
-              JSON.stringify({ user, useremail, pwd }),
-              {
-                  headers: { 'Content-Type': 'application/json' },
-                  withCredentials: false
-              }
-          );
-          // console.log(response?.data);
-          // console.log(response?.accessToken);
-          // console.log(JSON.stringify(response))
-          setSuccess(true);
-          setUser('');
-          setPwd('');
-          setMatchPwd('');
-      } catch (err) {
-          if (!err?.response) {
-              setErrMsg('No response');
-          } else if (err.response?.status === 409) {
-              setErrMsg('There is an account linked to this email');
-          } else {
-              setErrMsg('Signup failed')
-          }
-          errRef.current.focus();
-      }
-  }
-
-=======
   const navigate = useNavigate();
-
-  const navigateLogin = () => {
+  const navigateToLogin = () => {
     navigate('/login');
-  };
-  const userRef = useRef();
-  const errRef = useRef();
-
-  const [user, setUser] = useState('');
-  const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
-
-  const [useremail, setEmail] = useState('');
-  const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
-
-  const [pwd, setPwd] = useState('');
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
-
-  const [matchPwd, setMatchPwd] = useState('');
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
-
-  const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
+  }
 
   useEffect(() => {
       userRef.current.focus();
@@ -144,7 +65,7 @@ const Signup = () => {
           return;
       }
       try {
-          await axios.post(SIGNUP_URL,
+        const response = await axios.post(SIGNUP_URL,
               JSON.stringify({ user, useremail, pwd }),
               {
                   headers: { 'Content-Type': 'application/json' },
@@ -154,13 +75,16 @@ const Signup = () => {
           // console.log(response?.data);
           // console.log(response?.accessToken);
           // console.log(JSON.stringify(response))
-          setSuccess(true);
+          if (response.status === 200) {
+            console.log('good')
+            setSuccess(true);
+          }
           setUser('');
           setPwd('');
           setMatchPwd('');
       } catch (err) {
           if (!err?.response) {
-              setErrMsg('No response');
+              setErrMsg('No response from server');
           } else if (err.response?.status === 409) {
               setErrMsg('There is an account linked to this email');
           } else {
@@ -170,7 +94,6 @@ const Signup = () => {
       }
   }
 
->>>>>>> 7758932c15de475573fe5d48637bb5116110d81e
   return (
       <>
           {success ? (
@@ -280,15 +203,7 @@ const Signup = () => {
                   </form>
                   <p>
                       Already registered?<br />
-                      <Link to='/login'>
-                        <span className="line">
-<<<<<<< HEAD
-                            <a href="#login">Log In</a>
-=======
-                            <a href="#">Log In</a>
->>>>>>> 7758932c15de475573fe5d48637bb5116110d81e
-                        </span>
-                      </Link>
+                      <button onClick={navigateToLogin} className="sign-up-button">Log In</button>
                   </p>
               </section>
           )}
