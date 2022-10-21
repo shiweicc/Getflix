@@ -7,7 +7,6 @@ const path = require('path');
 const fakeData = require('../client/src/fakeData/fakeMovies.js');
 // const fakeHistoryData = require('../client/src/fakeData/fakeHistory.js');
 const profile = require('./routes/profile.js');
-const getHistory = require('./routes/profile.js').getHistory;
 const { pool } = require('./authConfig.js');
 
 const bcrypt = require('bcrypt');
@@ -19,12 +18,6 @@ const axios = require('axios');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-const postHistory = require('./routes/profile.js').postHistory;
-const deleteEachMovie = require('./routes/profile.js').deleteEachMovie;
-const deleteAllMovies = require('./routes/profile.js').deleteAllMovies;
-
-
-
 
 app.post('/signup', async(req, res)=>{
   let  { user, useremail, pwd } = req.body;
@@ -79,7 +72,6 @@ app.post('/main/updatehistory', (req,res) => {
     })
 })
 
-<<<<<<< HEAD
 app.post('/login', async (req, res) => {
   let {
     username,
@@ -111,10 +103,8 @@ app.get('/logout', async function(req, res, next) {
   res.redirect('/');
 });
 
-app.delete('/profile', (req, res) => {
-=======
+
 app.delete('/profile/removeeachmovie', (req, res) => {
->>>>>>> 760cae2 (Complete clearHistory btn function)
   let userId = Number(req.query.userId);
   let movieId = Number(req.query.movieId);
   let data = {userId: userId, movieId: movieId}
