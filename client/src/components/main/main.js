@@ -64,6 +64,7 @@ function Main(props) {
       <Movies
         movieList = {groupedMovies}
         updateHistory={props.updateHistory}
+        history={props.history}
       />
     </div>
   );
