@@ -35,6 +35,7 @@ function App() {
     )
   }
 
+
   useEffect(() => {
     getHistory(1);
   }, [])

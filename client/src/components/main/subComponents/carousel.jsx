@@ -31,9 +31,9 @@ const Carousel = (props) => {
         className="mySwiper"
       >
         {
-          props.movies.map(movie => {
+          props.movies.map((movie, index) => {
             return (
-            <SwiperSlide  className='main-slide'>
+            <SwiperSlide key={index}  className='main-slide'>
               <div>
                 <div>
 

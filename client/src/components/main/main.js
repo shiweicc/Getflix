@@ -1,10 +1,11 @@
 import React from "react";
 import NavigationBar from "./subComponents/NavigationBar.jsx";
+import { useNavigate } from 'react-router-dom';
 import fakeData from "../../fakeData/fakeMovies.js";
 import './main.css';
 import Movies from "./subComponents/movies.jsx";
 import $ from "jquery";
-import { useNavigate } from 'react-router-dom';
+
 function Main(props) {
   // const [data, setData] = React.useState(null);
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ function Main(props) {
   }
 
   const profile = () => {
-    console.log('profile button')
+    navigate('/profile');
   }
   const navigateToLandingPage = () => {
     navigate('/');
