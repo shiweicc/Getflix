@@ -98,7 +98,6 @@ function App() {
       })
   }
 
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -111,15 +110,6 @@ function App() {
     {
       path: "/login",
       element: <Login setUser={setUser}/>
-    },
-    {
-      path: "/updateUserPwd",
-      element: <UpdatePwd/>
-      // element: localStorage.getItem('logged in id') ? <UpdatePwd />  : <Login setUser={setUser}/>
-    },
-    {
-      path: "/updateUserName",
-      element: localStorage.getItem('logged in id') ? <UpdateUsername />  : <Login setUser={setUser}/>
     },
     {
       path: "/main",

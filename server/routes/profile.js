@@ -26,8 +26,18 @@ const deleteEachMovie = (url, data) => {
   return axios(options);
 }
 
+const deleteAllMovies = (url, data) => {
+  let options = {
+    method: 'delete',
+    url: `${url}`,
+    data:data,
+  };
+  return axios(options);
+}
+
 module.exports = {
   getHistory,
   postHistory,
-  deleteEachMovie
+  deleteEachMovie,
+  deleteAllMovies
 }
