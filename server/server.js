@@ -11,6 +11,7 @@ const fakeData = require('../client/src/fakeData/fakeMovies.js');
 // const fakeHistoryData = require('../client/src/fakeData/fakeHistory.js');
 const getHistory = require('./routes/profile.js').getHistory;
 const postHistory = require('./routes/profile.js').postHistory;
+const deleteEachMovie = require('./routes/profile.js').deleteEachMovie;
 
 
 app.get('/test', (req, res)=>{
@@ -36,7 +37,6 @@ app.get('/profile', (req,res) => {
       console.log('Fail to GET history data!', err);
       res.status(500).send('Fail to GET history data at server!');
     })
-  // res.send(fakeHistoryData.history)
 })
 
 app.post('/main', (req,res) => {
@@ -57,6 +57,25 @@ app.post('/main', (req,res) => {
     })
 })
 
+app.delete('/profile', (req, res) => {
+  let userId = Number(req.query.userId);
+  let movieId = Number(req.query.movieId);
+  let data = {userId: userId, movieId: movieId}
+
+  console.log('xxxx: ', req.query)
+
+  let url = 'http://localhost:8000/profile';
+
+  deleteEachMovie(url, data)
+    .then((data) => {
+      console.log(data.data);
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      console.log('Fail to POST history data!', err);
+      res.status(500).send('Fail to POST history data!');
+    })
+})
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)

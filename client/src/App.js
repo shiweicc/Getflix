@@ -56,6 +56,24 @@ function App() {
     }
   }
 
+  const removeBtnClick = (userId, movieId) => {
+    let data = {userId: userId, movieId: movieId}
+
+    let newHistory = history;
+    const index = newHistory.indexOf(movieId);
+    newHistory.splice(index, 1)
+
+    axios.delete('/profile', {params: data})
+      .then(data => {
+        // console.log('success DELETE the movie from history: ', data)
+        setHistory(newHistory);
+        alert('This movie is revmoed from your history! Refresh the page to see the update.')
+      })
+      .catch(err => {
+        console.log('fail to DELETE the movie from history: ', err)
+      })
+  }
+
   const router = createBrowserRouter([
     // {
     //   path: "/",
@@ -77,7 +95,7 @@ function App() {
     },
     {
       path: "/profile",
-      element: <Profile history={history}/>
+      element: <Profile history={history} removeEachMovie={removeBtnClick}/>
     },
     {
       path: "/",

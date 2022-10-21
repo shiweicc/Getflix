@@ -4,6 +4,7 @@
 .history {
   color: white;
 }
+
 .remove_btn{
   background-color: black;
   color: white;
@@ -39,4 +40,25 @@
 
 .no-history-title {
   color: white;
+}
+
+.clear_history_btn {
+  float: right;
+  text-align: center;
+  font-size: 18px;
+  margin-right: 80px;
+  color: white;
+  border: none;
+  background-color: inherit;
+  /* padding: 14px 28px; */
+  cursor: pointer;
+  display: inline-block;
+}
+
+.clear_history_btn:hover {
+  font-weight: bolder;
+}
+
+.remove_btn:hover {
+  font-size: 20px;
 }
