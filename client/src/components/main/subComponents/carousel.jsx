@@ -10,8 +10,6 @@ import { Navigation, Scrollbar } from "swiper";
 
 const Carousel = (props) => {
 
-  // console.log(props.movies);
-
   const navigate = useNavigate();
   const navigateMovieDetail = (data) => {
     //console.log(data);
@@ -32,6 +30,15 @@ const Carousel = (props) => {
       >
         {
           props.movies.map((movie, index) => {
+
+            const checkHistory = props.history.includes(movie.id)
+            let watchedBtn;
+            if (checkHistory) {
+              watchedBtn =  <button className="watched_btn" onClick={() => props.updateHistory(1, movie.id)}>👁️</button>
+            } else {
+              watchedBtn =  <button className="watched_btn" onClick={() => props.updateHistory(1, movie.id)}>Watch</button>
+            }
+
             return (
             <SwiperSlide key={index}  className='main-slide'>
               <div>
@@ -47,10 +54,7 @@ const Carousel = (props) => {
                 <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <button className="watched_btn" onClick={() => props.updateHistory(1, movie.id)}>👁️</button>
-                {/* <div className="main-card-watch">
-                  Watchlist Button
-                </div> */}
+                {watchedBtn}
               </div>
               </SwiperSlide>
             )
