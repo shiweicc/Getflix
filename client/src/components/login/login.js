@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
+//import logo from '/Users/chrisbaharians/RPP36/getflix/client/src/getflixLogo.png'
 import logo from '../../getflixLogo.png'
 import Main from '../main/main.js'
 import { Navigate } from 'react-router-dom';
@@ -8,7 +9,7 @@ import axios from 'axios';
 
 import './login.css'
 
-const Login = () => {
+const Login = ({setLogged, setUser}) => {
   const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isClicked, setClicked] = useState(false)
@@ -19,6 +20,18 @@ const Login = () => {
       <div classname="error">{errorMessages.message}</div>
     )
   }
+
+  const errors = {
+    uname: 'invalid username',
+    pass: 'invalid password'
+  }
+
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+
+  //   if(isClicked)
+  // }
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,6 +49,13 @@ const Login = () => {
           }
       );
       if(response.status === 200) {
+        let temp = {
+          username: username,
+          id: response.data
+        }
+        setUser(temp)
+        setIsSubmitted(true);
+        setLogged(true);
         setIsSubmitted(true);
       } else {
         console.log('incorrect credentials');
