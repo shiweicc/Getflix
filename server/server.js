@@ -9,10 +9,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}));
 const fakeData = require('../client/src/fakeData/fakeMovies.js');
 // const fakeHistoryData = require('../client/src/fakeData/fakeHistory.js');
+const profile = require('./routes/profile.js');
 const getHistory = require('./routes/profile.js').getHistory;
 const postHistory = require('./routes/profile.js').postHistory;
 const deleteEachMovie = require('./routes/profile.js').deleteEachMovie;
-
+const deleteAllMovies = require('./routes/profile.js').deleteAllMovies;
 
 app.get('/test', (req, res)=>{
   res.json({message:'Welcome to Getflix!'})
@@ -24,56 +25,69 @@ app.get('/main', (req,res) => {
 })
 
 
-app.get('/profile', (req,res) => {
+app.get('/profile/gethistory', (req,res) => {
   let userId = Number(req.query.userId);
-  let url = 'http://localhost:8000/profile';
+  let url = 'http://localhost:8000/profile/gethistory';
 
-  getHistory(url, userId)
+  profile.getHistory(url, userId)
     .then((data) => {
-      console.log('Success GET history data at server: ', data.data);
+      // console.log('Success GET history data at server: ', data.data);
       res.status(201).send(data.data);
     })
     .catch((err) => {
-      console.log('Fail to GET history data!', err);
-      res.status(500).send('Fail to GET history data at server!');
+      // console.log('Fail to GET history data!', err);
+      res.status(500).send(err);
     })
 })
 
-app.post('/main', (req,res) => {
+app.post('/main/updatehistory', (req,res) => {
   let userId = Number(req.body.userId);
   let movieId = Number(req.body.movieId);
   let data = {userId: userId, movieId: movieId}
 
-  let url = 'http://localhost:8000/main';
+  let url = 'http://localhost:8000/main/updatehistory';
 
-  postHistory(url, data)
+  profile.postHistory(url, data)
     .then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
       res.status(201).send(data.data);
     })
     .catch((err) => {
-      console.log('Fail to POST history data!', err);
-      res.status(500).send('Fail to POST history data!');
+      // console.log('Fail to POST history data!', err);
+      res.status(500).send(err);
     })
 })
 
-app.delete('/profile', (req, res) => {
+app.delete('/profile/removeeachmovie', (req, res) => {
   let userId = Number(req.query.userId);
   let movieId = Number(req.query.movieId);
   let data = {userId: userId, movieId: movieId}
 
-  console.log('xxxx: ', req.query)
+  let url = 'http://localhost:8000/profile/removeeachmovie';
 
-  let url = 'http://localhost:8000/profile';
-
-  deleteEachMovie(url, data)
+  profile.deleteEachMovie(url, data)
     .then((data) => {
-      console.log(data.data);
       res.status(200).send(data.data);
     })
     .catch((err) => {
-      console.log('Fail to POST history data!', err);
-      res.status(500).send('Fail to POST history data!');
+      // console.log('Fail to DELETE the movie data!', err);
+      res.status(500).send(err);
+    })
+})
+
+app.delete('/profile/clearhistory', (req, res) => {
+  let userId = Number(req.query.userId);
+  let data = {userId: userId}
+
+  let url = 'http://localhost:8000/profile/clearhistory';
+
+  profile.deleteAllMovies(url, data)
+    .then((data) => {
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      // console.log('Fail to DELETE all movies data!', err);
+      res.status(500).send(err);
     })
 })
 

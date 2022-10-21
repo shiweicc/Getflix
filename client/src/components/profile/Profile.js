@@ -1,7 +1,7 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
 import History from "./history/History.js";
 import pic from '../../getflixLogo.png';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './profile.css';
 
 const Profile = (props) => {
@@ -14,7 +14,7 @@ const Profile = (props) => {
   const historyList = props.history.length;
   let history;
   if (historyList) {
-    history = <History watchedList={props.history} removeEachMovie={props.removeEachMovie}/>
+    history = <History watchedList={props.history} removeEachMovie={props.removeEachMovie} removeAllMovies={props.removeAllMovies}/>
   } else {
     history = <h2 className='no-history-title'>No Watch History</h2>
   }
