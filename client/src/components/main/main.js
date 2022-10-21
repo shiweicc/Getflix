@@ -63,7 +63,7 @@ function Main(props) {
         logout = {logout}/>
       <Movies
         movieList = {groupedMovies}
-        updateWatchedList={props.updateWatchedList}
+        updateHistory={props.updateHistory}
       />
     </div>
   );

@@ -69,7 +69,7 @@ function App() {
     // },
     {
       path: "/main",
-      element: <Main updateWatchedList={watchedBtnClick} history={history}/>
+      element: <Main updateHistory={watchedBtnClick} history={history}/>
     },
     {
       path: "/login",
