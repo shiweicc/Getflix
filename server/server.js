@@ -10,10 +10,7 @@ app.use(express.urlencoded({extended: false}));
 const fakeData = require('../client/src/fakeData/fakeMovies.js');
 // const fakeHistoryData = require('../client/src/fakeData/fakeHistory.js');
 const profile = require('./routes/profile.js');
-const getHistory = require('./routes/profile.js').getHistory;
-const postHistory = require('./routes/profile.js').postHistory;
-const deleteEachMovie = require('./routes/profile.js').deleteEachMovie;
-const deleteAllMovies = require('./routes/profile.js').deleteAllMovies;
+
 
 app.get('/test', (req, res)=>{
   res.json({message:'Welcome to Getflix!'})
