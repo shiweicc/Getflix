@@ -17,8 +17,19 @@ import {
 function App() {
   const [data, setData] = useState(null);
   const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.history);
+<<<<<<< HEAD
   const [logged, isLogged] = useState(false)
   const [user, setUser] = useState({})
+=======
+  const [logged, isLogged] = useState(false) // to track if user is logged in
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    fetch("/test")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+  }, []);
+>>>>>>> 6888a5ba48885a4f495ba2d401763f27134f2e6b
 
   const WatchedBtnClick = (movieID) => {
     setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
@@ -30,12 +41,18 @@ function App() {
       element: <Landing />
     },
     {
+<<<<<<< HEAD
       path: "/Signup",
       element: <Signup/>
+=======
+      path: "/main",
+      element: logged ? <Main updateWatchedList={WatchedBtnClick}/> : <Login setLogged={isLogged} setUser={setUser}/> // if user is logged, continue, if not redirect to login page
+>>>>>>> 6888a5ba48885a4f495ba2d401763f27134f2e6b
     },
     {
       path: "/login",
       element: <Login setLogged={isLogged} setUser={setUser}/>
+<<<<<<< HEAD
     },
     {
       path: "/main",
@@ -44,6 +61,12 @@ function App() {
     {
       path: "/profile",
       element: logged ? <Profile watchedList={watchedMovies}/> : <Login setLogged={isLogged} setUser={setUser} />
+=======
+    },
+    {
+      path: "/profile",
+      element: logged ? <Profile watchedList={watchedMovies}/> : <Login setLogged={isLogged} setUser={setUser} /> // arr of moviesID
+>>>>>>> 6888a5ba48885a4f495ba2d401763f27134f2e6b
     },
     {
       path: "/details",

@@ -76,7 +76,6 @@ const Signup = () => {
           // console.log(response?.accessToken);
           // console.log(JSON.stringify(response))
           if (response.status === 200) {
-            console.log('good')
             setSuccess(true);
           }
           setUser('');
