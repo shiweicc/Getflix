@@ -65,7 +65,50 @@ function App() {
     }
   }
 
+  const removeBtnClick = (userId, movieId) => {
+    let data = {userId: userId, movieId: movieId}
+
+    let newHistory = history;
+    const index = newHistory.indexOf(movieId);
+    newHistory.splice(index, 1)
+
+    axios.delete('/profile', {params: data})
+      .then(data => {
+        // console.log('success DELETE the movie from history: ', data)
+        setHistory(newHistory);
+        alert('This movie is revmoed from your history! Refresh the page to see the update.')
+      })
+      .catch(err => {
+        console.log('fail to DELETE the movie from history: ', err)
+      })
+  }
+
   const router = createBrowserRouter([
+<<<<<<< HEAD
+=======
+    // {
+    //   path: "/",
+    //   element:
+    //     <div className="App">
+    //       <header className="App-header">
+    //         <img src={logo} className="App-logo" alt="logo" />
+    //         <p>{!data ? "Loading..." : data}</p>
+    //       </header>
+    //     </div>,
+    // },
+    {
+      path: "/main",
+      element: <Main updateHistory={watchedBtnClick} history={history}/>
+    },
+    {
+      path: "/login",
+      element: <Login />
+    },
+    {
+      path: "/profile",
+      element: <Profile history={history} removeEachMovie={removeBtnClick}/>
+    },
+>>>>>>> 91affb5 (Completed remove btn function and add Clear History btn CSS)
     {
       path: "/",
       element: <Landing />

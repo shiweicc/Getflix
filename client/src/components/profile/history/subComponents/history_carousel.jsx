@@ -34,7 +34,7 @@ const Carousel = (props) => {
                 <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <button className="remove_btn"> x </button>
+                <button className="remove_btn" onClick={() => props.removeEachMovie(1, movie.id)}> x </button>
               </div>
               </SwiperSlide>
             )

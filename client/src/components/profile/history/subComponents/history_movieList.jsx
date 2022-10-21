@@ -7,7 +7,7 @@ const Movielist = (props) => {
   return (
     <div className='main-movie-carousels'>
       {/* <Carousel movies = {fakeHistoryData.movies}/> */}
-      <Carousel movies = {props.movies}/>
+      <Carousel movies={props.movies} removeEachMovie={props.removeEachMovie}/>
     </div>
   )
 }

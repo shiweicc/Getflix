@@ -14,7 +14,7 @@ const Profile = (props) => {
   const historyList = props.history.length;
   let history;
   if (historyList) {
-    history = <History watchedList={props.history}/>
+    history = <History watchedList={props.history} removeEachMovie={props.removeEachMovie}/>
   } else {
     history = <h2 className='no-history-title'>No Watch History</h2>
   }
