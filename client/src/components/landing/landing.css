@@ -36,7 +36,6 @@ body {
   color: white;
   border-color: transparent;
   font-size: 1.5em;
-
   cursor: pointer;
   font-size: 24px;
   background: #8A1E1E;
@@ -51,10 +50,19 @@ body {
   top: 40%;
   left: 33.5%;
   font-size: xx-large;
+  margin: 0 auto;
 }
 
 .get-started {
   position: absolute;
   top: 50%;
   left: 46.5%;
+}
+
+.landing-movies {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0%;
+  filter: brightness(50%);
 }

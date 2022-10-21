@@ -17,7 +17,6 @@ app.post('/signup', async(req, res)=>{
   let  { user, useremail, pwd } = req.body;
   try{
     const response =  await axios.post(SIGNUP_URL, req.body);
-    console.log(response.status)
     res.sendStatus(response.status)
   } catch (err) {
     console.log(err)

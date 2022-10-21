@@ -3,6 +3,7 @@ import NavigationBar from "./subComponents/NavigationBar.jsx";
 import fakeData from "../../fakeData/fakeMovies.js";
 import './main.css';
 import Movies from "./subComponents/movies.jsx";
+import $ from "jquery";
 
 function Main(props) {
   // const [data, setData] = React.useState(null);
@@ -18,26 +19,56 @@ function Main(props) {
     //get data from API
     let movies = fakeData.movies;
     let moviesObj = {}
-    // sort movies grouped by genre
-    movies.forEach(movie => {
-      movie.genre_ids.forEach(genre => {
-        let moviedata = {
-          id: movie.id,
-          original_title: movie.original_title,
-          popularity: movie.popularity,
-          backdrop_path: movie.backdrop_path,
-          poster_path: movie.poster_path,
-          overview: movie.overview
-        }
-        if (moviesObj[genre] === undefined) {
-          moviesObj[genre] = [moviedata]
-        } else {
-          moviesObj[genre].push(moviedata)
-        }
-      })
-      // console.log(moviesObj)
-    })
-    setgroupedMovies(moviesObj)
+        movies.forEach(movie => {
+          movie.genre_ids.forEach(genre => {
+            let moviedata = {
+              id: movie.id,
+              original_title: movie.original_title,
+              popularity: movie.popularity,
+              backdrop_path: movie.backdrop_path,
+              poster_path: movie.poster_path,
+              overview: movie.overview
+            }
+            if (moviesObj[genre] === undefined) {
+              moviesObj[genre] = [moviedata]
+            } else {
+              moviesObj[genre].push(moviedata)
+            }
+          })
+        })
+        setgroupedMovies(moviesObj)
+
+    // for live data
+
+    // $.ajax({
+    //   url: 'http://localhost:3002/main',
+    //   method: 'get',
+    //   // dataType: "javascipt",
+    //   success: (data) => {
+    //     let movies = data.data;
+    //     console.log(movies)
+    //     // sort movies grouped by genre
+    //     let moviesObj = {}
+    //     movies.forEach(movie => {
+    //       movie.genre_ids.forEach(genre => {
+    //         let moviedata = {
+    //           id: movie.id,
+    //           original_title: movie.original_title,
+    //           popularity: movie.popularity,
+    //           backdrop_path: movie.backdrop_path,
+    //           poster_path: movie.poster_path,
+    //           overview: movie.overview
+    //         }
+    //         if (moviesObj[genre] === undefined) {
+    //           moviesObj[genre] = [moviedata]
+    //         } else {
+    //           moviesObj[genre].push(moviedata)
+    //         }
+    //       })
+    //     })
+    //     setgroupedMovies(moviesObj)
+    //   }
+    // })
   }, []);
 
   const search = (e) => {

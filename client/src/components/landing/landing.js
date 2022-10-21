@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import logo from './getfilxLogo.png';
+import movies from './movies.png';
 import './landing.css';
 
 const Landing = () => {
   const navigate = useNavigate();
 
-  const logout = () => {
+  const login = () => {
     console.log('logout')
   }
   const navigateSignup = () => {
@@ -20,6 +21,9 @@ const Landing = () => {
         <div className='landing-logo'>
           <img  alt='logo' src={logo} ></img>
         </div>
+        <div className="landing-button-container">
+          <button className='main-logout-btn' onClick={() => {login()}}> Login</button>
+        </div>
         {/* <div className="landing-button-container">
           <button className='main-logout-btn' onClick={() => {logout()}}> Logout</button>
         </div> */}
@@ -29,6 +33,9 @@ const Landing = () => {
       </div>
       <div className='get-started'>
           <button className='get-started-button' onClick={navigateSignup}>Get Started</button>
+      </div>
+      <div>
+        <img  className='landing-movies' alt='movies' src={movies} ></img>
       </div>
     </div>
   )
