@@ -88,7 +88,8 @@ function Main(props) {
       <NavigationBar
         search = {search}
         profile = {profile}
-        logout = {logout}/>
+        logout = {logout}
+        />
       <Movies
         movieList = {groupedMovies}
         updateWatchedList={props.updateWatchedList}
