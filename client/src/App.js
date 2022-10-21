@@ -69,8 +69,10 @@ function App() {
     let data = {userId: userId, movieId: movieId}
 
     let newHistory = history;
+    console.log('before newhistory: ', newHistory)
     const index = newHistory.indexOf(movieId);
     newHistory.splice(index, 1)
+    console.log('after newhistory: ', newHistory)
 
     axios.delete('/profile/removeeachmovie', {params: data})
       .then(data => {

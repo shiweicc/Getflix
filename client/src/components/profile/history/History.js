@@ -8,7 +8,7 @@ const History = (props) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    getMoviesInfo(props.watchedList);
+    getMoviesInfo(props.history);
   }, [])
 
   const getEachMovie = (movieId) => {
