@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -21,10 +21,9 @@ const Carousel = (props) => {
         className="mySwiper"
       >
         {
-          props.movies.map(movie => {
-            console.log('here: ', movie)
+          props.movies.map((movie, index) => {
             return (
-            <SwiperSlide  className='main-slide'>
+            <SwiperSlide key={index} className='main-slide'>
               <div>
                 <div>
                   <img

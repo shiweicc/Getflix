@@ -3,11 +3,7 @@ import Movielist from "./subComponents/history_movieList.jsx";
 import KEY from "../../../config.js"
 import axios from 'axios';
 
-
 const History = (props) => {
-  const API_URL = 'https://api.themoviedb.org/3/movie';
-
-  // console.log('History here: ', props.watchedList)
 
   const [movies, setMovies] = useState([]);
 
@@ -15,19 +11,17 @@ const History = (props) => {
     getMoviesInfo(props.watchedList);
   }, [])
 
-  const getMoviesInfo = (moviesIDList) => {
-    console.log('moviesIDList: ', moviesIDList)
-    let storage = [];
+  const getEachMovie = (movieId) => {
+    return axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {params: {api_key: KEY.TMDB,}})
+  }
 
-    moviesIDList.map(movieID => {
-      axios.get(`${API_URL}/${movieID}`, {
-        params: {
-          api_key: KEY.TMDB,
-        }
-      })
-      .then(movie => {
-        console.log('movies info: ', movie.data)
-
+  const getMoviesInfo = (moviesIdList) => {
+    let promises = moviesIdList.map(movieId => getEachMovie(movieId))
+    Promise.all(promises)
+    .then(data => {
+      // console.log('success get all movies info: ', data);
+      let storage = [];
+      data.forEach(movie => {
         let data = movie.data;
         let movieObj = {
           "backdrop_path": data.backdrop_path,
@@ -36,15 +30,13 @@ const History = (props) => {
           "original_title": data.original_title,
         }
         storage.push(movieObj);
-        console.log('movies: ', storage)
-        setMovies(storage)
       })
-      .catch(err => {
-        console.log('fail to get movies info!!!', err);
-      })
+      setMovies(storage)
+    })
+    .catch(err => {
+      console.log('fail to get all movies info: ', err)
     })
   }
-
 
   return (
     <div className="history">

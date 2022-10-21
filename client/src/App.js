@@ -23,7 +23,7 @@ function App() {
   //     .then((data) => setData(data.message));
   // }, []);
 
-  const [watchedList, setWatchedList] = useState([]);
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     getHistory(1);
@@ -32,8 +32,8 @@ function App() {
   const getHistory = (userId) => {
     axios.get('/profile', {params: {userId: userId,}})
       .then(history => {
-        console.log('success GET history data: ', history)
-        setWatchedList(history.data)
+        // console.log('success GET history data: ', history)
+        setHistory(history.data)
       })
       .catch(err => {
         console.log('fail to GET history data: ', err);
@@ -41,16 +41,19 @@ function App() {
   }
 
   const watchedBtnClick = (userId, movieId) => {
-    // setwatchedMovies([...watchedMovies, movieId])
-    // console.log('updated watchedlist: ', watchedMovies)
-
-    axios.post('/main', {userId: userId, movieId: movieId})
-      .then(data => {
-        console.log('success POST the watched movie: ', data)
-      })
-      .catch(err => {
-        console.log('fail to POST the watched movie:', err);
-      })
+    let checking = history.includes(movieId);
+    if (!checking) {
+      axios.post('/main', {userId: userId, movieId: movieId})
+        .then(data => {
+          // console.log('success POST the watched movie: ', data)
+          setHistory([...history, movieId])
+        })
+        .catch(err => {
+          console.log('fail to POST the watched movie:', err);
+        })
+    } else {
+      alert("This movie has been added to the history!");
+    }
   }
 
   const router = createBrowserRouter([
@@ -66,7 +69,7 @@ function App() {
     // },
     {
       path: "/main",
-      element: <Main updateWatchedList={watchedBtnClick}/>
+      element: <Main updateWatchedList={watchedBtnClick} history={history}/>
     },
     {
       path: "/login",
@@ -74,7 +77,7 @@ function App() {
     },
     {
       path: "/profile",
-      element: <Profile watchedList={watchedList}/>
+      element: <Profile history={history}/>
     },
     {
       path: "/",
