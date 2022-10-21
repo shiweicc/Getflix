@@ -39,7 +39,7 @@ function App() {
   }, [])
 
   const getHistory = (userId) => {
-    axios.get('/profile', {params: {userId: userId,}})
+    axios.get('/profile/gethistory', {params: {userId: userId,}})
       .then(history => {
         // console.log('success GET history data: ', history)
         setHistory(history.data)
@@ -52,7 +52,7 @@ function App() {
   const watchedBtnClick = (userId, movieId) => {
     let checking = history.includes(movieId);
     if (!checking) {
-      axios.post('/main', {userId: userId, movieId: movieId})
+      axios.post('/main/updatehistory', {userId: userId, movieId: movieId})
         .then(data => {
           // console.log('success POST the watched movie: ', data)
           setHistory([...history, movieId])
@@ -72,7 +72,7 @@ function App() {
     const index = newHistory.indexOf(movieId);
     newHistory.splice(index, 1)
 
-    axios.delete('/profile', {params: data})
+    axios.delete('/profile/removeeachmovie', {params: data})
       .then(data => {
         // console.log('success DELETE the movie from history: ', data)
         setHistory(newHistory);
@@ -82,6 +82,21 @@ function App() {
         console.log('fail to DELETE the movie from history: ', err)
       })
   }
+
+  const clearHistoryBtnClick = (userId) => {
+    let data = {userId: userId}
+
+    axios.delete('/profile/clearhistory', {params: data})
+      .then(data => {
+        // console.log('success DELETE all movies from history: ', data)
+        setHistory([]);
+        alert('History has been cleared!')
+      })
+      .catch(err => {
+        console.log('fail to DELETE all movies from history: ', err)
+      })
+  }
+
 
   const router = createBrowserRouter([
 <<<<<<< HEAD
@@ -106,7 +121,7 @@ function App() {
     },
     {
       path: "/profile",
-      element: <Profile history={history} removeEachMovie={removeBtnClick}/>
+      element: <Profile history={history} removeEachMovie={removeBtnClick} removeAllMovies={clearHistoryBtnClick}/>
     },
 >>>>>>> 91affb5 (Completed remove btn function and add Clear History btn CSS)
     {

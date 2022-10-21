@@ -41,7 +41,7 @@ const History = (props) => {
   return (
     <div className="history">
       <h2 className='history-title'>History</h2>
-      <button className="clear_history_btn" >Clear History</button>
+      <button className="clear_history_btn" onClick={() => props.removeAllMovies(1)}>Clear History</button>
       <Movielist movies={movies} removeEachMovie={props.removeEachMovie}/>
     </div>
   );
