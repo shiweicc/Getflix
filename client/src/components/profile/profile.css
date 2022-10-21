@@ -1,21 +1,18 @@
 .profile {
-  /* position: relative; */
   background-color: black;
 }
 .history {
-  /* position: absolute;
-  bottom: 10px; */
   color: white;
-  /* height:270px; */
-  /* background-color: rgb(94, 52, 42); */
 }
-.watched_btn{
-  background-color:rgb(123, 16, 16);
+.remove_btn{
+  background-color: black;
   color: white;
   border: none;
-  font-size: 14px;
+  font-size: 17px;
   text-align: center;
   border-radius: 0px;
+  font-weight: bold;
+  width: 50px;
 }
 
 .history-title{

@@ -34,7 +34,7 @@ const Carousel = (props) => {
                 <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <button className="watched_btn">X</button>
+                <button className="remove_btn"> x </button>
               </div>
               </SwiperSlide>
             )
