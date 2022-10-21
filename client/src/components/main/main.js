@@ -98,7 +98,7 @@ function Main(props) {
         />
       <Movies
         movieList = {groupedMovies}
-        updateWatchedList={props.updateWatchedList}
+        updateHistory={props.updateHistory}
       />
     </div>
   );

@@ -47,7 +47,7 @@ const Carousel = (props) => {
                 <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <button className="watched_btn" onClick={() => props.updateWatchedList(1, movie.id)}>👁️</button>
+                <button className="watched_btn" onClick={() => props.updateHistory(1, movie.id)}>👁️</button>
                 {/* <div className="main-card-watch">
                   Watchlist Button
                 </div> */}
