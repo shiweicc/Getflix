@@ -154,6 +154,25 @@ app.post('/main', (req,res) => {
     })
 })
 
+app.delete('/profile', (req, res) => {
+  let userId = Number(req.query.userId);
+  let movieId = Number(req.query.movieId);
+  let data = {userId: userId, movieId: movieId}
+
+  console.log('xxxx: ', req.query)
+
+  let url = 'http://localhost:8000/profile';
+
+  deleteEachMovie(url, data)
+    .then((data) => {
+      console.log(data.data);
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      console.log('Fail to POST history data!', err);
+      res.status(500).send('Fail to POST history data!');
+    })
+})
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
