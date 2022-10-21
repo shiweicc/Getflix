@@ -51,14 +51,12 @@ app.post('/login', async (req, res) => {
         throw err
       }
       if (results.rows.length > 0) {
-        console.log(results.rows[0])
         let hashed = results.rows[0].password;
         function compareHash(password, hashed) {
           return bcrypt.compareSync(password, hashed)
         }
         if (compareHash(password, hashed)) {
           isAuthenticated = true;
-          console.log(results.rows[0])
           res.status(200).send(results.rows[0].id)
         } else {
           res.status(400)
