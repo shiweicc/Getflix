@@ -78,7 +78,6 @@ function App() {
       .then(data => {
         // console.log('success DELETE the movie from history: ', data)
         setHistory(newHistory);
-        alert('This movie is revmoed from your history! Refresh the page to see the update.')
       })
       .catch(err => {
         console.log('fail to DELETE the movie from history: ', err)
@@ -92,7 +91,6 @@ function App() {
       .then(data => {
         // console.log('success DELETE all movies from history: ', data)
         setHistory([]);
-        alert('History has been cleared!')
       })
       .catch(err => {
         console.log('fail to DELETE all movies from history: ', err)
