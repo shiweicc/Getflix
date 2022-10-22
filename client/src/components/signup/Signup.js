@@ -11,11 +11,6 @@ const SIGNUP_URL = 'http://localhost:3001/signup';
 
 const Signup = () => {
 
-  const navigate = useNavigate();
-
-  const navigateLogin = () => {
-    navigate('/login');
-  };
   const userRef = useRef();
   const errRef = useRef();
 
@@ -37,6 +32,10 @@ const Signup = () => {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate('/login');
+  }
 
   useEffect(() => {
       userRef.current.focus();
@@ -66,7 +65,7 @@ const Signup = () => {
           return;
       }
       try {
-          await axios.post(SIGNUP_URL,
+        const response = await axios.post(SIGNUP_URL,
               JSON.stringify({ user, useremail, pwd }),
               {
                   headers: { 'Content-Type': 'application/json' },
@@ -76,13 +75,15 @@ const Signup = () => {
           // console.log(response?.data);
           // console.log(response?.accessToken);
           // console.log(JSON.stringify(response))
-          setSuccess(true);
+          if (response.status === 200) {
+            setSuccess(true);
+          }
           setUser('');
           setPwd('');
           setMatchPwd('');
       } catch (err) {
           if (!err?.response) {
-              setErrMsg('No response');
+              setErrMsg('No response from server');
           } else if (err.response?.status === 409) {
               setErrMsg('There is an account linked to this email');
           } else {
@@ -201,11 +202,7 @@ const Signup = () => {
                   </form>
                   <p>
                       Already registered?<br />
-                      <Link to='/login'>
-                        <span className="line">
-                            <a href="#">Log In</a>
-                        </span>
-                      </Link>
+                      <button onClick={navigateToLogin} className="sign-up-button">Log In</button>
                   </p>
               </section>
           )}

@@ -10,7 +10,7 @@ import { Navigation, Scrollbar } from "swiper";
 
 const Carousel = (props) => {
 
-  console.log(props.movies);
+  // console.log(props.movies);
 
   const navigate = useNavigate();
   const navigateMovieDetail = (data) => {
