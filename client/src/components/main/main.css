@@ -110,7 +110,7 @@
   z-index: 2;
   border-top-style: solid;
   border-color: rgb(50, 50, 50);
-  background: black;
+  background: rgb(0, 0, 0, 0.9);
   width: 60%;
   overflow-y:auto;
   max-height: 43.5%
