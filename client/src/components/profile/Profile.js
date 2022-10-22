@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './profile.css';
 
 const Profile = (props) => {
+
   const navigate = useNavigate();
 
   const navigateToUpdateUsername = () => {
@@ -30,11 +31,12 @@ const Profile = (props) => {
   return (
     <div className="profile">
      <img className='profile-logo' alt='logo' src={pic} ></img>
-    <button className='profile-backBtn' onClick={() => {props.logout()}}> Home </button>
-    <button className='profile-backBtn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
-    <button className='profile-backBtn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
+    <button className='profile-logoutBtn' onClick={() => {props.logout()}}> Home </button>
+    <button className='profile-updateUsernameBtn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
+    <button className='profile-updatePWBtn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
+    <button className='profile-backBtn' onClick={() => {navigateMainPage()}}> Home </button>
+    {history}
 
-      <History watchedList={props.watchedList}/>
     </div>
   );
 }
