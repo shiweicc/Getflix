@@ -6,6 +6,7 @@ import './main.css';
 import Movies from "./subComponents/movies.jsx";
 import $ from "jquery";
 
+
 function Main(props) {
   // const [data, setData] = React.useState(null);
   const navigate = useNavigate();

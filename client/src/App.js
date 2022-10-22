@@ -6,7 +6,7 @@ import Profile from "./components/profile/Profile.js";
 import Signup from "./components/signup/Signup.js";
 import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
-import fakeHistoryData from "./fakeData/fakeHistory.js";
+// import fakeHistoryData from "./fakeData/fakeHistory.js";
 import axios from 'axios';
 
 import {
@@ -36,10 +36,6 @@ function App() {
     getHistory(1);
   }, [])
 
-  // const WatchedBtnClick = (movieID) => {
-  //   setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
-  // }
-
   const getHistory = (userId) => {
     axios.get('/profile/gethistory', {params: {userId: userId,}})
       .then(history => {
@@ -53,7 +49,6 @@ function App() {
 
   const watchedBtnClick = (userId, movieId) => {
     let checking = history.includes(movieId);
-
     if (!checking) {
       axios.post('/main/updatehistory', {userId: userId, movieId: movieId})
         .then(data => {
