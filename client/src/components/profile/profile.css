@@ -23,6 +23,13 @@
   color: white;
 }
 
+.no-history-title{
+  padding-left: 120px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+
 .profile-backBtn {
   float: right;
   background-color:rgb(123, 16, 16);
@@ -36,10 +43,6 @@
   font-weight: bold;
   margin: 40px;
   margin-right: 50px;
-}
-
-.no-history-title {
-  color: white;
 }
 
 .clear_history_btn {
