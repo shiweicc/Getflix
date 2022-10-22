@@ -3,6 +3,8 @@ import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
+import UpdateUsername from "./components/profile/history/subComponents/UpdateUsername.js";
+import UpdatePwd from "./components/profile/history/subComponents/UpdatePwd.js";
 import Signup from "./components/signup/Signup.js";
 import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
@@ -47,6 +49,15 @@ function App() {
     {
       path: "/login",
       element: <Login setUser={setUser}/>
+    },
+    {
+      path: "/updateUserPwd",
+      element: <UpdatePwd/>
+      // element: localStorage.getItem('logged in id') ? <UpdatePwd />  : <Login setUser={setUser}/>
+    },
+    {
+      path: "/updateUserName",
+      element: localStorage.getItem('logged in id') ? <UpdateUsername />  : <Login setUser={setUser}/>
     },
     {
       path: "/main",
