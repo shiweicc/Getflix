@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Getflix is an online database of information about movies. The user can create an account and keep track of movies watched.",
   "main": "index.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpp36-boc-catamaran/getflix.git"
@@ -17,9 +15,12 @@
   },
   "homepage": "https://github.com/rpp36-boc-catamaran/getflix#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "dotenv": "^8.0.0",
     "nodemon": "^2.0.20",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "react-router": "^6.4.2",
+    "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
     "dotenv": "^8.0.0",

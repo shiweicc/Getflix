@@ -1,24 +1,41 @@
 import React from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
+//import logo from '/Users/chrisbaharians/RPP36/getflix/client/src/getflixLogo.png'
 import logo from '../../getflixLogo.png'
 import Main from '../main/main.js'
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 import './login.css'
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isClicked, setClicked] = useState(false)
   const LOGIN_URL = 'http://localhost:3001/login'
 
+  const navigate = useNavigate();
+  const navigateSignup = () => {
+    navigate('/signup');
+  };
   const renderErrorMessage = (name) => {
     name === errorMessages.name && (
       <div classname="error">{errorMessages.message}</div>
     )
   }
+
+  const errors = {
+    uname: 'invalid username',
+    pass: 'invalid password'
+  }
+
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+
+  //   if(isClicked)
+  // }
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,7 +43,6 @@ const Login = () => {
     var { uname, pass } = document.forms[0];
     var username = uname.value;
     var password = pass.value;
-
     try {
       const response = await axios.post(LOGIN_URL,
           JSON.stringify({ username, password }),
@@ -36,7 +52,14 @@ const Login = () => {
           }
       );
       if(response.status === 200) {
+        let temp = {
+          username: username,
+          id: response.data
+        }
+        setUser(temp)
         setIsSubmitted(true);
+        setIsSubmitted(true);
+        localStorage.setItem('logged in id', temp.id);
       } else {
         console.log('incorrect credentials');
       }
@@ -69,7 +92,7 @@ const Login = () => {
     {isSubmitted ? <Navigate to='/main' /> :  <div className='app'>
     <div className='top'>
       <img src={logo} alt='getflix-logo' className='logo' />
-      {isClicked ? <Navigate to='main' /> : <button type='button' className='back-btn'>Back</button>}
+      {isClicked ? <Navigate to='main' /> : <button type='button' className='back-btn' onClick={() => {navigateSignup()}}>Sign Up</button>}
     </div>
     <div className='login-form'>
       <div className='title'>LOG IN</div>
