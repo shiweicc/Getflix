@@ -8,11 +8,20 @@
 }
 
 .main-logo {
+  padding-top: 30px;
   float:left;
 }
 
+.main-sb-container {
+  padding-top: 75px;
+  float:left;
+  display: flex;
+  flex-direction: column;
+  width:60%
+}
+
 .sb {
-  width: 220%;
+  width: 100%;
   height: 50px;
   font-size: 2.5em;
   background-color: transparent;
@@ -25,7 +34,6 @@
 }
 
 .main-sb {
-  float:left;
   padding-top: 3.5%;
   padding-left: 80px;
 }
@@ -98,15 +106,11 @@
   color: white;
 }
 
-.main-sb-container {
-  display: flex;
-  /* justify-content: flex-end; */
-  flex-direction: column;
-}
+
 
 .search-container {
   position: absolute;
-  margin-top: 10%;
+  margin-top: 7%;
   z-index: 2;
   border-top-style: solid;
   border-color: rgb(50, 50, 50);
