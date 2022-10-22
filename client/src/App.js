@@ -8,7 +8,7 @@ import UpdatePwd from "./components/profile/history/subComponents/UpdatePwd.js";
 import Signup from "./components/signup/Signup.js";
 import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
-// import fakeHistoryData from "./fakeData/fakeHistory.js";
+import fakeHistoryData from "./fakeData/fakeHistory.js";
 import axios from 'axios';
 
 import {
@@ -18,12 +18,12 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [history, setHistory] = useState([]);
   const [user, setUser] = useState({})
+  const [history, setHistory] = useState([]);
 
   const NotFound = () => {
     return (
-        <div>
+      <div>
             <h1>Oops! You seem to be lost.</h1>
             <p>Here are some helpful links:</p>
             <Link to='/'>Home</Link>
@@ -34,8 +34,6 @@ function App() {
         </div>
     )
   }
-
-
   useEffect(() => {
     getHistory(1);
   }, [])
@@ -54,6 +52,7 @@ function App() {
 
   const watchedBtnClick = (userId, movieId) => {
     let checking = history.includes(movieId);
+
     if (!checking) {
       axios.post('/main/updatehistory', {userId: userId, movieId: movieId})
         .then(data => {
@@ -72,10 +71,8 @@ function App() {
     let data = {userId: userId, movieId: movieId}
 
     let newHistory = history;
-    console.log('before newhistory: ', newHistory)
     const index = newHistory.indexOf(movieId);
     newHistory.splice(index, 1)
-    console.log('after newhistory: ', newHistory)
 
     axios.delete('/profile/removeeachmovie', {params: data})
       .then(data => {
@@ -137,9 +134,6 @@ function App() {
       <RouterProvider router={router} />
     </React.StrictMode>
   );
-
 }
 
 export default App;
-
-
