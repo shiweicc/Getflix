@@ -4,13 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import fakeData from "../../fakeData/fakeMovies.js";
 import './main.css';
 import Movies from "./subComponents/movies.jsx";
-<<<<<<< HEAD
 import $ from "jquery";
-import { useNavigate } from 'react-router-dom';
-=======
 
-
->>>>>>> bcca1d6 (Completed dynamically display watched movies in history carousel and added navigation for buttons)
 function Main(props) {
   // const [data, setData] = React.useState(null);
   const navigate = useNavigate();

@@ -6,7 +6,7 @@ import Profile from "./components/profile/Profile.js";
 import Signup from "./components/signup/Signup.js";
 import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
-// import fakeHistoryData from "./fakeData/fakeHistory.js";
+import fakeHistoryData from "./fakeData/fakeHistory.js";
 import axios from 'axios';
 
 import {
@@ -16,12 +16,12 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [history, setHistory] = useState([]);
   const [user, setUser] = useState({})
+  const [history, setHistory] = useState([]);
 
   const NotFound = () => {
     return (
-        <div>
+      <div>
             <h1>Oops! You seem to be lost.</h1>
             <p>Here are some helpful links:</p>
             <Link to='/'>Home</Link>
@@ -32,11 +32,13 @@ function App() {
         </div>
     )
   }
-
-
   useEffect(() => {
     getHistory(1);
   }, [])
+
+  // const WatchedBtnClick = (movieID) => {
+  //   setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
+  // }
 
   const getHistory = (userId) => {
     axios.get('/profile/gethistory', {params: {userId: userId,}})
@@ -51,6 +53,7 @@ function App() {
 
   const watchedBtnClick = (userId, movieId) => {
     let checking = history.includes(movieId);
+
     if (!checking) {
       axios.post('/main/updatehistory', {userId: userId, movieId: movieId})
         .then(data => {
@@ -69,10 +72,8 @@ function App() {
     let data = {userId: userId, movieId: movieId}
 
     let newHistory = history;
-    console.log('before newhistory: ', newHistory)
     const index = newHistory.indexOf(movieId);
     newHistory.splice(index, 1)
-    console.log('after newhistory: ', newHistory)
 
     axios.delete('/profile/removeeachmovie', {params: data})
       .then(data => {
@@ -99,31 +100,6 @@ function App() {
 
 
   const router = createBrowserRouter([
-<<<<<<< HEAD
-=======
-    // {
-    //   path: "/",
-    //   element:
-    //     <div className="App">
-    //       <header className="App-header">
-    //         <img src={logo} className="App-logo" alt="logo" />
-    //         <p>{!data ? "Loading..." : data}</p>
-    //       </header>
-    //     </div>,
-    // },
-    {
-      path: "/main",
-      element: <Main updateHistory={watchedBtnClick} history={history}/>
-    },
-    {
-      path: "/login",
-      element: <Login />
-    },
-    {
-      path: "/profile",
-      element: <Profile history={history} removeEachMovie={removeBtnClick} removeAllMovies={clearHistoryBtnClick}/>
-    },
->>>>>>> 91affb5 (Completed remove btn function and add Clear History btn CSS)
     {
       path: "/",
       element: <Landing />
@@ -138,11 +114,11 @@ function App() {
     },
     {
       path: "/main",
-      element: localStorage.getItem('logged in id') ? <Main updateWatchedList={WatchedBtnClick}/> : <Login setUser={setUser}/>
+      element: localStorage.getItem('logged in id') ? <Main updateHistory={watchedBtnClick} history={history}/> : <Login setUser={setUser}/>
     },
     {
       path: "/profile",
-      element: localStorage.getItem('logged in id') ? <Profile watchedList={watchedMovies}/> : <Login user={user} />
+      element: localStorage.getItem('logged in id') ? <Profile history={history} removeEachMovie={removeBtnClick} removeAllMovies={clearHistoryBtnClick}/> : <Login user={user} />
     },
     {
       path: "/details",
@@ -160,9 +136,6 @@ function App() {
       <RouterProvider router={router} />
     </React.StrictMode>
   );
-
 }
 
 export default App;
-
-
