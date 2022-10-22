@@ -11,7 +11,7 @@
   float:left;
 }
 
-/* input {
+.sb {
   width: 220%;
   height: 50px;
   font-size: 2.5em;
@@ -20,9 +20,9 @@
   color: white;
 }
 
-input:focus {
+.sb:focus{
   outline-width: 0;
-} */
+}
 
 .main-sb {
   float:left;
@@ -96,4 +96,43 @@ input:focus {
 
 .main-card-title, .main-card-watch {
   color: white;
+}
+
+.main-sb-container {
+  display: flex;
+  /* justify-content: flex-end; */
+  flex-direction: column;
+}
+
+.search-container {
+  position: absolute;
+  margin-top: 10%;
+  z-index: 2;
+  border-top-style: solid;
+  border-color: rgb(50, 50, 50);
+  background: black;
+  width: 60%;
+  overflow-y:auto;
+  max-height: 43.5%
+}
+
+.search-item {
+  float: left;
+  clear: left;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-color: rgb(50, 50, 50);
+  width:100%
+}
+
+.search-img {
+  float:left;
+  max-width: 200px;
+}
+
+.search-title{
+  float: left;
+  padding-top: 40px;
+  padding-left: 20px
 }

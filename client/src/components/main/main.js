@@ -16,40 +16,17 @@ function Main(props) {
     18: [],
     10751: [],
   });
+  const [filtered, setFiltered] = React.useState({
+    filtered: []
+  })
+  const [allMovies, setMovies] = React.useState({
+    movies: []
+  })
   React.useEffect(() => {
     //get data from API
-    let movies = fakeData.movies;
-    let moviesObj = {}
-        movies.forEach(movie => {
-          movie.genre_ids.forEach(genre => {
-            let moviedata = {
-              id: movie.id,
-              original_title: movie.original_title,
-              popularity: movie.popularity,
-              backdrop_path: movie.backdrop_path,
-              poster_path: movie.poster_path,
-              overview: movie.overview
-            }
-            if (moviesObj[genre] === undefined) {
-              moviesObj[genre] = [moviedata]
-            } else {
-              moviesObj[genre].push(moviedata)
-            }
-          })
-        })
-        setgroupedMovies(moviesObj)
-
-    // for live data
-
-    // $.ajax({
-    //   url: 'http://localhost:3002/main',
-    //   method: 'get',
-    //   // dataType: "javascipt",
-    //   success: (data) => {
-    //     let movies = data.data;
-    //     console.log(movies)
-    //     // sort movies grouped by genre
-    //     let moviesObj = {}
+    // let movies = fakeData.movies;
+    // setMovies(movies)
+    // let moviesObj = {}
     //     movies.forEach(movie => {
     //       movie.genre_ids.forEach(genre => {
     //         let moviedata = {
@@ -68,16 +45,59 @@ function Main(props) {
     //       })
     //     })
     //     setgroupedMovies(moviesObj)
-    //   }
-    // })
+
+    // for live data
+
+    $.ajax({
+      url: 'http://localhost:3002/main',
+      method: 'get',
+      // dataType: "javascipt",
+      success: (data) => {
+        let movies = data.data;
+        setMovies(movies)
+        // sort movies grouped by genre
+        let moviesObj = {}
+        movies.forEach(movie => {
+          movie.genre_ids.forEach(genre => {
+            let moviedata = {
+              id: movie.id,
+              original_title: movie.original_title,
+              popularity: movie.popularity,
+              backdrop_path: movie.backdrop_path,
+              poster_path: movie.poster_path,
+              overview: movie.overview
+            }
+            if (moviesObj[genre] === undefined) {
+              moviesObj[genre] = [moviedata]
+            } else {
+              moviesObj[genre].push(moviedata)
+            }
+          })
+        })
+        setgroupedMovies(moviesObj)
+      }
+    })
   }, []);
 
   const search = (e) => {
     console.log(e.target.value)
+    if (e.target.value.length === 0) {
+      setFiltered([])
+    } else {
+      let filteredMovies = [];
+      allMovies.forEach(movie => {
+        if (movie.original_title.toLowerCase().includes(e.target.value)) {
+          filteredMovies.push(movie)
+        }
+      })
+      // filteredMovies = filteredMovies.slice(0,4)
+      setFiltered(filteredMovies)
+    }
   }
 
   const profile = () => {
-    console.log('profile button')
+    // console.log('profile button')
+    navigate('/profile')
   }
   const navigateToLandingPage = () => {
     navigate('/');
@@ -88,12 +108,18 @@ function Main(props) {
     navigateToLandingPage();
   }
 
+  const navigateMovieDetail = (data) => {
+    navigate('/details', { state: data });
+  }
+
   return (
     <div className="Main">
       <NavigationBar
         search = {search}
+        filtered = {filtered}
         profile = {profile}
         logout = {logout}
+        detail = {navigateMovieDetail}
         />
       <Movies
         movieList = {groupedMovies}
