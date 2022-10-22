@@ -4,9 +4,10 @@ import fakeData from "../../fakeData/fakeMovies.js";
 import './main.css';
 import Movies from "./subComponents/movies.jsx";
 import $ from "jquery";
-
+import { useNavigate } from 'react-router-dom';
 function Main(props) {
   // const [data, setData] = React.useState(null);
+  const navigate = useNavigate();
   const [groupedMovies, setgroupedMovies] = React.useState({
     35: [],
     53: [],
@@ -78,9 +79,13 @@ function Main(props) {
   const profile = () => {
     console.log('profile button')
   }
-
+  const navigateToLandingPage = () => {
+    navigate('/');
+  };
   const logout = () => {
-    console.log('logout button')
+    // console.log('logout button')
+    localStorage.removeItem('logged in id');
+    navigateToLandingPage();
   }
 
   return (
