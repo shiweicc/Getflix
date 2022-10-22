@@ -11,6 +11,10 @@ const History = (props) => {
     getMoviesInfo(props.history);
   }, [])
 
+  useEffect(() => {
+    getMoviesInfo(props.history);
+  }, [props.history, movies])
+
   const getEachMovie = (movieId) => {
     return axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {params: {api_key: KEY.TMDB,}})
   }
