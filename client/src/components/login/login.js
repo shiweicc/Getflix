@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
-import logo from '/Users/chrisbaharians/RPP36/getflix/client/src/getflixLogo.png'
+//import logo from '/Users/chrisbaharians/RPP36/getflix/client/src/getflixLogo.png'
+import logo from '../../getflixLogo.png'
 import Main from '../main/main.js'
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
@@ -55,6 +56,7 @@ const Login = ({setLogged, setUser}) => {
         setUser(temp)
         setIsSubmitted(true);
         setLogged(true);
+        setIsSubmitted(true);
       } else {
         console.log('incorrect credentials');
       }
