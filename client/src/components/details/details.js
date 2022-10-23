@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from "../main/subComponents/carousel.jsx";
+import WatchProvider from './subComponents/WatchProvider.jsx';
 import logo from './getfilxLogo.png';
 import './details.css';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -91,8 +92,8 @@ const Details = (props) => {
 
   const loadWatchProviders = async () => {
     const providers = await fetchWatchProviders(id);
-    console.log('watch providers call', providers);
-    setWatchProviders(providers);
+    console.log('watch providers call', providers.result.streamingInfo.us);
+    setWatchProviders(providers.result.streamingInfo.us);
   }
 
   const navigateHome = () => {
@@ -137,15 +138,19 @@ const Details = (props) => {
         <Carousel movies ={recommended}/>
       </div>
 
-      <div className='watchNow'>
+      {/* <div className='watchNow'>
         <a target="_blank" href="https://www.netflix.com/">
           <button>Watch Now</button>
         </a>
+      </div> */}
+
+      <div className='watchProvider'>
+        <WatchProvider providers={watchProviders}/>
       </div>
 
-      <div className='price'>
+      {/* <div className='price'>
         <h2>Buy:$2.99</h2>
-      </div>
+      </div> */}
 
       <div className='watched'>
         <h2>Watched</h2>
