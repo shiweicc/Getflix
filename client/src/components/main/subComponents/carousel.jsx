@@ -10,14 +10,11 @@ import { Navigation, Scrollbar } from "swiper";
 
 const Carousel = (props) => {
 
-  // console.log(props.movies);
-
   const navigate = useNavigate();
   const navigateMovieDetail = (data) => {
     //console.log(data);
     navigate('/details', { state: data });
   }
-
 
   return (
     <div className='carousel'>
@@ -32,9 +29,18 @@ const Carousel = (props) => {
         className="mySwiper"
       >
         {
-          props.movies.map(movie => {
+          props.movies.map((movie, index) => {
+
+            const checkHistory = props.history.includes(movie.id)
+            let watchedBtn;
+            if (checkHistory) {
+              watchedBtn =  <button className="eyeball_btn" onClick={() => props.updateHistory(1, movie.id)}>👁️</button>
+            } else {
+              watchedBtn =  <button className="watch_btn" onClick={() => props.updateHistory(1, movie.id)}>Watch</button>
+            }
+
             return (
-            <SwiperSlide  className='main-slide'>
+            <SwiperSlide key={index}  className='main-slide'>
               <div>
                 <div>
 
@@ -48,10 +54,7 @@ const Carousel = (props) => {
                 <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <button className="watched_btn" onClick={() => props.updateWatchedList(movie.id)}>Watched</button>
-                {/* <div className="main-card-watch">
-                  Watchlist Button
-                </div> */}
+                {watchedBtn}
               </div>
               </SwiperSlide>
             )
