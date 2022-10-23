@@ -1,33 +1,38 @@
-import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
 import Main from "./components/main/main.js";
 import Login from "./components/login/login.js";
 import Profile from "./components/profile/Profile.js";
-import Details from "./components/details/details.js";
+import UpdateUsername from "./components/profile/history/subComponents/UpdateUsername.js";
+import UpdatePwd from "./components/profile/history/subComponents/UpdatePwd.js";
+import Signup from "./components/signup/Signup.js";
 import Landing from "./components/landing/landing.js";
+import Details from "./components/details/details.js";
 import fakeHistoryData from "./fakeData/fakeHistory.js";
 
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
+  Link
 } from "react-router-dom";
 
-
-
 function App() {
-  const [data, setData] = useState(null);
   const [watchedMovies, setwatchedMovies] = useState(fakeHistoryData.history);
-  const [logged, isLogged] = useState(false) // to track if user is logged in
   const [user, setUser] = useState({})
 
-  useEffect(() => {
-    fetch("/test")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
+  const NotFound = () => {
+    return (
+        <div>
+            <h1>Oops! You seem to be lost.</h1>
+            <p>Here are some helpful links:</p>
+            <Link to='/'>Home</Link>
+            <br></br>
+            <Link to='/login'>Log in</Link>
+            <br></br>
+            <Link to='/signup'>Create a new account</Link>
+        </div>
+    )
+}
   const WatchedBtnClick = (movieID) => {
     setwatchedMovies(prevWatchedList => [...prevWatchedList, movieID])
   }
@@ -35,32 +40,43 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      // element:
-      //   <div className="App">
-      //     <header className="App-header">
-      //       <img src={logo} className="App-logo" alt="logo" />
-      //       <p>{!data ? "Loading..." : data}</p>
-      //     </header>
-      //   </div>,
       element: <Landing />
     },
     {
-      path: "/main",
-      element: logged ? <Main updateWatchedList={WatchedBtnClick}/> : <Login setLogged={isLogged} setUser={setUser}/> // if user is logged, continue, if not redirect to login page
+      path: "/signup",
+      element: <Signup/>
     },
     {
       path: "/login",
-      element: <Login setLogged={isLogged} setUser={setUser}/>
+      element: <Login setUser={setUser}/>
+    },
+    {
+      path: "/updateUserPwd",
+      element: <UpdatePwd/>
+      // element: localStorage.getItem('logged in id') ? <UpdatePwd />  : <Login setUser={setUser}/>
+    },
+    {
+      path: "/updateUserName",
+      element: localStorage.getItem('logged in id') ? <UpdateUsername />  : <Login setUser={setUser}/>
+    },
+    {
+      path: "/main",
+      element: localStorage.getItem('logged in id') ? <Main updateWatchedList={WatchedBtnClick}/> : <Login setUser={setUser}/>
     },
     {
       path: "/profile",
-      element: logged ? <Profile watchedList={watchedMovies}/> : <Login setLogged={isLogged} setUser={setUser} /> // arr of moviesID
+      element: localStorage.getItem('logged in id') ? <Profile watchedList={watchedMovies}/> : <Login user={user} />
     },
     {
       path: "/details",
-      element: logged ? <Details /> : <Login setLogged={isLogged} setUser={setUser} />
+      element: localStorage.getItem('logged in id') ? <Details /> : <Login setUser={setUser} />
+    },
+    {
+      path: '*',
+      element: <NotFound />
     }
   ]);
+
 
   return (
     <React.StrictMode>

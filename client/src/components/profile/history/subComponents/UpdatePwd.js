@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect} from "react";
-import { Navigate, useNavigate, Link }  from 'react-router-dom';
+import { useRef, useState, useEffect } from "react";
+import { Navigate, Link }  from 'react-router-dom';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import './signup.css'
@@ -7,24 +7,12 @@ import axios from 'axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const SIGNUP_URL = 'http://localhost:3001/signup';
+const UPDATE_PWD_URL = 'http://localhost:3001/updatePwd';
 
-const Signup = () => {
-  const navigate = useNavigate();
-  const navigateToLogin = () => {
-      navigate('/login');
-  }
-  const userRef = useRef();
+const UpdatePwd = () => {
+
+  // const userReff = useRef();
   const errRef = useRef();
-
-  const [user, setUser] = useState('');
-  const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
-
-  const [useremail, setEmail] = useState('');
-  const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
-
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
@@ -37,14 +25,9 @@ const Signup = () => {
   const [success, setSuccess] = useState(false);
 
 
-  useEffect(() => {
-      userRef.current.focus();
-  }, [])
-
-  useEffect(() => {
-      setValidName(USER_REGEX.test(user));
-      setValidEmail(EMAIL_REGEX.test(useremail));
-  }, [user, useremail])
+  // useEffect(() => {
+  //     userReff.current.focus();
+  // }, [])
 
   useEffect(() => {
       setValidPwd(PWD_REGEX.test(pwd));
@@ -53,20 +36,20 @@ const Signup = () => {
 
   useEffect(() => {
       setErrMsg('');
-  }, [user, useremail, pwd, matchPwd])
+  }, [ pwd, matchPwd])
 
   const handleSubmit = async (e) => {
       e.preventDefault();
-      const v1 = USER_REGEX.test(user);
+      // const v1 = USER_REGEX.test(user);
       const v2 = PWD_REGEX.test(pwd);
-      const v3 = EMAIL_REGEX.test(useremail);
-      if (!v1 || !v2 || !v3) {
+      // const v3 = EMAIL_REGEX.test(useremail);
+      if (!v2) {
           setErrMsg("invalid input");
           return;
       }
       try {
-        const response = await axios.post(SIGNUP_URL,
-              JSON.stringify({ user, useremail, pwd }),
+        const response = await axios.post(UPDATE_PWD_URL,
+              JSON.stringify({ pwd }),
               {
                   headers: { 'Content-Type': 'application/json' },
                   withCredentials: false
@@ -78,15 +61,16 @@ const Signup = () => {
           if (response.status === 200) {
             setSuccess(true);
           }
-          setUser('');
           setPwd('');
           setMatchPwd('');
       } catch (err) {
           if (!err?.response) {
               setErrMsg('No response from server');
-          } else if (err.response?.status === 409) {
-              setErrMsg('There is an account linked to this email');
-          } else {
+          }
+          // else if (err.response?.status === 409) {
+          //     setErrMsg('There is an account linked to this email');
+          // }
+          else {
               setErrMsg('Signup failed')
           }
           errRef.current.focus();
@@ -100,9 +84,9 @@ const Signup = () => {
           ) : (
               <section>
                   <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                  <h1>Create an account</h1>
+                  <h1>Update your password</h1>
                   <form onSubmit={handleSubmit}>
-                      <label htmlFor="username">
+                      {/* <label htmlFor="username">
                           Username:
                           <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
                           <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
@@ -150,7 +134,7 @@ const Signup = () => {
                           4 to 24 characters.<br />
                           Your useremail must be a valid email.<br />
                           Letters, numbers, underscores are allowed.
-                      </p>
+                      </p> */}
 
 
                       <label htmlFor="password">
@@ -198,15 +182,11 @@ const Signup = () => {
                           It must match your password.
                       </p>
 
-                      <button disabled={!validName || !validEmail || !validPwd || !validMatch ? true : false} className="sign-up-button">Sign Up</button>
+                      <button disabled={!validPwd || !validMatch ? true : false} className="sign-up-button">Update password</button>
                   </form>
-                  <p>
-                      Already registered?<br />
-                      <button onClick={navigateToLogin} className="sign-up-button">Log In</button>
-                  </p>
               </section>
           )}
       </>
   )
 }
-export default Signup
+export default UpdatePwd

@@ -31,6 +31,10 @@ input[type='submit'] {
   padding: 10px 20px;
 }
 
+input[type='submit']:hover {
+  background-color: #830000;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
@@ -38,7 +42,7 @@ input[type='submit'] {
 
 .login-form {
   background-color: #7E3B3B;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 600px;
   height: 300px;
@@ -53,18 +57,20 @@ input[type='submit'] {
   font-size: 12px;
 }
 
-.title {
+.title-log {
   color: #BF9D9D;
   font-size: 40px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin-bottom: 50px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 .input-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 30px;
+  margin: 10px;
+  margin-bottom: 20px;
   background-color: #fff;
   border: none;
 }
@@ -74,22 +80,28 @@ input[type='submit'] {
   margin-bottom: -100px;
 }
 
-.back-btn {
+.back-btn-log {
   margin-top: 10px;
   cursor: pointer;
   font-size: 15px;
   background: #8A1E1E;
-  border: 1px solid #8A1E1E;
+  border: 1px solid #000000;
   color: #fff;
   padding: 10px 20px;
   position: relative;
-  left: 590px;
-  top: -165px;
-  height: fit-content;
+  left: 690px;
+  top: -230px;
+  /* height: fit-content; */
   font-size: 24px;
   font-family: 'Lato', sans-serif;
   font-family: 'Rajdhani', sans-serif;
+  border-radius: 0%;
 }
+
+.back-btn-log:hover {
+  background-color: #830000;
+}
+
 
 .logo {
   height: 150px;
@@ -100,4 +112,6 @@ input[type='submit'] {
   max-width: 100%;
   max-height: fit-content;
 }
+
+
 

@@ -8,13 +8,14 @@ import './landing.css';
 
 const Landing = () => {
   const navigate = useNavigate();
-
-  const login = () => {
-    console.log('logout')
-  }
   const navigateSignup = () => {
     navigate('/signup');
   };
+
+  const navigateLogin = () => {
+    navigate('/login');
+  };
+
   return (
     <div>
       <div className='Navigation-Bar'>
@@ -22,7 +23,7 @@ const Landing = () => {
           <img  alt='logo' src={logo} ></img>
         </div>
         <div className="landing-button-container">
-          <button className='main-logout-btn' onClick={() => {login()}}> Login</button>
+          <button className='main-logout-btn' onClick={() => {navigateLogin()}}> Login</button>
         </div>
         {/* <div className="landing-button-container">
           <button className='main-logout-btn' onClick={() => {logout()}}> Logout</button>
