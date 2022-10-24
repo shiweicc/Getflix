@@ -14,9 +14,29 @@ const WatchProvider = (props) => {
     amazon: "prime video"
   }
 
+  //default if no watch provider links defined
   if (data === undefined) {
     return (
-      <h1 className='watchNow'>no watch providers</h1>
+      <div className='watchNow'>
+        <a target="_blank" href={`https://www.netflix.com/`}>
+            <button>Watch on Netflix</button>
+          </a>
+          <h2 className='price'>$6.99/mo</h2>
+      </div>
+    )
+  } else if (data.netflix) {
+    var link = data.netflix[0].link;
+    var type = data.netflix[0].type;
+    var price = '6.99';
+    var serviceName = service.netflix;
+
+    return (
+      <div className='watchNow'>
+        <a target="_blank" href={`${link}`}>
+            <button>Watch on {serviceName}</button>
+          </a>
+          <h2 className='price'>${price}/mo</h2>
+      </div>
     )
   } else if (data.paramount) {
     var link = data.paramount[0].link;

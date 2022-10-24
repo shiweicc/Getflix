@@ -187,6 +187,52 @@ app.delete('/profile/clearhistory', (req, res) => {
     })
 })
 
+app.get('/details/recommended/:movieId', (req, res) => {
+  let movie = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: `https://api.themoviedb.org/3/movie/${movie}/recommendations`,
+    params: {
+      'api_key': '54880feab2b97d617bc064ae0ae04156',
+      'language': 'en-US',
+      'page': '1'
+    }
+  }
+  axios.request(options)
+    .then((response) => {
+      res.status(200);
+      res.json(response.data.results);
+    })
+    .catch((error) => {
+      res.sendStatus(404);
+      return Promise.reject(error);
+    })
+})
+
+app.get('/details/watchProviders/:movieId', (req, res) => {
+  // console.log('details/watch provider', req.params.movieId)
+  let id = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: 'https://streaming-availability.p.rapidapi.com/v2/get/basic',
+    params: {country: 'us', tmdb_id: `movie/${id}`},
+    headers: {
+      'X-RapidAPI-Key': '33bc0f7e6dmsha867c79cccc49e2p162ea5jsnf4e04cd45ab3',
+      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+    }
+  }
+  axios.request(options)
+    .then((response) => {
+      res.status(200);
+      // console.log('server watch', response.data.result.title, response.data.result.streamingInfo)
+      res.json(response.data.result);
+    })
+    .catch((error) => {
+      res.sendStatus(404);
+      return Promise.reject(error);
+    })
+})
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 })

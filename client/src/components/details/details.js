@@ -41,34 +41,6 @@ const Details = (props) => {
     return data;
   }
 
-  const fetchRecommended = async (id) => {
-    const options = {
-      method: 'GET',
-      url: `${API_URL}movie/${id}/recommendations`,
-      params: {
-        'api_key': '54880feab2b97d617bc064ae0ae04156',
-        'language': 'en-US',
-        'page': '1'
-      }
-    }
-    const { data } = await axios.request(options);
-    return data;
-  }
-
-  const fetchWatchProviders = async (id) => {
-    const options = {
-      method: 'GET',
-      url: 'https://streaming-availability.p.rapidapi.com/v2/get/basic',
-      params: {country: 'us', tmdb_id: `movie/${id}`},
-      headers: {
-        'X-RapidAPI-Key': '33bc0f7e6dmsha867c79cccc49e2p162ea5jsnf4e04cd45ab3',
-        'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-      }
-    }
-    const { data } = await axios.request(options);
-    return data;
-  }
-
   const selectMovie = async () => {
     //console.log("here");
     // console.log(id);
@@ -84,16 +56,24 @@ const Details = (props) => {
   }
 
   const loadRecommended = async () => {
-    const recommendations = await fetchRecommended(id);
-    const movies = recommendations.results;
-    //console.log('loadRecommended funct', movies);
-    setRecommended(movies)
+    await axios.get(`/details/recommended/${id}`)
+      .then((res) => {
+        setRecommended(res.data);
+      })
+      .catch((err) => {
+        console.log('details/recommended error', err)
+      })
   }
 
   const loadWatchProviders = async () => {
-    const providers = await fetchWatchProviders(id);
-    console.log('watch providers call', providers.result.streamingInfo.us);
-    setWatchProviders(providers.result.streamingInfo.us);
+    await axios.get(`/details/watchProviders/${id}`)
+      .then((res) => {
+        //console.log('watch providers call', res.data.streamingInfo.us)
+        setWatchProviders(res.data.streamingInfo.us)
+      })
+      .catch((err) => {
+        console.log('/details/watchProviders error', err);
+      })
   }
 
   const navigateHome = () => {
@@ -135,7 +115,7 @@ const Details = (props) => {
 
       <div className='recommended'>
         <h1>RECOMMENDED</h1>
-        <Carousel movies ={recommended}/>
+        <Carousel movies ={recommended} updateHistory={props.updateHistory} history={props.history}/>
       </div>
 
       {/* <div className='watchNow'>
