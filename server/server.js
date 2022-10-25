@@ -5,7 +5,6 @@ const app = express();
 const port = process.env.PORT || 3001;
 const path = require('path');
 const fakeData = require('../client/src/fakeData/fakeMovies.js');
-// const fakeHistoryData = require('../client/src/fakeData/fakeHistory.js');
 const profile = require('./routes/profile.js');
 const { pool } = require('./authConfig.js');
 
@@ -38,17 +37,16 @@ app.get('/main', (req,res) => {
 })
 
 
-app.get('/profile/gethistory', (req,res) => {
-  let userId = Number(req.query.userId);
-  let url = 'http://localhost:8000/profile/gethistory';
+app.get(`/profile/gethistory`, (req,res) => {
+  const userId = Number(req.query.userId);
 
-  profile.getHistory(url, userId)
+  let url = `http://localhost:8000/profile/gethistory?user_id=${userId}`;
+
+  profile.getHistory(url)
     .then((data) => {
-      // console.log('Success GET history data at server: ', data.data);
       res.status(201).send(data.data);
     })
     .catch((err) => {
-      // console.log('Fail to GET history data!', err);
       res.status(500).send(err);
     })
 })
@@ -62,11 +60,9 @@ app.post('/main/updatehistory', (req,res) => {
 
   profile.postHistory(url, data)
     .then((data) => {
-      // console.log(data.data);
       res.status(201).send(data.data);
     })
     .catch((err) => {
-      // console.log('Fail to POST history data!', err);
       res.status(500).send(err);
     })
 })
@@ -115,7 +111,6 @@ app.delete('/profile/removeeachmovie', (req, res) => {
       res.status(200).send(data.data);
     })
     .catch((err) => {
-      // console.log('Fail to DELETE the movie data!', err);
       res.status(500).send(err);
     })
 })
@@ -131,7 +126,6 @@ app.delete('/profile/clearhistory', (req, res) => {
       res.status(200).send(data.data);
     })
     .catch((err) => {
-      // console.log('Fail to DELETE all movies data!', err);
       res.status(500).send(err);
     })
 })
@@ -145,11 +139,9 @@ app.post('/main/updatehistory', (req,res) => {
 
   profile.postHistory(url, data)
     .then((data) => {
-      // console.log(data.data);
       res.status(201).send(data.data);
     })
     .catch((err) => {
-      // console.log('Fail to POST history data!', err);
       res.status(500).send(err);
     })
 })
@@ -166,7 +158,6 @@ app.delete('/profile/removeeachmovie', (req, res) => {
       res.status(200).send(data.data);
     })
     .catch((err) => {
-      // console.log('Fail to DELETE the movie data!', err);
       res.status(500).send(err);
     })
 })
@@ -182,7 +173,6 @@ app.delete('/profile/clearhistory', (req, res) => {
       res.status(200).send(data.data);
     })
     .catch((err) => {
-      // console.log('Fail to DELETE all movies data!', err);
       res.status(500).send(err);
     })
 })

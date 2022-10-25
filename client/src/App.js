@@ -17,7 +17,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [user, setUser] = useState({id:19})
+  const [user, setUser] = useState({})
   const [history, setHistory] = useState([]);
   const userId = user.id;
 
