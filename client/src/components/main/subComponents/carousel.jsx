@@ -12,7 +12,7 @@ const Carousel = (props) => {
 
   const navigate = useNavigate();
   const navigateMovieDetail = (data) => {
-    //console.log(data);
+    // console.log(data);
     navigate('/details', { state: data });
   }
 
