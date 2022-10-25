@@ -8,7 +8,10 @@ const NavigationBar = (props) => {
       <div className='main-logo'>
         <img  alt='logo' src={pic} ></img>
       </div>
-      <SearchBar search={props.search}/>
+      <SearchBar
+        search={props.search}
+        filtered={props.filtered}
+        detail={props.detail}/>
       <div className='main-buttons'>
         <button className='main-logout-btn' onClick={() => {props.logout()}}> Logout</button>
         <button className='main-profile-btn' onClick={() => {props.profile()}}>Profile</button>

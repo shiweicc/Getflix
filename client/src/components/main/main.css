@@ -8,11 +8,20 @@
 }
 
 .main-logo {
+  padding-top: 30px;
   float:left;
 }
 
-/* input {
-  width: 220%;
+.main-sb-container {
+  padding-top: 75px;
+  float:left;
+  display: flex;
+  flex-direction: column;
+  width:60%
+}
+
+.sb {
+  width: 100%;
   height: 50px;
   font-size: 2.5em;
   background-color: transparent;
@@ -20,12 +29,11 @@
   color: white;
 }
 
-input:focus {
+.sb:focus{
   outline-width: 0;
-} */
+}
 
 .main-sb {
-  float:left;
   padding-top: 3.5%;
   padding-left: 80px;
 }
@@ -98,6 +106,39 @@ input:focus {
   color: white;
 }
 
+.search-container {
+  position: absolute;
+  margin-top: 7%;
+  z-index: 2;
+  border-top-style: solid;
+  border-color: rgb(50, 50, 50);
+  background: rgb(0, 0, 0, 0.9);
+  width: 60%;
+  overflow-y:auto;
+  max-height: 43.5%
+}
+
+.search-item {
+  float: left;
+  clear: left;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-color: rgb(50, 50, 50);
+  width:100%
+}
+
+.search-img {
+  float:left;
+  max-width: 200px;
+}
+
+.search-title{
+  float: left;
+  padding-top: 40px;
+  padding-left: 20px
+}
+
 .watch_btn {
   background-color:rgb(123, 16, 16);
   color: white;
@@ -118,3 +159,4 @@ input:focus {
   border-radius: 0px;
   width: 80px;
 }
+
