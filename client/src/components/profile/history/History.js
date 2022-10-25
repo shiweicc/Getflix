@@ -23,7 +23,6 @@ const History = (props) => {
     let promises = moviesIdList.map(movieId => getEachMovie(movieId))
     Promise.all(promises)
     .then(data => {
-      // console.log('success get all movies info: ', data);
       let storage = [];
       data.forEach(movie => {
         let data = movie.data;
@@ -45,8 +44,8 @@ const History = (props) => {
   return (
     <div className="history">
       <h2 className='history-title'>History</h2>
-      <button className="clear_history_btn" onClick={() => props.removeAllMovies(1)}>Clear History</button>
-      <Movielist movies={movies} removeEachMovie={props.removeEachMovie}/>
+      <button className="clear_history_btn" onClick={() => props.removeAllMovies(props.userId)}>Clear History</button>
+      <Movielist movies={movies} removeEachMovie={props.removeEachMovie} userId={props.userId}/>
     </div>
   );
 }
