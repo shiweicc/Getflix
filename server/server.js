@@ -177,6 +177,43 @@ app.delete('/profile/clearhistory', (req, res) => {
     })
 })
 
+app.get('/details/recommended/:movieId', (req, res) => {
+  let movie = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: `http://3.82.229.130:8000/details/recommended/${movie}`
+  }
+  axios.request(options)
+    .then((response) => {
+      res.status(200);
+      //console.log('details server', response)
+      res.json(response.data);
+    })
+    .catch((error) => {
+      res.sendStatus(404);
+      return Promise.reject(error);
+    })
+})
+
+app.get('/details/watchProviders/:movieId', (req, res) => {
+  // console.log('details/watch provider', req.params.movieId)
+  let id = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: `http://3.82.229.130:8000/details/watchProviders/${id}`
+  }
+  axios.request(options)
+    .then((response) => {
+      res.status(200);
+      //console.log('server watch', response.data);
+      res.json(response.data);
+    })
+    .catch((error) => {
+      res.sendStatus(404);
+      return Promise.reject(error);
+    })
+})
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 })
