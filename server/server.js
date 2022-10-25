@@ -191,17 +191,13 @@ app.get('/details/recommended/:movieId', (req, res) => {
   let movie = req.params.movieId;
   let options = {
     method: 'GET',
-    url: `https://api.themoviedb.org/3/movie/${movie}/recommendations`,
-    params: {
-      'api_key': '54880feab2b97d617bc064ae0ae04156',
-      'language': 'en-US',
-      'page': '1'
-    }
+    url: `http://3.82.229.130:8000/details/recommended/${movie}`
   }
   axios.request(options)
     .then((response) => {
       res.status(200);
-      res.json(response.data.results);
+      //console.log('details server', response)
+      res.json(response.data);
     })
     .catch((error) => {
       res.sendStatus(404);
@@ -214,18 +210,13 @@ app.get('/details/watchProviders/:movieId', (req, res) => {
   let id = req.params.movieId;
   let options = {
     method: 'GET',
-    url: 'https://streaming-availability.p.rapidapi.com/v2/get/basic',
-    params: {country: 'us', tmdb_id: `movie/${id}`},
-    headers: {
-      'X-RapidAPI-Key': '33bc0f7e6dmsha867c79cccc49e2p162ea5jsnf4e04cd45ab3',
-      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-    }
+    url: `http://3.82.229.130:8000/details/watchProviders/${id}`
   }
   axios.request(options)
     .then((response) => {
       res.status(200);
-      // console.log('server watch', response.data.result.title, response.data.result.streamingInfo)
-      res.json(response.data.result);
+      //console.log('server watch', response.data);
+      res.json(response.data);
     })
     .catch((error) => {
       res.sendStatus(404);
