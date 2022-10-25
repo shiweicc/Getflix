@@ -51,7 +51,7 @@ function Main(props) {
     // for live data
 
     $.ajax({
-      url: 'http://localhost:3002/main',
+      url: 'http://54.183.28.106:3002/main',
       method: 'get',
       // dataType: "javascipt",
       success: (data) => {
