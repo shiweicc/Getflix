@@ -123,9 +123,21 @@ function App() {
       : <Login user={user} />
     },
     {
+      path: "/updateUserPwd",
+      element: localStorage.getItem('logged in id')
+      ? <UpdatePwd userId={user.id}/>
+      : <Login user={user} />
+    },
+    {
+      path: "/updateUserName",
+      element: localStorage.getItem('logged in id')
+      ? <UpdateUsername userId={user.id}/>
+      : <Login user={user} />
+    },
+    {
       path: "/details",
-      element: localStorage.getItem('logged in id') 
-      ? <Details updateHistory={watchedBtnClick} history={history}/> 
+      element: localStorage.getItem('logged in id')
+      ? <Details updateHistory={watchedBtnClick} history={history}/>
       : <Login setUser={setUser} />
     },
     {

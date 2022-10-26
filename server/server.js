@@ -10,6 +10,8 @@ const { pool } = require('./authConfig.js');
 
 const bcrypt = require('bcrypt');
 const SIGNUP_URL = 'http://107.23.252.158:3001/signup'
+const UPDATE_PWD_URL = 'http://107.23.252.158:3001/updateUserPwd'
+const UPDATE_USERNAME_URL = 'http://107.23.252.158:3001/updateUserName'
 const cors = require('cors');
 const axios = require('axios');
 
@@ -21,6 +23,32 @@ app.post('/signup', async(req, res)=>{
   let  { user, useremail, pwd } = req.body;
   try{
     const response =  await axios.post(SIGNUP_URL, req.body);
+    if (response.status === 200){
+
+    }
+    res.sendStatus(response.status)
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+app.post('/updateUserPwd', async(req, res)=>{
+  let  { userId, pwd } = req.body;
+  try{
+    const response =  await axios.post(UPDATE_PWD_URL, req.body);
+    if (response.status === 200){
+
+    }
+    res.sendStatus(response.status)
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+app.post('/updateUserName', async(req, res)=>{
+  let  { userId, useremail, pwd } = req.body;
+  try{
+    const response =  await axios.post(UPDATE_USERNAME_URL, req.body);
     if (response.status === 200){
 
     }
