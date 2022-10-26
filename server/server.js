@@ -31,9 +31,14 @@ app.post('/signup', async(req, res)=>{
 })
 
 app.get('/main', (req,res) => {
-  //set up to go to microservice later
-  console.log('test')
-  res.send(fakeData.movies)
+  let url = `http://54.183.28.106:3002/main`
+  axios.get(url)
+    .then((response) => {
+      res.send(response.data.data)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 })
 
 
