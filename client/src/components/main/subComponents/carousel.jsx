@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -12,7 +12,7 @@ const Carousel = (props) => {
 
   const navigate = useNavigate();
   const navigateMovieDetail = (data) => {
-    //console.log(data);
+    // console.log(data);
     navigate('/details', { state: data });
   }
 
@@ -34,9 +34,9 @@ const Carousel = (props) => {
             const checkHistory = props.history.includes(movie.id)
             let watchedBtn;
             if (checkHistory) {
-              watchedBtn =  <button className="eyeball_btn" onClick={() => props.updateHistory(1, movie.id)}>👁️</button>
+              watchedBtn =  <button className="eyeball_btn" onClick={() => props.updateHistory(props.userId, movie.id)}>👁️</button>
             } else {
-              watchedBtn =  <button className="watch_btn" onClick={() => props.updateHistory(1, movie.id)}>Watch</button>
+              watchedBtn =  <button className="watch_btn" onClick={() => props.updateHistory(props.userId, movie.id)}>Watch</button>
             }
 
             return (
