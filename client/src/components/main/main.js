@@ -53,7 +53,6 @@ function Main(props) {
     axios.get('/main')
       .then(data => {
         let movies = data.data;
-        console.log(movies);
         setMovies(movies)
         // sort movies grouped by genre
         let moviesObj = {}
