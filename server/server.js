@@ -14,7 +14,7 @@ const bcrypt = require('bcrypt');
 const SIGNUP_URL = 'http://107.23.252.158:3001/signup'
 const cors = require('cors');
 const axios = require('axios');
-
+const LOGIN_URL = 'http://54.236.215.35:3001/login'
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -78,24 +78,14 @@ app.post('/login', async (req, res) => {
     password
   } = req.body;
 
-  pool.query(
-    `SELECT * FROM users WHERE username = $1`, [username], (err, results) => {
-      if (err) {
-        throw err
-      }
-      if (results.rows.length > 0) {
-        let hashed = results.rows[0].password;
-        function compareHash(password, hashed) {
-          return bcrypt.compareSync(password, hashed)
-        }
-        if (compareHash(password, hashed)) {
-          res.status(200).send(results.rows[0].id)
-        } else {
-          res.status(400)
-        }
-      }
+  try{
+    const response =  await axios.post(LOGIN_URL, req.body);
+    if (response.status === 200){
     }
-  )
+    res.sendStatus(response.status)
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 app.get('/logout', async function(req, res, next) {
