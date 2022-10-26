@@ -124,8 +124,8 @@ function App() {
     },
     {
       path: "/details",
-      element: localStorage.getItem('logged in id') 
-      ? <Details updateHistory={watchedBtnClick} history={history}/> 
+      element: localStorage.getItem('logged in id')
+      ? <Details updateHistory={watchedBtnClick} history={history}/>
       : <Login setUser={setUser} />
     },
     {
