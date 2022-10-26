@@ -129,6 +129,7 @@ function Main(props) {
         movieList = {groupedMovies}
         updateHistory={props.updateHistory}
         history={props.history}
+        userId={props.userId}
       />
     </div>
   );

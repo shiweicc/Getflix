@@ -7,7 +7,6 @@ import { Navigation, Scrollbar } from "swiper";
 
 
 const Carousel = (props) => {
-  // console.log('history carousel: ', props.movies)
   return (
     <div className='carousel'>
       <Swiper
@@ -34,7 +33,7 @@ const Carousel = (props) => {
                 <div className="main-card-title">
                   {movie.original_title}
                 </div>
-                <button className="remove_btn" onClick={() => props.removeEachMovie(1, movie.id)}> x </button>
+                <button className="remove_btn" onClick={() => props.removeEachMovie(props.userId, movie.id)}> x </button>
               </div>
               </SwiperSlide>
             )

@@ -8,7 +8,6 @@ import UpdatePwd from "./components/profile/history/subComponents/UpdatePwd.js";
 import Signup from "./components/signup/Signup.js";
 import Landing from "./components/landing/landing.js";
 import Details from "./components/details/details.js";
-import fakeHistoryData from "./fakeData/fakeHistory.js";
 import axios from 'axios';
 
 import {
@@ -20,6 +19,7 @@ import {
 function App() {
   const [user, setUser] = useState({})
   const [history, setHistory] = useState([]);
+  const userId = user.id;
 
   const NotFound = () => {
     return (
@@ -35,12 +35,12 @@ function App() {
     )
   }
   useEffect(() => {
-    getHistory(1);
-  }, [])
+    getHistory(userId);
+  }, [userId])
 
 
   const getHistory = (userId) => {
-    axios.get('/profile/gethistory', {params: {userId: userId,}})
+    axios.get(`/profile/gethistory`, {params: {userId: userId}})
       .then(history => {
         // console.log('success GET history data: ', history)
         setHistory(history.data)
@@ -56,7 +56,6 @@ function App() {
     if (!checking) {
       axios.post('/main/updatehistory', {userId: userId, movieId: movieId})
         .then(data => {
-          // console.log('success POST the watched movie: ', data)
           setHistory([...history, movieId])
         })
         .catch(err => {
@@ -71,14 +70,12 @@ function App() {
     let data = {userId: userId, movieId: movieId}
 
     let newHistory = history;
-    console.log('before newhistory: ', newHistory)
     const index = newHistory.indexOf(movieId);
     newHistory.splice(index, 1)
-    console.log('after newhistory: ', newHistory)
+
 
     axios.delete('/profile/removeeachmovie', {params: data})
       .then(data => {
-        // console.log('success DELETE the movie from history: ', data)
         setHistory(newHistory);
       })
       .catch(err => {
@@ -91,7 +88,6 @@ function App() {
 
     axios.delete('/profile/clearhistory', {params: data})
       .then(data => {
-        // console.log('success DELETE all movies from history: ', data)
         setHistory([]);
       })
       .catch(err => {
@@ -114,15 +110,23 @@ function App() {
     },
     {
       path: "/main",
-      element: localStorage.getItem('logged in id') ? <Main updateHistory={watchedBtnClick} history={history}/> : <Login setUser={setUser}/>
+      element: localStorage.getItem('logged in id') ?
+      <Main updateHistory={watchedBtnClick} history={history} userId={user.id}/>
+      : <Login setUser={setUser}/>
     },
     {
       path: "/profile",
-      element: localStorage.getItem('logged in id') ? <Profile history={history} removeEachMovie={removeBtnClick} removeAllMovies={clearHistoryBtnClick}/> : <Login user={user} />
+      element: localStorage.getItem('logged in id')
+      ? <Profile
+          history={history} removeEachMovie={removeBtnClick}
+          removeAllMovies={clearHistoryBtnClick} userId={user.id}/>
+      : <Login user={user} />
     },
     {
       path: "/details",
-      element: localStorage.getItem('logged in id') ? <Details updateHistory={watchedBtnClick} history={history}/> : <Login setUser={setUser} />
+      element: localStorage.getItem('logged in id') 
+      ? <Details updateHistory={watchedBtnClick} history={history}/> 
+      : <Login setUser={setUser} />
     },
     {
       path: '*',
