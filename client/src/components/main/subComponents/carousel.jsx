@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
-import "swiper/swiper.scss";
-import "swiper/modules/navigation/navigation.scss";
-import "swiper/modules/scrollbar/scrollbar.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/scrollbar";
 import "../main.css";
 import { Navigation, Scrollbar } from "swiper";
 
@@ -12,7 +12,6 @@ const Carousel = (props) => {
 
   const navigate = useNavigate();
   const navigateMovieDetail = (data) => {
-    // console.log(data);
     navigate('/details', { state: data });
   }
 

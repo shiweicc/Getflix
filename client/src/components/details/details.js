@@ -81,6 +81,14 @@ const Details = (props) => {
     navigate('/main');
   };
 
+  const checkHistory = props.history.includes(id)
+  let watchedBtn;
+  if (checkHistory) {
+    watchedBtn =  <button className="eyeball_btn" onClick={() => props.updateHistory(props.userId, id)}>👁️</button>
+  } else {
+    watchedBtn =  <button className="watch_btn" onClick={() => props.updateHistory(props.userId, id)}>Watch</button>
+  }
+
   return (
     <div className='main'>
       <div className='logo'>
@@ -133,7 +141,7 @@ const Details = (props) => {
       </div> */}
 
       <div className='watched'>
-        <h2>Watched</h2>
+        {watchedBtn}
       </div>
 
     </div>

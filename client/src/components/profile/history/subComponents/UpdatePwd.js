@@ -48,6 +48,7 @@ const UpdatePwd = (userId) => {
           return;
       }
       try {
+        console.log(userId)
         const response = await axios.post(UPDATE_PWD_URL,
               JSON.stringify({ userId,  pwd }),
               {
@@ -72,7 +73,7 @@ const UpdatePwd = (userId) => {
           //     setErrMsg('There is an account linked to this email');
           // }
           else {
-              setErrMsg('Signup failed')
+              setErrMsg('Failed to update password')
           }
           errRef.current.focus();
       }

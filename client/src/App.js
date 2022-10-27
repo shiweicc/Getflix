@@ -19,7 +19,7 @@ import {
 function App() {
   const [user, setUser] = useState({})
   const [history, setHistory] = useState([]);
-  const userId = user.id;
+  const userId = localStorage.getItem('logged in id')
 
   const NotFound = () => {
     return (
@@ -111,7 +111,7 @@ function App() {
     {
       path: "/main",
       element: localStorage.getItem('logged in id') ?
-      <Main updateHistory={watchedBtnClick} history={history} userId={user.id}/>
+      <Main updateHistory={watchedBtnClick} history={history} userId={userId}/>
       : <Login setUser={setUser}/>
     },
     {
@@ -119,25 +119,25 @@ function App() {
       element: localStorage.getItem('logged in id')
       ? <Profile
           history={history} removeEachMovie={removeBtnClick}
-          removeAllMovies={clearHistoryBtnClick} userId={user.id}/>
+          removeAllMovies={clearHistoryBtnClick} userId={userId}/>
       : <Login user={user} />
     },
     {
       path: "/updateUserPwd",
       element: localStorage.getItem('logged in id')
-      ? <UpdatePwd userId={user.id}/>
+      ? <UpdatePwd userId={userId}/>
       : <Login user={user} />
     },
     {
       path: "/updateUserName",
       element: localStorage.getItem('logged in id')
-      ? <UpdateUsername userId={user.id}/>
+      ? <UpdateUsername userId={userId}/>
       : <Login user={user} />
     },
     {
       path: "/details",
       element: localStorage.getItem('logged in id')
-      ? <Details updateHistory={watchedBtnClick} history={history}/>
+      ? <Details updateHistory={watchedBtnClick} history={history} userId={user.id}/>
       : <Login setUser={setUser} />
     },
     {
