@@ -10,7 +10,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const UPDATE_PWD_URL = 'http://localhost:3001/updatePwd';
 
 const UpdatePwd = (userId) => {
-
+  console.log(userId)
   // const userReff = useRef();
   const errRef = useRef();
   const [pwd, setPwd] = useState('');
@@ -48,6 +48,7 @@ const UpdatePwd = (userId) => {
           return;
       }
       try {
+        console.log(userId)
         const response = await axios.post(UPDATE_PWD_URL,
               JSON.stringify({ userId,  pwd }),
               {
@@ -72,7 +73,7 @@ const UpdatePwd = (userId) => {
           //     setErrMsg('There is an account linked to this email');
           // }
           else {
-              setErrMsg('Signup failed')
+              setErrMsg('Failed to update password')
           }
           errRef.current.focus();
       }
