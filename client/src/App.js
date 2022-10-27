@@ -21,7 +21,7 @@ function App() {
   const [history, setHistory] = useState([]);
   const userId = localStorage.getItem('logged in id')
   const userName = localStorage.getItem('logged in name')
-  console.log(userName)
+
   const NotFound = () => {
     return (
       <div>
