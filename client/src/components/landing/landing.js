@@ -1,9 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import ReactDOM from 'react-dom';
 import logo from './getfilxLogo.png';
-import movies from './movies.png';
+import movies from './movies.jpg';
 import './landing.css';
 
 const Landing = () => {
