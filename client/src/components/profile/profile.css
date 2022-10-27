@@ -109,9 +109,8 @@
   color: white;
   border: none;
   background-color: inherit;
-  /* padding: 14px 28px; */
   cursor: pointer;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .clear_history_btn:hover {
@@ -120,4 +119,9 @@
 
 .remove_btn:hover {
   font-size: 20px;
+}
+
+.carousel {
+  width: 90%;
+  height:260px;
 }
