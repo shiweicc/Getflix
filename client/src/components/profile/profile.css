@@ -5,7 +5,15 @@
   color: white;
 }
 
-.remove_btn{
+.userinfo {
+  /* background-color: rgb(123, 16, 16); */
+  height: 10%;
+  width: 50%;
+  margin-bottom: 13%;
+  margin-top: 4%;
+}
+
+.remove_btn {
   background-color: black;
   color: white;
   border: none;
@@ -16,21 +24,39 @@
   width: 50px;
 }
 
-.history-title{
+.userinfo-title {
   padding-left: 120px;
   font-size: 1.5em;
   font-weight: bold;
   color: white;
 }
 
-.no-history-title{
+.userinfo-username {
+  padding-left: 120px;
+  margin-top: 30px;
+}
+
+.userinfo-email {
+  padding-left: 120px;
+  margin-top: 25px;
+
+}
+
+.history-title {
   padding-left: 120px;
   font-size: 1.5em;
   font-weight: bold;
   color: white;
 }
 
-.profile-updateUsernameBtn{
+.no-history-title {
+  padding-left: 120px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+
+.profile-updateUsernameBtn {
   float: right;
   background-color:rgb(123, 16, 16);
   border: none;

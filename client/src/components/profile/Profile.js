@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import History from "./history/History.js";
+import History from './history/History.js';
+import UserInfo from './userInfo/UserInfo.js'
 import pic from '../../getflixLogo.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './profile.css';
@@ -34,6 +35,7 @@ const Profile = (props) => {
     <button className='profile-backBtn' onClick={() => {navigateMainPage()}}> Home </button>
     <button className='profile-updatePWBtn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
     <button className='profile-updateUsernameBtn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
+    <UserInfo />
     {history}
 
     </div>
