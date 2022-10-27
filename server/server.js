@@ -11,6 +11,8 @@ const { pool } = require('./authConfig.js');
 
 const bcrypt = require('bcrypt');
 const SIGNUP_URL = 'http://107.23.252.158:3001/signup'
+const UPDATE_PWD_URL = 'http://107.23.252.158:3001/updateUserPwd'
+const UPDATE_USERNAME_URL = 'http://107.23.252.158:3001/updateUserName'
 const cors = require('cors');
 const axios = require('axios');
 const LOGIN_URL = 'http://54.236.215.35:3001/login'
@@ -18,6 +20,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+
+/********************* Authentication *********************/
 app.post('/signup', async(req, res)=>{
   let  { user, useremail, pwd } = req.body;
   try{
@@ -29,43 +33,6 @@ app.post('/signup', async(req, res)=>{
   } catch (err) {
     console.log(err)
   }
-})
-
-app.get('/main', (req,res) => {
-  //set up to go to microservice later
-  console.log('test')
-  res.send(fakeData.movies)
-})
-
-
-app.get(`/profile/gethistory`, (req,res) => {
-  const userId = Number(req.query.userId);
-
-  let url = `http://localhost:8000/profile/gethistory?user_id=${userId}`;
-
-  profile.getHistory(url)
-    .then((data) => {
-      res.status(201).send(data.data);
-    })
-    .catch((err) => {
-      res.status(500).send(err);
-    })
-})
-
-app.post('/main/updatehistory', (req,res) => {
-  let userId = Number(req.body.userId);
-  let movieId = Number(req.body.movieId);
-  let data = {userId: userId, movieId: movieId}
-
-  let url = 'http://localhost:8000/main/updatehistory';
-
-  profile.postHistory(url, data)
-    .then((data) => {
-      res.status(201).send(data.data);
-    })
-    .catch((err) => {
-      res.status(500).send(err);
-    })
 })
 
 app.post('/login', async (req, res) => {
@@ -88,33 +55,54 @@ app.get('/logout', async function(req, res, next) {
   localStorage.removeItem('logged in id')
   res.redirect('/');
 });
+/********************* User name and pwd update *********************/
+app.post('/updateUserPwd', async(req, res)=>{
+  let  { userId, pwd } = req.body;
+  try{
+    const response =  await axios.post(UPDATE_PWD_URL, req.body);
+    if (response.status === 200){
 
+    }
+    res.sendStatus(response.status)
+  } catch (err) {
+    console.log(err)
+  }
+})
 
-app.delete('/profile/removeeachmovie', (req, res) => {
-  let userId = Number(req.query.userId);
-  let movieId = Number(req.query.movieId);
-  let data = {userId: userId, movieId: movieId}
+app.post('/updateUserName', async(req, res)=>{
+  let  { userId, useremail, pwd } = req.body;
+  try{
+    const response =  await axios.post(UPDATE_USERNAME_URL, req.body);
+    if (response.status === 200){
 
-  let url = 'http://localhost:8000/profile/removeeachmovie';
+    }
+    res.sendStatus(response.status)
+  } catch (err) {
+    console.log(err)
+  }
+})
 
-  profile.deleteEachMovie(url, data)
-    .then((data) => {
-      res.status(200).send(data.data);
+/********************* Main *********************/
+app.get('/main', (req,res) => {
+  let url = `http://54.183.28.106:3002/main`
+  axios.get(url)
+    .then((response) => {
+      res.send(response.data.data)
     })
-    .catch((err) => {
-      res.status(500).send(err);
+    .catch((error) => {
+      console.log(error)
     })
 })
 
-app.delete('/profile/clearhistory', (req, res) => {
-  let userId = Number(req.query.userId);
-  let data = {userId: userId}
+/********************* History *********************/
+app.get(`/profile/gethistory`, (req,res) => {
+  const userId = Number(req.query.userId);
 
-  let url = 'http://localhost:8000/profile/clearhistory';
+  let url = `http://18.204.194.227:8000/profile/gethistory?user_id=${userId}`;
 
-  profile.deleteAllMovies(url, data)
+  profile.getHistory(url)
     .then((data) => {
-      res.status(200).send(data.data);
+      res.status(201).send(data.data);
     })
     .catch((err) => {
       res.status(500).send(err);
@@ -126,7 +114,7 @@ app.post('/main/updatehistory', (req,res) => {
   let movieId = Number(req.body.movieId);
   let data = {userId: userId, movieId: movieId}
 
-  let url = 'http://localhost:8000/main/updatehistory';
+  let url = 'http://18.204.194.227:8000/main/updatehistory';
 
   profile.postHistory(url, data)
     .then((data) => {
@@ -142,7 +130,7 @@ app.delete('/profile/removeeachmovie', (req, res) => {
   let movieId = Number(req.query.movieId);
   let data = {userId: userId, movieId: movieId}
 
-  let url = 'http://localhost:8000/profile/removeeachmovie';
+  let url = 'http://18.204.194.227:8000/profile/removeeachmovie';
 
   profile.deleteEachMovie(url, data)
     .then((data) => {
@@ -157,7 +145,7 @@ app.delete('/profile/clearhistory', (req, res) => {
   let userId = Number(req.query.userId);
   let data = {userId: userId}
 
-  let url = 'http://localhost:8000/profile/clearhistory';
+  let url = 'http://18.204.194.227:8000/profile/clearhistory';
 
   profile.deleteAllMovies(url, data)
     .then((data) => {
@@ -168,6 +156,8 @@ app.delete('/profile/clearhistory', (req, res) => {
     })
 })
 
+
+/********************* Recommendation *********************/
 app.get('/details/recommended/:movieId', (req, res) => {
   let movie = req.params.movieId;
   let options = {
