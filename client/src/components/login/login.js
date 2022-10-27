@@ -56,16 +56,14 @@ const Login = ({ setUser }) => {
   const renderForm = (
     <div className='form'>
       <form onSubmit={handleSubmit}>
-        <div className='input-container'>
+        <div className='input-container-log'>
           <input className='user-inp' type='text' name='uname' placeholder='Username' required />
         </div>
-        <div className='input-container'>
-          <div>
+        <div className='input-container-log'>
           <input className='user-inp' type='password' name='pass' placeholder='Password' required />
-          </div>
         </div>
-        <div className='button-container'>
-          <input type='submit' onSubmit={handleSubmit}/>
+        <div className='log-button-container'>
+          <input className='log-submit' type='submit' onSubmit={handleSubmit}/>
         </div>
       </form>
     </div>
@@ -74,8 +72,8 @@ const Login = ({ setUser }) => {
   return (
     <>
     {isSubmitted ? <Navigate to='/main' /> :  <div className='app'>
-    <div className='top'>
-      <img src={logo} alt='getflix-logo' className='logo' />
+    <div className='top-log'>
+      <img src={logo} alt='getflix-logo' className='logo-log' />
       {isClicked ? <Navigate to='main' /> : <button type='button' className='back-btn-log' onClick={() => {navigateSignup()}}>Sign Up</button>}
     </div>
     <div className='login-form'>

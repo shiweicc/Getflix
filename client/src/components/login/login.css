@@ -12,14 +12,13 @@
   background-color: #000000;
 }
 
-input[type='text'],
-input[type='password'] {
+.user-inp {
   height: 40px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0);
   font-size: 24px;
 }
 
-input[type='submit'] {
+.log-submit {
   margin-top: 10px;
   cursor: pointer;
   font-size: 24px;
@@ -31,11 +30,11 @@ input[type='submit'] {
   padding: 10px 20px;
 }
 
-input[type='submit']:hover {
+.log-submit:hover {
   background-color: #830000;
 }
 
-.button-container {
+.log-button-container {
   display: flex;
   justify-content: center;
 }
@@ -52,11 +51,6 @@ input[type='submit']:hover {
   display: flex;
 } */
 
-.error {
-  color: red;
-  font-size: 12px;
-}
-
 .title-log {
   color: #BF9D9D;
   font-size: 40px;
@@ -65,7 +59,7 @@ input[type='submit']:hover {
   margin-bottom: 10px;
 }
 
-.input-container {
+.input-container-log {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -75,7 +69,7 @@ input[type='submit']:hover {
   border: none;
 }
 
-.top {
+.top-log {
   display: flex;
   margin-bottom: -100px;
 }
@@ -89,13 +83,14 @@ input[type='submit']:hover {
   color: #fff;
   padding: 10px 20px;
   position: relative;
-  left: 690px;
-  top: -230px;
+  left: 550px;
+  top: -180px;
   /* height: fit-content; */
   font-size: 24px;
   font-family: 'Lato', sans-serif;
   font-family: 'Rajdhani', sans-serif;
   border-radius: 0%;
+  height: fit-content;
 }
 
 .back-btn-log:hover {
@@ -103,12 +98,12 @@ input[type='submit']:hover {
 }
 
 
-.logo {
+.logo-log {
   height: 150px;
   width: 300px;
   position: relative;
   right: 590px;
-  top: -165px;
+  top: -195px;
   max-width: 100%;
   max-height: fit-content;
 }
