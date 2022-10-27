@@ -10,7 +10,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const UPDATE_PWD_URL = 'http://localhost:3001/updatePwd';
 
 const UpdatePwd = (userId) => {
-  console.log(userId)
+
   // const userReff = useRef();
   const errRef = useRef();
   const [pwd, setPwd] = useState('');

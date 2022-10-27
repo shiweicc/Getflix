@@ -1,5 +1,11 @@
 {
   "name": "client",
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(nuxt|unenv|swiper|ssr-window|dom7|swiper/css|axios)/).*$",
+      "\\.pnp\\.[^\\/]+$"
+    ]
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
