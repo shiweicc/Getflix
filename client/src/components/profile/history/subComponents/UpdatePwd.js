@@ -9,7 +9,7 @@ const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const UPDATE_PWD_URL = 'http://localhost:3001/updatePwd';
 
-const UpdatePwd = () => {
+const UpdatePwd = (userId) => {
 
   // const userReff = useRef();
   const errRef = useRef();
@@ -49,7 +49,7 @@ const UpdatePwd = () => {
       }
       try {
         const response = await axios.post(UPDATE_PWD_URL,
-              JSON.stringify({ pwd }),
+              JSON.stringify({ userId,  pwd }),
               {
                   headers: { 'Content-Type': 'application/json' },
                   withCredentials: false
@@ -60,6 +60,7 @@ const UpdatePwd = () => {
           // console.log(JSON.stringify(response))
           if (response.status === 200) {
             setSuccess(true);
+
           }
           setPwd('');
           setMatchPwd('');
@@ -86,57 +87,6 @@ const UpdatePwd = () => {
                   <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                   <h1>Update your password</h1>
                   <form onSubmit={handleSubmit}>
-                      {/* <label htmlFor="username">
-                          Username:
-                          <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-                          <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
-                      </label>
-                      <input
-                          type="text"
-                          id="username"
-                          ref={userRef}
-                          autoComplete="off"
-                          onChange={(e) => setUser(e.target.value)}
-                          value={user}
-                          required
-                          aria-invalid={validName ? "false" : "true"}
-                          aria-describedby="uidnote"
-                          onFocus={() => setUserFocus(true)}
-                          onBlur={() => setUserFocus(false)}
-                      />
-                      <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
-                          <FontAwesomeIcon icon={faInfoCircle} />
-                          4 to 24 characters.<br />
-                          Your username must begin with a letter.<br />
-                          Letters, numbers, underscores are allowed.
-                      </p>
-
-                      <label htmlFor="useremail">
-                          Email:
-                          <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
-                          <FontAwesomeIcon icon={faTimes} className={validEmail || !useremail ? "hide" : "invalid"} />
-                      </label>
-                      <input
-                          type="text"
-                          id="useremail"
-                          ref={userRef}
-                          autoComplete="off"
-                          onChange={(e) => setEmail(e.target.value)}
-                          value={useremail}
-                          required
-                          aria-invalid={validEmail ? "false" : "true"}
-                          aria-describedby="uemailnote"
-                          onFocus={() => setEmailFocus(true)}
-                          onBlur={() => setEmailFocus(false)}
-                      />
-                      <p id="uemailnote" className={emailFocus && useremail && !validEmail ? "instructions" : "offscreen"}>
-                          <FontAwesomeIcon icon={faInfoCircle} />
-                          4 to 24 characters.<br />
-                          Your useremail must be a valid email.<br />
-                          Letters, numbers, underscores are allowed.
-                      </p> */}
-
-
                       <label htmlFor="password">
                           Password:
                           <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />

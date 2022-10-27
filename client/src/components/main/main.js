@@ -1,10 +1,10 @@
 import React from "react";
 import NavigationBar from "./subComponents/NavigationBar.jsx";
 import { useNavigate } from 'react-router-dom';
-import fakeData from "../../fakeData/fakeMovies.js";
+//import fakeData from "../../fakeData/fakeMovies.js";
 import './main.css';
 import Movies from "./subComponents/movies.jsx";
-import $ from "jquery";
+import axios from "axios";
 
 
 function Main(props) {
@@ -50,11 +50,8 @@ function Main(props) {
 
     // for live data
 
-    $.ajax({
-      url: 'http://54.183.28.106:3002/main',
-      method: 'get',
-      // dataType: "javascipt",
-      success: (data) => {
+    axios.get('/main')
+      .then(data => {
         let movies = data.data;
         setMovies(movies)
         // sort movies grouped by genre
@@ -77,8 +74,7 @@ function Main(props) {
           })
         })
         setgroupedMovies(moviesObj)
-      }
-    })
+      })
   }, []);
 
   const search = (e) => {
@@ -118,18 +114,19 @@ function Main(props) {
 
   return (
     <div className="Main">
-      <NavigationBar
-        search = {search}
-        filtered = {filtered}
-        profile = {profile}
-        logout = {logout}
-        detail = {navigateMovieDetail}
-        />
-      <Movies
-        movieList = {groupedMovies}
-        updateHistory={props.updateHistory}
-        history={props.history}
-      />
+        <NavigationBar
+          search = {search}
+          filtered = {filtered}
+          profile = {profile}
+          logout = {logout}
+          detail = {navigateMovieDetail}
+          />
+          <Movies
+            movieList = {groupedMovies}
+            updateHistory={props.updateHistory}
+            history={props.history}
+            userId={props.userId}
+          />
     </div>
   );
 }

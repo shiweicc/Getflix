@@ -38,59 +38,59 @@ const Signup = () => {
 
 
   useEffect(() => {
-      userRef.current.focus();
+    userRef.current.focus();
   }, [])
 
   useEffect(() => {
-      setValidName(USER_REGEX.test(user));
-      setValidEmail(EMAIL_REGEX.test(useremail));
+    setValidName(USER_REGEX.test(user));
+    setValidEmail(EMAIL_REGEX.test(useremail));
   }, [user, useremail])
 
   useEffect(() => {
-      setValidPwd(PWD_REGEX.test(pwd));
-      setValidMatch(pwd === matchPwd);
+    setValidPwd(PWD_REGEX.test(pwd));
+    setValidMatch(pwd === matchPwd);
   }, [pwd, matchPwd])
 
   useEffect(() => {
-      setErrMsg('');
+    setErrMsg('');
   }, [user, useremail, pwd, matchPwd])
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      const v1 = USER_REGEX.test(user);
-      const v2 = PWD_REGEX.test(pwd);
-      const v3 = EMAIL_REGEX.test(useremail);
-      if (!v1 || !v2 || !v3) {
-          setErrMsg("invalid input");
-          return;
-      }
-      try {
-        const response = await axios.post(SIGNUP_URL,
-              JSON.stringify({ user, useremail, pwd }),
-              {
-                  headers: { 'Content-Type': 'application/json' },
-                  withCredentials: false
-              }
-          );
-          // console.log(response?.data);
-          // console.log(response?.accessToken);
-          // console.log(JSON.stringify(response))
-          if (response.status === 200) {
-            setSuccess(true);
-          }
-          setUser('');
-          setPwd('');
-          setMatchPwd('');
-      } catch (err) {
-          if (!err?.response) {
-              setErrMsg('No response from server');
-          } else if (err.response?.status === 409) {
-              setErrMsg('There is an account linked to this email');
-          } else {
-              setErrMsg('Signup failed')
-          }
-          errRef.current.focus();
-      }
+    e.preventDefault();
+    const v1 = USER_REGEX.test(user);
+    const v2 = PWD_REGEX.test(pwd);
+    const v3 = EMAIL_REGEX.test(useremail);
+    if (!v1 || !v2 || !v3) {
+        setErrMsg("invalid input");
+        return;
+    }
+    try {
+      const response = await axios.post(SIGNUP_URL,
+        JSON.stringify({ user, useremail, pwd }),
+        {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: false
+        }
+    );
+        // console.log(response?.data);
+        // console.log(response?.accessToken);
+        // console.log(JSON.stringify(response))
+        if (response.status === 200) {
+          setSuccess(true);
+        }
+        setUser('')
+        setPwd('');
+        setMatchPwd('');
+    } catch (err) {
+        if (!err?.response) {
+            setErrMsg('No response from server');
+        } else if (err.response?.status === 409) {
+            setErrMsg('There is an account linked to this email');
+        } else {
+            setErrMsg('Signup failed')
+        }
+        errRef.current.focus();
+    }
   }
 
   return (
