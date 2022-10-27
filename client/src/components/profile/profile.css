@@ -31,15 +31,29 @@
   color: white;
 }
 
-.userinfo-username {
-  padding-left: 120px;
+
+.userinfo-username-title {
+  padding-left: 150px;
   margin-top: 30px;
+  font-weight: bold;
+}
+
+.userinfo-username {
+  padding-left: 150px;
+  margin-top: 2px;
+  text-decoration: underline;
+}
+
+.userinfo-email-title {
+  padding-left: 150px;
+  margin-top: 30px;
+  font-weight: bold;
 }
 
 .userinfo-email {
-  padding-left: 120px;
-  margin-top: 25px;
-
+  padding-left: 150px;
+  margin-top: 2px;
+  text-decoration: underline;
 }
 
 .history-title {
