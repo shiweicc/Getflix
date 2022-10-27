@@ -35,7 +35,7 @@ const Profile = (props) => {
     <button className='profile-backBtn' onClick={() => {navigateMainPage()}}> Home </button>
     <button className='profile-updatePWBtn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
     <button className='profile-updateUsernameBtn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
-    <UserInfo />
+    <UserInfo userName={props.userName}/>
     {history}
 
     </div>

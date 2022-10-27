@@ -60,6 +60,7 @@ const Login = ({ setUser }) => {
         setIsSubmitted(true);
         setIsSubmitted(true);
         localStorage.setItem('logged in id', temp.id);
+        localStorage.setItem('logged in name', temp.username);
       } else {
         console.log('incorrect credentials');
       }
