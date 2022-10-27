@@ -31,10 +31,9 @@ const Profile = (props) => {
   return (
     <div className="profile">
      <img className='profile-logo' alt='logo' src={pic} ></img>
-    <button className='profile-logoutBtn' onClick={() => {props.logout()}}> Home </button>
-    <button className='profile-updateUsernameBtn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
-    <button className='profile-updatePWBtn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
     <button className='profile-backBtn' onClick={() => {navigateMainPage()}}> Home </button>
+    <button className='profile-updatePWBtn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
+    <button className='profile-updateUsernameBtn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
     {history}
 
     </div>

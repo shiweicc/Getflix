@@ -30,6 +30,36 @@
   color: white;
 }
 
+.profile-updateUsernameBtn{
+  float: right;
+  background-color:rgb(123, 16, 16);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 40px;
+  margin-right: 50px;
+}
+
+.profile-updatePWBtn{
+  float: right;
+  background-color:rgb(123, 16, 16);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 40px;
+  margin-right: 50px;
+}
+
 .profile-backBtn {
   float: right;
   background-color:rgb(123, 16, 16);
