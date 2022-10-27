@@ -84,9 +84,9 @@ const Details = (props) => {
   const checkHistory = props.history.includes(id)
   let watchedBtn;
   if (checkHistory) {
-    watchedBtn =  <button className="eyeball_btn" onClick={() => props.updateHistory(props.userId, id)}>👁️</button>
+    watchedBtn =  <button className="detail_eyeball_btn" onClick={() => props.updateHistory(props.userId, id)}>👁️</button>
   } else {
-    watchedBtn =  <button className="watch_btn" onClick={() => props.updateHistory(props.userId, id)}>Watch</button>
+    watchedBtn =  <button className="detail_watch_btn" onClick={() => props.updateHistory(props.userId, id)}>Watch</button>
   }
 
   return (
