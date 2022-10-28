@@ -185,7 +185,7 @@ const Details = (props) => {
         </div> */}
 
         <div className='watchProvider'>
-          <WatchProvider providers={watchProviders}/>
+          <WatchProvider providers={watchProviders} movieid={id} movietitle={title}/>
         </div>
 
         {/* <div className='price'>
