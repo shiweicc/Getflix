@@ -189,7 +189,6 @@ app.get('/details/recommended/:movieId', (req, res) => {
 app.get('/details/watchProviders/:movieId', (req, res) => {
   // console.log('details/watch provider', req.params.movieId)
   let id = req.params.movieId;
-  console.log(id)
   let options = {
     method: 'GET',
     url: `http://3.82.229.130:8000/details/watchProviders/${id}`
