@@ -8,7 +8,7 @@ const UserInfo = (props) => {
       <p className='userinfo-username-title'>Username:</p>
       <p className='userinfo-username'>{props.userName}</p>
       <p className='userinfo-email-title'>Email:</p>
-      <p className='userinfo-email'>xxx@gmail.com</p>
+      <p className='userinfo-email'>{props.userEmail}</p>
 
     </div>
   );

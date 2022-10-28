@@ -51,7 +51,11 @@ app.post('/login', async (req, res) => {
           return bcrypt.compareSync(password, hashed)
         }
         if (compareHash(password, hashed)) {
-          res.status(200).send(results.rows[0].id)
+          responseData = {
+            id: results.rows[0].id,
+            email: results.rows[0].useremail
+          }
+          res.status(200).send(responseData)
         } else {
           res.status(400)
         }
@@ -66,7 +70,7 @@ app.get('/logout', async function(req, res, next) {
 });
 /********************* User name and pwd update *********************/
 app.post('/updateUserPwd', async(req, res)=>{
-  let  { userId, pwd } = req.body;
+  let  { userID, pwd } = req.body;
   try{
     const response =  await axios.post(UPDATE_PWD_URL, req.body);
     if (response.status === 200){
@@ -79,7 +83,7 @@ app.post('/updateUserPwd', async(req, res)=>{
 })
 
 app.post('/updateUserName', async(req, res)=>{
-  let  { userId, user } = req.body;
+  let  { userID, user } = req.body;
   try{
     const response =  await axios.post(UPDATE_USERNAME_URL, req.body);
     if (response.status === 200){

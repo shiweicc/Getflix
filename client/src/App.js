@@ -21,6 +21,7 @@ function App() {
   const [history, setHistory] = useState([]);
   const userId = localStorage.getItem('logged in id')
   const userName = localStorage.getItem('logged in name')
+  const userEmail = localStorage.getItem('useremail')
 
   const NotFound = () => {
     return (
@@ -120,7 +121,10 @@ function App() {
       element: localStorage.getItem('logged in id')
       ? <Profile
           history={history} removeEachMovie={removeBtnClick}
-          removeAllMovies={clearHistoryBtnClick} userId={userId} userName={userName}/>
+          removeAllMovies={clearHistoryBtnClick}
+          userId={userId}
+          userName={userName}
+          userEmail={userEmail}/>
       : <Login user={user} />
     },
     {
