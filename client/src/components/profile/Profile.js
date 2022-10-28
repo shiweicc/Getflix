@@ -4,6 +4,7 @@ import UserInfo from './userInfo/UserInfo.js'
 import pic from '../../getflixLogo.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './profile.css';
+import ClickTracker from './../ClickTracker.jsx';
 
 const Profile = (props) => {
 
@@ -30,15 +31,16 @@ const Profile = (props) => {
   }
 
   return (
-    <div className="profile">
-     <img className='profile-logo' alt='logo' src={pic} ></img>
-    <button className='profile-backBtn' onClick={() => {navigateMainPage()}}> Home </button>
-    <button className='profile-updatePWBtn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
-    <button className='profile-updateUsernameBtn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
-    <UserInfo userName={props.userName} userEmail={props.userEmail}/>
-    {history}
-
-    </div>
+    <ClickTracker webpage={'Profile'} userName={props.userName} userId={props.userId}>
+      <div className="profile">
+      <img className='profile-logo' alt='logo' src={pic} ></img>
+      <button className='profile-backBtn' id='home-btn' onClick={() => {navigateMainPage()}}> Home </button>
+      <button className='profile-updatePWBtn' id='update-pwd-btn' onClick={() => {navigateToUpdatePwd()}}> Update password </button>
+      <button className='profile-updateUsernameBtn' id='update-usr-btn' onClick={() => {navigateToUpdateUsername()}}> Update user </button>
+      <UserInfo userName={props.userName} userEmail={props.userEmail}/>
+      {history}
+      </div>
+    </ClickTracker>
   );
 }
 

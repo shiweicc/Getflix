@@ -212,15 +212,14 @@ app.get('/details/watchProviders/:movieId', (req, res) => {
 
 app.post('/clicktracker', (req,res) => {
   let data = req.body;
-  // let url = 'http://localhost:8080/clicks';
-  // axios.post(url, data)
-  //   .then((response) => {
-  //     res.status(201).send(response.data);
-  //   })
-  //   .catch((err) => {
-  //     res.status(500).send(err);
-  //   })
-  res.status(201).send('Created')
+  let url = 'http://3.82.65.246:8080/clicks';
+  axios.post(url, data)
+    .then((response) => {
+      res.status(201).send(response.data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    })
 })
 
 app.listen(port, () => {
