@@ -79,7 +79,7 @@ app.post('/updateUserPwd', async(req, res)=>{
 })
 
 app.post('/updateUserName', async(req, res)=>{
-  let  { userId, useremail, pwd } = req.body;
+  let  { userId, user } = req.body;
   try{
     const response =  await axios.post(UPDATE_USERNAME_URL, req.body);
     if (response.status === 200){
