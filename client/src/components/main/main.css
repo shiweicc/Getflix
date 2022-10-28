@@ -43,12 +43,24 @@
   padding-right:30px;
 }
 
+.main-welcome-msg {
+  float: right;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 80px;
+  background-color: transparent;
+  color: white;
+  border-color: transparent;
+  font-size: 1.5em;
+}
+
 .main-logout-btn , .main-profile-btn{
   float: right;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 15px;
   background-color: transparent;
   color: white;
   border-color: transparent;
@@ -140,23 +152,33 @@
 }
 
 .watch_btn {
-  background-color:rgb(123, 16, 16);
-  color: white;
-  border: none;
-  font-size: 15px;
   text-align: center;
+  background-color: rgb(123, 16, 16);
+  border: none;
   border-radius: 5px;
-  width: 80px;
-  height:30px;
+  color: white;
+  padding: 4px 13px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 .eyeball_btn{
-  background-color: black;
-  color: white;
-  border: none;
-  font-size: 15px;
   text-align: center;
-  border-radius: 0px;
-  width: 80px;
+  background-color: rgb(123, 16, 16);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 4px 13px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 70px;
 }
 

@@ -19,7 +19,7 @@ const UpdateUsername = (userId) => {
   const [userFocus, setUserFocus] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
-
+  const userID = userId.userId
   useEffect(() => {
       userRef.current.focus();
   }, [])
@@ -40,13 +40,16 @@ const UpdateUsername = (userId) => {
       }
       try {
         const response = await axios.post(UPDATE_USERNAME_URL,
-              JSON.stringify({ userId, user }),
+              JSON.stringify({ userID, user }),
               {
                   headers: { 'Content-Type': 'application/json' },
                   withCredentials: false
               }
           );
           if (response.status === 200) {
+            localStorage.removeItem('logged in id');
+            localStorage.removeItem('logged in name');
+            localStorage.removeItem('useremail');
             setSuccess(true);
           }
           setUser('');

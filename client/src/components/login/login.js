@@ -37,12 +37,15 @@ const Login = ({ setUser }) => {
       if(response.status === 200) {
         let temp = {
           username: username,
-          id: response.data
+          id: response.data.id,
+          email: response.data.email
         }
         setUser(temp)
         setIsSubmitted(true);
         setIsSubmitted(true);
         localStorage.setItem('logged in id', temp.id);
+        localStorage.setItem('logged in name', temp.username);
+        localStorage.setItem('useremail', temp.email);
       } else {
         alert('Your credentials are incorrect! Please try again!')
         console.log('incorrect credentials');

@@ -41,9 +41,32 @@ app.post('/login', async (req, res) => {
     password
   } = req.body;
 
+
   try{
     const response =  await axios.post(LOGIN_URL, req.body);
     if (response.status === 200){
+
+  pool.query(
+    `SELECT * FROM users WHERE username = $1`, [username], (err, results) => {
+      if (err) {
+        throw err
+      }
+      if (results.rows.length > 0) {
+        let hashed = results.rows[0].password;
+        function compareHash(password, hashed) {
+          return bcrypt.compareSync(password, hashed)
+        }
+        if (compareHash(password, hashed)) {
+          responseData = {
+            id: results.rows[0].id,
+            email: results.rows[0].useremail
+          }
+          res.status(200).send(responseData)
+        } else {
+          res.status(400)
+        }
+      }
+
     }
     res.sendStatus(response.status)
   } catch (err) {
@@ -57,7 +80,7 @@ app.get('/logout', async function(req, res, next) {
 });
 /********************* User name and pwd update *********************/
 app.post('/updateUserPwd', async(req, res)=>{
-  let  { userId, pwd } = req.body;
+  let  { userID, pwd } = req.body;
   try{
     const response =  await axios.post(UPDATE_PWD_URL, req.body);
     if (response.status === 200){
@@ -70,7 +93,7 @@ app.post('/updateUserPwd', async(req, res)=>{
 })
 
 app.post('/updateUserName', async(req, res)=>{
-  let  { userId, useremail, pwd } = req.body;
+  let  { userID, user } = req.body;
   try{
     const response =  await axios.post(UPDATE_USERNAME_URL, req.body);
     if (response.status === 200){
@@ -192,6 +215,20 @@ app.get('/details/watchProviders/:movieId', (req, res) => {
     .catch((error) => {
       res.sendStatus(404);
       return Promise.reject(error);
+    })
+})
+
+/********************* ClickTracker *********************/
+
+app.post('/clicktracker', (req,res) => {
+  let data = req.body;
+  let url = 'http://3.82.65.246:8080/clicks';
+  axios.post(url, data)
+    .then((response) => {
+      res.status(201).send(response.data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
     })
 })
 

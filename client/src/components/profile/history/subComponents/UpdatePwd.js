@@ -7,7 +7,7 @@ import axios from 'axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const UPDATE_PWD_URL = 'http://localhost:3001/updatePwd';
+const UPDATE_PWD_URL = 'http://localhost:3001/updateUserPwd';
 
 const UpdatePwd = (userId) => {
 
@@ -23,8 +23,7 @@ const UpdatePwd = (userId) => {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
-
-
+  const userID = userId.userId
   // useEffect(() => {
   //     userReff.current.focus();
   // }, [])
@@ -49,7 +48,7 @@ const UpdatePwd = (userId) => {
       }
       try {
         const response = await axios.post(UPDATE_PWD_URL,
-              JSON.stringify({ userId,  pwd }),
+              JSON.stringify({ userID,  pwd }),
               {
                   headers: { 'Content-Type': 'application/json' },
                   withCredentials: false
@@ -59,6 +58,9 @@ const UpdatePwd = (userId) => {
           // console.log(response?.accessToken);
           // console.log(JSON.stringify(response))
           if (response.status === 200) {
+            localStorage.removeItem('logged in id');
+            localStorage.removeItem('logged in name');
+            localStorage.removeItem('useremail');
             setSuccess(true);
 
           }
@@ -72,7 +74,7 @@ const UpdatePwd = (userId) => {
           //     setErrMsg('There is an account linked to this email');
           // }
           else {
-              setErrMsg('Signup failed')
+              setErrMsg('Failed to update password')
           }
           errRef.current.focus();
       }

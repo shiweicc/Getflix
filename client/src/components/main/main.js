@@ -115,17 +115,20 @@ function Main(props) {
   return (
     <div className="Main">
         <NavigationBar
-          search = {search}
-          filtered = {filtered}
-          profile = {profile}
-          logout = {logout}
-          detail = {navigateMovieDetail}
+          search={search}
+          filtered={filtered}
+          profile={profile}
+          logout={logout}
+          detail={navigateMovieDetail}
+          userId={props.userId}
+          userName={props.userName}
           />
           <Movies
-            movieList = {groupedMovies}
+            movieList={groupedMovies}
             updateHistory={props.updateHistory}
             history={props.history}
             userId={props.userId}
+            userName={props.userName}
           />
     </div>
   );
