@@ -179,32 +179,27 @@ app.get('/details/recommended/:movieId', (req, res) => {
   }
   axios.request(options)
     .then((response) => {
-      res.status(200);
-      //console.log('details server', response)
-      res.json(response.data);
+      res.status(200).send(response.data)
     })
     .catch((error) => {
-      res.sendStatus(404);
-      return Promise.reject(error);
+      res.status(404).send(error)
     })
 })
 
 app.get('/details/watchProviders/:movieId', (req, res) => {
   // console.log('details/watch provider', req.params.movieId)
   let id = req.params.movieId;
+  console.log(id)
   let options = {
     method: 'GET',
     url: `http://3.82.229.130:8000/details/watchProviders/${id}`
   }
   axios.request(options)
     .then((response) => {
-      res.status(200);
-      //console.log('server watch', response.data);
-      res.json(response.data);
+      res.status(200).send(response.data)
     })
     .catch((error) => {
-      res.sendStatus(404);
-      return Promise.reject(error);
+      res.status(404).send(error)
     })
 })
 
