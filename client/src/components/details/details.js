@@ -29,9 +29,6 @@ const Details = (props) => {
     loadWatchProviders();
   }, [id])
 
-  console.log('id: ', id)
-  console.log('user id: ', props.userId)
-
   const fetchMovie = async (id) => {
 
     const { data } = await axios.get(`${API_URL}/movie/${id}`, {
