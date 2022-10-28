@@ -12,7 +12,7 @@ import ClickTracker from './../ClickTracker.jsx';
 const Details = (props) => {
 
   const navigate = useNavigate();
-  const API_URL = 'https://api.themoviedb.org/3/';
+  //const API_URL = 'https://api.themoviedb.org/3/';
   const location = useLocation();
   //console.log(location.state);
   const title = location.state.original_title;
@@ -30,39 +30,28 @@ const Details = (props) => {
     loadWatchProviders();
   }, [id])
 
-  const fetchMovie = async (id) => {
-
-    const { data } = await axios.get(`${API_URL}/movie/${id}`, {
-      params: {
-        api_key: '54880feab2b97d617bc064ae0ae04156',
-        append_to_response: 'videos'
-      }
-    })
-
-    return data;
-  }
 
   const selectMovie = async () => {
-    //console.log("here");
-    // console.log(id);
-    const movieData = await fetchMovie(id);
-    //console.log(movieData);
-    //console.log(movieData.videos.results[0].key);
-    if (movieData.videos && movieData.videos.results) {
-      var trailer = movieData.videos.results.find(vid => vid.name === "Official Trailer");
-    }
-
-    setMovie(movieData.videos.results[0].key);
-    // console.log(trailer.key, 'and', movieData.videos.results[0]);
+    await axios.get(`/details/${id}`)
+      .then((res) => {
+        //console.log('here', res.data);
+        setMovie(res.data);
+      })
+      .catch((err) => {
+        console.log('details/recommended error', err)
+      })
   }
+
+
 
   const loadRecommended = async () => {
     await axios.get(`/details/recommended/${id}`)
       .then((res) => {
+        console.log(res);
         setRecommended(res.data);
       })
       .catch((err) => {
-        console.log('details/recommended error', err)
+        console.log(err);
       })
   }
 
