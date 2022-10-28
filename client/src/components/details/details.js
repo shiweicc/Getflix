@@ -123,7 +123,7 @@ const Details = (props) => {
 
       <div className='recommended'>
         <h1>RECOMMENDED</h1>
-        <Carousel movies ={recommended} updateHistory={props.updateHistory} history={props.history}/>
+        <Carousel movies ={recommended} updateHistory={props.updateHistory} history={props.history} userId={props.userId}/>
       </div>
 
       {/* <div className='watchNow'>
