@@ -204,6 +204,21 @@ app.get('/details/watchProviders/:movieId', (req, res) => {
     })
 })
 
+/********************* ClickTracker *********************/
+
+app.post('/clicktracker', (req,res) => {
+  let data = req.body;
+  // let url = 'http://localhost:8080/clicks';
+  // axios.post(url, data)
+  //   .then((response) => {
+  //     res.status(201).send(response.data);
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).send(err);
+  //   })
+  res.status(201).send('Created')
+})
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
 })
