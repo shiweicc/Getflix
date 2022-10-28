@@ -29,6 +29,9 @@ const Details = (props) => {
     loadWatchProviders();
   }, [id])
 
+  console.log('id: ', id)
+  console.log('user id: ', props.userId)
+
   const fetchMovie = async (id) => {
 
     const { data } = await axios.get(`${API_URL}/movie/${id}`, {
@@ -123,7 +126,7 @@ const Details = (props) => {
 
       <div className='recommended'>
         <h1>RECOMMENDED</h1>
-        <Carousel movies ={recommended} updateHistory={props.updateHistory} history={props.history}/>
+        <Carousel movies ={recommended} updateHistory={props.updateHistory} history={props.history} userId={props.userId}/>
       </div>
 
       {/* <div className='watchNow'>
