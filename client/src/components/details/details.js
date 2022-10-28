@@ -154,6 +154,48 @@ const Details = (props) => {
           {watchedBtn}
         </div>
 
+        </div>
+        <div className='post'>
+          <img src={"https://image.tmdb.org/t/p/w400" + url}
+            onClick={selectMovie}
+          ></img>
+        </div>
+
+        <div className='overview'>
+          <h1>OVERVIEW</h1>
+          <p>{overview}</p>
+        </div>
+
+        <div className='trailer'>
+          <Youtube
+            //videoId='vRunUkdkK8s'
+            videoId={trailer_key}
+          ></Youtube>
+        </div>
+
+        <div className='recommended'>
+          <h1>RECOMMENDED</h1>
+          <Carousel movies ={recommended} updateHistory={props.updateHistory} history={props.history} userId={props.userId}/>
+        </div>
+
+        {/* <div className='watchNow'>
+          <a target="_blank" href="https://www.netflix.com/">
+            <button>Watch Now</button>
+          </a>
+        </div> */}
+
+        <div className='watchProvider'>
+          <WatchProvider providers={watchProviders}/>
+        </div>
+
+        {/* <div className='price'>
+          <h2>Buy:$2.99</h2>
+        </div> */}
+
+        <div className='watched'>
+          {watchedBtn}
+        </div>
+
       </div>
     </ClickTracker>
   )
