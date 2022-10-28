@@ -43,6 +43,10 @@
   padding-right:30px;
 }
 
+.main-welcome-msg {
+  text-align: right;
+}
+
 .main-logout-btn , .main-profile-btn{
   float: right;
   padding-top: 10px;

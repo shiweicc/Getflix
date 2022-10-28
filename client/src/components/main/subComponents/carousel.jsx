@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/css/scrollbar";
 import "../main.css";
 import { Navigation, Scrollbar } from "swiper";
+import ClickTracker from '../../ClickTracker.jsx';
 
 
 const Carousel = (props) => {
@@ -14,8 +15,11 @@ const Carousel = (props) => {
   const navigateMovieDetail = (data) => {
     navigate('/details', { state: data });
   }
+  const userName = props.userName;
+  const userId = props.userId;
 
   return (
+    <ClickTracker webpage={'Main-Carousel'} userName={userName} userId={userId}>
     <div className='carousel'>
       <Swiper
         scrollbar={{
@@ -46,7 +50,8 @@ const Carousel = (props) => {
                   <img
                     src={"https://image.tmdb.org/t/p/w400" + movie.backdrop_path}
                     alt = {movie.original_title}
-                      onClick={() => { navigateMovieDetail(movie) }}
+                    id = {`isMovie_Moviecard_${movie.id}_${movie.original_title}`}
+                    onClick={() => { navigateMovieDetail(movie) }}
                   />
 
                 </div>
@@ -61,6 +66,7 @@ const Carousel = (props) => {
         }
       </Swiper>
     </div>
+    </ClickTracker>
   )
 }
 
