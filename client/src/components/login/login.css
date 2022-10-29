@@ -12,14 +12,14 @@
   background-color: #000000;
 }
 
-input[type='text'],
-input[type='password'] {
+.user-inp {
   height: 40px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0);
   font-size: 24px;
+  outline: 0;
 }
 
-input[type='submit'] {
+.log-submit {
   margin-top: 10px;
   cursor: pointer;
   font-size: 24px;
@@ -31,7 +31,11 @@ input[type='submit'] {
   padding: 10px 20px;
 }
 
-.button-container {
+.log-submit:hover {
+  background-color: #830000;
+}
+
+.log-button-container {
   display: flex;
   justify-content: center;
   border-style: none;
@@ -39,45 +43,69 @@ input[type='submit'] {
 
 .login-form {
   background-color: #7E3B3B;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 600px;
   height: 300px;
 }
 
-/* .list-container {
-  display: flex;
-} */
-
-.error {
-  color: red;
-  font-size: 12px;
-}
-
-.title {
+.title-log {
   color: #BF9D9D;
   font-size: 40px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+
+
+.input-container-log {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+  margin-bottom: 20px;
   margin-bottom: 0px;
 }
 
-.input-container{
+/* .input-container{
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top:20px;
   background-color: #fff;
   border: none;
-}
+} */
+
+/* .top-log { */
 
 
-
-.top {
+.top-log {
   display: flex;
   margin-bottom: -100px;
 }
 
-.back-btn {
+
+.back-btn-log {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #8A1E1E;
+  border: 1px solid #000000;
+  color: #fff;
+  padding: 10px 20px;
+  position: relative;
+  left: 550px;
+  top: -180px;
+  font-size: 24px;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  border-radius: 0%;
+  height: fit-content;
+}
+
+.back-btn-log:hover {
+  background-color: #830000;
   position:fixed;
 	top:20px;
 	right:30px;
@@ -94,13 +122,16 @@ input[type='submit'] {
   font-size: 20px;
 }
 
-.logo {
+
+.logo-log {
   height: 150px;
   width: 300px;
   position: relative;
   right: 590px;
-  top: -165px;
+  top: -195px;
   max-width: 100%;
   max-height: fit-content;
 }
+
+
 

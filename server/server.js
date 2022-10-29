@@ -1,3 +1,4 @@
+// const axios = require('axios');
 require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,6 +15,7 @@ const UPDATE_PWD_URL = 'http://107.23.252.158:3001/updateUserPwd'
 const UPDATE_USERNAME_URL = 'http://107.23.252.158:3001/updateUserName'
 const cors = require('cors');
 const axios = require('axios');
+const LOGIN_URL = 'http://54.236.215.35:3001/login'
 
 
 app.use(cors());
@@ -41,28 +43,44 @@ app.post('/login', async (req, res) => {
     password
   } = req.body;
 
-  pool.query(
-    `SELECT * FROM users WHERE username = $1`, [username], (err, results) => {
-      if (err) {
-        throw err
-      }
-      if (results.rows.length > 0) {
-        let hashed = results.rows[0].password;
-        function compareHash(password, hashed) {
-          return bcrypt.compareSync(password, hashed)
-        }
-        if (compareHash(password, hashed)) {
-          responseData = {
-            id: results.rows[0].id,
-            email: results.rows[0].useremail
-          }
-          res.status(200).send(responseData)
-        } else {
-          res.status(400)
-        }
-      }
+  try{
+    const response =  await axios.post(LOGIN_URL, req.body);
+    if (response.status === 200){
+
     }
-  )
+    res.sendStatus(response.status)
+  } catch (err) {
+    console.log(err)
+  }
+
+  // try{
+  //   const response =  await axios.post(LOGIN_URL, req.body);
+  //   if (response.status === 200){
+  // pool.query(
+  //   `SELECT * FROM users WHERE username = $1`, [username], (err, results) => {
+  //     if (err) {
+  //       throw err
+  //     }
+  //     if (results.rows.length > 0) {
+  //       let hashed = results.rows[0].password;
+  //       function compareHash(password, hashed) {
+  //         return bcrypt.compareSync(password, hashed)
+  //       }
+  //       if (compareHash(password, hashed)) {
+  //         responseData = {
+  //           id: results.rows[0].id,
+  //           email: results.rows[0].useremail
+  //         }
+  //         res.status(200).send(responseData)
+  //       } else {
+  //         res.status(400)
+  //       }
+  //     }
+  //   }
+  //   res.sendStatus(response.status)
+  // } catch (err) {
+  //   console.log(err)
+  // }
 })
 
 app.get('/logout', async function(req, res, next) {

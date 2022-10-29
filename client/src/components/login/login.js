@@ -10,7 +10,6 @@ import axios from 'axios';
 import './login.css'
 
 const Login = ({ setUser }) => {
-  const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isClicked, setClicked] = useState(false)
   const LOGIN_URL = 'http://3.88.34.236:3001/login'
@@ -19,22 +18,6 @@ const Login = ({ setUser }) => {
   const navigateSignup = () => {
     navigate('/signup');
   };
-  const renderErrorMessage = (name) => {
-    name === errorMessages.name && (
-      <div classname="error">{errorMessages.message}</div>
-    )
-  }
-
-  const errors = {
-    uname: 'invalid username',
-    pass: 'invalid password'
-  }
-
-  // const handleClick = (event) => {
-  //   event.preventDefault();
-
-  //   if(isClicked)
-  // }
 
 
   const handleSubmit = async (event) => {
@@ -64,6 +47,7 @@ const Login = ({ setUser }) => {
         localStorage.setItem('logged in name', temp.username);
         localStorage.setItem('useremail', temp.email);
       } else {
+        alert('Your credentials are incorrect! Please try again!')
         console.log('incorrect credentials');
       }
   }
@@ -75,16 +59,14 @@ const Login = ({ setUser }) => {
   const renderForm = (
     <div className='form'>
       <form onSubmit={handleSubmit}>
-        <div className='input-container'>
+        <div className='input-container-log'>
           <input className='user-inp' type='text' name='uname' placeholder='Username' required />
-          {renderErrorMessage('uname')}
         </div>
-        <div className='input-container'>
+        <div className='input-container-log'>
           <input className='user-inp' type='password' name='pass' placeholder='Password' required />
-          {renderErrorMessage('pass')}
         </div>
-        <div className='button-container'>
-          <input type='submit' onSubmit={handleSubmit}/>
+        <div className='log-button-container'>
+          <input className='log-submit' type='submit' onSubmit={handleSubmit}/>
         </div>
       </form>
     </div>
@@ -93,12 +75,12 @@ const Login = ({ setUser }) => {
   return (
     <>
     {isSubmitted ? <Navigate to='/main' /> :  <div className='app'>
-    <div className='top'>
-      <img src={logo} alt='getflix-logo' className='logo' />
-      {isClicked ? <Navigate to='main' /> : <button type='button' className='back-btn' onClick={() => {navigateSignup()}}>Sign Up</button>}
+    <div className='top-log'>
+      <img src={logo} alt='getflix-logo' className='logo-log' />
+      {isClicked ? <Navigate to='main' /> : <button type='button' className='back-btn-log' onClick={() => {navigateSignup()}}>Sign Up</button>}
     </div>
     <div className='login-form'>
-      <div className='title'>LOG IN</div>
+      <div className='title-log'>LOG IN</div>
       {isSubmitted ? <div>User is successfully logged in!</div> : renderForm}
     </div>
   </div>
