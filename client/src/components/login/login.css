@@ -68,19 +68,19 @@
   margin-bottom: 0px;
 }
 
-.input-container{
+/* .input-container{
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top:20px;
   background-color: #fff;
   border: none;
-}
+} */
 
 /* .top-log { */
 
 
-.top {
+.top-log {
   display: flex;
   margin-bottom: -100px;
 }
