@@ -18,8 +18,7 @@ body {
 
 .get-started-button {
   position:fixed;
-	top:400px;
-	left:800px;
+	top:500px;
   text-align: center;
   background-color: #8A1E1E;
   border: none;
@@ -53,10 +52,11 @@ body {
 .slogan {
   color:white;
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 33.5%;
   font-size: xx-large;
   margin: 0 auto;
+  padding-left: 100px
 }
 
 .get-started {

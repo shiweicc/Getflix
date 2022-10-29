@@ -70,7 +70,8 @@
   border-color: transparent;
   color: white;
   position:fixed;
-	top:6px;
+	top:3px;
+  right: 200px;
 }
 
 .swiper {
@@ -154,7 +155,7 @@
 .search-title{
   float: left;
   padding-top: 40px;
-  padding-left: 20px
+  padding-left: 20px;
 }
 
 .watch_btn {

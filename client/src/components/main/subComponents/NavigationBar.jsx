@@ -16,9 +16,9 @@ const NavigationBar = (props) => {
           filtered={props.filtered}
           detail={props.detail}/>
         <div className='main-buttons'>
-          <button className='main-logout-btn' id='logout-btn' onClick={() => {props.logout()}}> Logout</button>
-          <button className='main-profile-btn' id='profile-btn' onClick={() => {props.profile()}}>Profile</button>
           <div className='main-welcome-msg'>Welcome, {userName}</div>
+          <button className='main-logout-btn' data-testid="logout" onClick={() => {props.logout()}}> Logout</button>
+          <button className='main-profile-btn' data-testid="profile" onClick={() => {props.profile()}}>Profile</button>
         </div>
       </div>
     </ClickTracker>
