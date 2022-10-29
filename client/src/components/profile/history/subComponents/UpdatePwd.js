@@ -7,7 +7,7 @@ import axios from 'axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const UPDATE_PWD_URL = 'http://localhost:3001/updateUserPwd';
+const UPDATE_PWD_URL = 'http://3.88.34.236:3001/updateUserPwd';
 
 const UpdatePwd = (userId) => {
 
