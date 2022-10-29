@@ -25,8 +25,12 @@
   height: 50px;
   font-size: 2.5em;
   background-color: transparent;
-  border-color: transparent;
+  border-color:transparent;
   color: white;
+}
+
+.sb::placeholder {
+  font-size: 30px;
 }
 
 .sb:focus{
@@ -44,27 +48,29 @@
 }
 
 .main-welcome-msg {
-  float: right;
-  padding-top: 30px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 80px;
-  background-color: transparent;
   color: white;
-  border-color: transparent;
-  font-size: 1.5em;
+  position:fixed;
+  right:400px;
+	top:45px;
 }
 
-.main-logout-btn , .main-profile-btn{
+.main-logout-btn {
   float: right;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 15px;
-  background-color: transparent;
   color: white;
+  background-color: #8A1E1E;
   border-color: transparent;
   font-size: 1.5em;
+}
+.main-profile-btn{
+  background-color: #8A1E1E;
+  border-color: transparent;
+  color: white;
+  position:fixed;
+	top:6px;
 }
 
 .swiper {

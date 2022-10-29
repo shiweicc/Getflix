@@ -17,31 +17,37 @@ body {
 }
 
 .get-started-button {
-  margin-top: 10px;
+  position:fixed;
+	top:400px;
+	left:800px;
+  text-align: center;
+  background-color: #8A1E1E;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0px 2px;
   cursor: pointer;
-  font-size: 24px;
-  background: #8A1E1E;
-  border: 1px solid #8A1E1E;
-  color: #fff;
-  padding: 10px 20px;
+  font-size: 20px;
 }
 
 .main-logout-btn {
-  float: right;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: transparent;
+  position:fixed;
+	top:20px;
+	right:30px;
+  text-align: center;
+  background-color: #8A1E1E;
+  border: none;
   color: white;
-  border-color: transparent;
-  font-size: 1.5em;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
   cursor: pointer;
-  font-size: 24px;
-  background: #8A1E1E;
-  border: 1px solid #8A1E1E;
-  color: #fff;
-  padding: 10px 20px;
+  font-size: 20px;
 }
 
 .slogan {
