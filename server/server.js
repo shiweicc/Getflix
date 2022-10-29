@@ -16,6 +16,8 @@ const UPDATE_USERNAME_URL = 'http://107.23.252.158:3001/updateUserName'
 const cors = require('cors');
 const axios = require('axios');
 const LOGIN_URL = 'http://54.236.215.35:3001/login'
+
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -183,6 +185,41 @@ app.delete('/profile/clearhistory', (req, res) => {
     })
     .catch((err) => {
       res.status(500).send(err);
+    })
+})
+
+/********************* Details *********************/
+app.get('/details/:movieId', (req, res) => {
+  //console.log(req.params.movieId);
+  const id = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: `http://54.146.186.66:3008/details/${id}`
+  }
+  axios.request(options)
+    .then((response) => {
+      //console.log(response.data);
+      res.status(200).send(response.data)
+    })
+    .catch((error) => {
+      res.status(404).send(error)
+    })
+})
+
+app.get('/details/price/:movieId', (req, res) => {
+  //console.log(req.params.movieId);
+  const id = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: `http://54.146.186.66:3008/details/price/${id}`
+  }
+  axios.request(options)
+    .then((response) => {
+      // console.log(response.data);
+      res.status(200).send(response.data)
+    })
+    .catch((error) => {
+      res.status(404).send(error)
     })
 })
 

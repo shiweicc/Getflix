@@ -2,12 +2,13 @@ import { useRef, useState, useEffect} from "react";
 import { Navigate, useNavigate, Link }  from 'react-router-dom';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import './signup.css'
+import './signup.css';
+import logo from './getfilxLogo.png';
 import axios from 'axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{3,23}$/;
+const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{7,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const SIGNUP_URL = 'http://localhost:3001/signup';
+const SIGNUP_URL = 'http://3.88.34.236:3001/signup';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -95,10 +96,13 @@ const Signup = () => {
 
   return (
       <>
+          <div className='logo'>
+              <img alt='logo' src={logo} ></img>
+          </div>
           {success ? (
               <Navigate to='/login'/>
           ) : (
-              <section>
+                  <section >
                   <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                   <h1>Create an account</h1>
                   <form onSubmit={handleSubmit}>

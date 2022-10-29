@@ -12,7 +12,7 @@ import './login.css'
 const Login = ({ setUser }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isClicked, setClicked] = useState(false)
-  const LOGIN_URL = 'http://localhost:3001/login'
+  const LOGIN_URL = 'http://3.88.34.236:3001/login'
 
   const navigate = useNavigate();
   const navigateSignup = () => {

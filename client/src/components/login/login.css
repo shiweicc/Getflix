@@ -38,6 +38,7 @@
 .log-button-container {
   display: flex;
   justify-content: center;
+  border-style: none;
 }
 
 .login-form {
@@ -64,14 +65,26 @@
   gap: 8px;
   margin: 10px;
   margin-bottom: 20px;
+  margin-bottom: 0px;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top:20px;
   background-color: #fff;
   border: none;
 }
 
-.top-log {
+/* .top-log { */
+
+
+.top {
   display: flex;
   margin-bottom: -100px;
 }
+
 
 .back-btn-log {
   margin-top: 10px;
@@ -93,6 +106,20 @@
 
 .back-btn-log:hover {
   background-color: #830000;
+  position:fixed;
+	top:20px;
+	right:30px;
+  text-align: center;
+  background-color: #8A1E1E;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 
