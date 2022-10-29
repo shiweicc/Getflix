@@ -16,6 +16,7 @@
   height: 40px;
   border: 1px solid rgba(0, 0, 0, 0);
   font-size: 24px;
+  outline: 0;
 }
 
 .log-submit {
@@ -47,10 +48,6 @@
   height: 300px;
 }
 
-/* .list-container {
-  display: flex;
-} */
-
 .title-log {
   color: #BF9D9D;
   font-size: 40px;
@@ -58,6 +55,8 @@
   margin-top: 0px;
   margin-bottom: 10px;
 }
+
+
 
 .input-container-log {
   display: flex;
@@ -85,7 +84,6 @@
   position: relative;
   left: 550px;
   top: -180px;
-  /* height: fit-content; */
   font-size: 24px;
   font-family: 'Lato', sans-serif;
   font-family: 'Rajdhani', sans-serif;
