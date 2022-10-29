@@ -19,7 +19,10 @@ const WatchProvider = (props) => {
     return (
       <div className='watchNow'>
         <a target="_blank" href={`https://www.netflix.com/`}>
-            <button>Watch on Netflix</button>
+            <button
+              id={`isMovie_watch-on-Netflix-btn_${props.movieid}_${props.movietitle}`}
+              >Watch on Netflix
+            </button>
           </a>
           <h2 className='price'>$6.99/mo</h2>
       </div>
@@ -33,7 +36,10 @@ const WatchProvider = (props) => {
     return (
       <div className='watchNow'>
         <a target="_blank" href={`${link}`}>
-            <button>Watch on {serviceName}</button>
+            <button
+              id={`isMovie_watch-on-${serviceName}-btn_${props.movieid}_${props.movietitle}`}
+              >Watch on {serviceName}
+            </button>
           </a>
           <h2 className='price'>${price}/mo</h2>
       </div>
@@ -47,7 +53,10 @@ const WatchProvider = (props) => {
     return (
       <div className='watchNow'>
         <a target="_blank" href={`${link}`}>
-            <button>Watch on {serviceName}</button>
+            <button
+              id={`isMovie_watch-on-${serviceName}-btn_${props.movieid}_${props.movietitle}`}
+              >Watch on {serviceName}
+            </button>
           </a>
           <h2 className='price'>${price}/mo</h2>
       </div>
@@ -61,7 +70,10 @@ const WatchProvider = (props) => {
     return (
       <div className='watchNow'>
         <a target="_blank" href={`${link}`}>
-            <button>Watch on {serviceName}</button>
+            <button
+              id={`isMovie_watch-on-${serviceName}-btn_${props.movieid}_${props.movietitle}`}
+              >Watch on {serviceName}
+            </button>
           </a>
           <h2 className='price'>${price}/mo</h2>
       </div>
@@ -75,7 +87,10 @@ const WatchProvider = (props) => {
     return (
       <div className='watchNow'>
         <a target="_blank" href={`${link}`}>
-            <button>Watch on {serviceName}</button>
+            <button
+              id={`isMovie_watch-on-${serviceName}-btn_${props.movieid}_${props.movietitle}`}
+              >Watch on {serviceName}
+            </button>
           </a>
           <h2 className='price'>${price}/mo</h2>
       </div>
@@ -93,7 +108,10 @@ const WatchProvider = (props) => {
     return (
       <div className='watchNow'>
         <a target="_blank" href={`${link}`}>
-            <button>Watch on {serviceName}</button>
+            <button
+              id={`isMovie_watch-on-${serviceName}-btn_${props.movieid}_${props.movietitle}`}
+              >Watch on {serviceName}
+            </button>
           </a>
         <h2 className='price'>${price}</h2>
       </div>
@@ -108,7 +126,10 @@ const WatchProvider = (props) => {
     return (
       <div className='watchNow'>
         <a target="_blank" href={`${link}`}>
-            <button>Watch on {serviceName}</button>
+            <button
+              id={`isMovie_watch-on-${serviceName}-btn_${props.movieid}_${props.movietitle}`}
+              >Watch on {serviceName}
+            </button>
           </a>
           <h2 className='price'>${price}/mo</h2>
       </div>

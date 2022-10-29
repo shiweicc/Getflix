@@ -37,9 +37,16 @@ const Carousel = (props) => {
             const checkHistory = props.history.includes(movie.id)
             let watchedBtn;
             if (checkHistory) {
-              watchedBtn =  <button className="eyeball_btn" onClick={() => props.updateHistory(props.userId, movie.id)}>👁️</button>
+              watchedBtn =
+              <button className="eyeball_btn"
+                id={`isMovie_eyeball-btn_${movie.id}_${movie.original_title}`}
+                onClick={() => props.updateHistory(props.userId, movie.id)}>👁️
+              </button>
             } else {
-              watchedBtn =  <button className="watch_btn" onClick={() => props.updateHistory(props.userId, movie.id)}>Watch</button>
+              watchedBtn =
+              <button className="watch_btn"
+              id={`isMovie_add-to-watched-btn_${movie.id}_${movie.original_title}`}
+                onClick={() => props.updateHistory(props.userId, movie.id)}>Watch</button>
             }
 
             return (

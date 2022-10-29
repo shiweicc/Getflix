@@ -15,6 +15,7 @@ const UPDATE_USERNAME_URL = 'http://107.23.252.158:3001/updateUserName'
 const cors = require('cors');
 const axios = require('axios');
 
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -169,6 +170,41 @@ app.delete('/profile/clearhistory', (req, res) => {
     })
 })
 
+/********************* Details *********************/
+app.get('/details/:movieId', (req, res) => {
+  //console.log(req.params.movieId);
+  const id = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: `http://54.146.186.66:3008/details/${id}`
+  }
+  axios.request(options)
+    .then((response) => {
+      //console.log(response.data);
+      res.status(200).send(response.data)
+    })
+    .catch((error) => {
+      res.status(404).send(error)
+    })
+})
+
+app.get('/details/price/:movieId', (req, res) => {
+  //console.log(req.params.movieId);
+  const id = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: `http://54.146.186.66:3008/details/price/${id}`
+  }
+  axios.request(options)
+    .then((response) => {
+      // console.log(response.data);
+      res.status(200).send(response.data)
+    })
+    .catch((error) => {
+      res.status(404).send(error)
+    })
+})
+
 
 /********************* Recommendation *********************/
 app.get('/details/recommended/:movieId', (req, res) => {
@@ -179,13 +215,10 @@ app.get('/details/recommended/:movieId', (req, res) => {
   }
   axios.request(options)
     .then((response) => {
-      res.status(200);
-      //console.log('details server', response)
-      res.json(response.data);
+      res.status(200).send(response.data)
     })
     .catch((error) => {
-      res.sendStatus(404);
-      return Promise.reject(error);
+      res.status(404).send(error)
     })
 })
 
@@ -198,13 +231,10 @@ app.get('/details/watchProviders/:movieId', (req, res) => {
   }
   axios.request(options)
     .then((response) => {
-      res.status(200);
-      //console.log('server watch', response.data);
-      res.json(response.data);
+      res.status(200).send(response.data)
     })
     .catch((error) => {
-      res.sendStatus(404);
-      return Promise.reject(error);
+      res.status(404).send(error)
     })
 })
 
@@ -212,15 +242,14 @@ app.get('/details/watchProviders/:movieId', (req, res) => {
 
 app.post('/clicktracker', (req,res) => {
   let data = req.body;
-  // let url = 'http://localhost:8080/clicks';
-  // axios.post(url, data)
-  //   .then((response) => {
-  //     res.status(201).send(response.data);
-  //   })
-  //   .catch((err) => {
-  //     res.status(500).send(err);
-  //   })
-  res.status(201).send('Created')
+  let url = 'http://3.82.65.246:8080/clicks';
+  axios.post(url, data)
+    .then((response) => {
+      res.status(201).send(response.data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    })
 })
 
 app.listen(port, () => {

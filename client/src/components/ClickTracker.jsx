@@ -26,8 +26,7 @@ class ClickTracker extends React.Component {
       }
     }
 
-    if (result.object) {
-      console.log(result);
+    if (result.object && result.userid) {
       axios.post('/clicktracker', result)
         .catch( err => {
           console.log('Err posting interactions', err);
