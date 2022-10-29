@@ -6,11 +6,12 @@
 }
 
 .userinfo {
-  height: 50%;
-  width:80%;
+  background-color: rgba(135, 49, 49, 0.813);
+  height: 500px;
+  width: 1500px;
   margin-bottom: 13%;
-  margin-top:4%;
-
+  margin-top: 4%;
+  margin-left: 150px;
 }
 
 .remove_btn {
@@ -25,40 +26,44 @@
 }
 
 .userinfo-title {
-  padding-left: 120px;
-  font-size: 1.5em;
+  padding-top: 40px;
+  padding-left: 60px;
+  font-size: 40px;
   font-weight: bold;
   color: white;
 }
 
-
 .userinfo-username-title {
   padding-left: 150px;
-  margin-top: 30px;
+  margin-top: 40px;
   font-weight: bold;
+  font-size: 30px;
 }
 
 .userinfo-username {
   padding-left: 150px;
   margin-top: 2px;
   text-decoration: underline;
+  font-size: 30px;
 }
 
 .userinfo-email-title {
   padding-left: 150px;
-  margin-top: 30px;
+  margin-top: 40px;
   font-weight: bold;
+  font-size: 30px;
 }
 
 .userinfo-email {
   padding-left: 150px;
   margin-top: 2px;
   text-decoration: underline;
+  font-size: 30px;
 }
 
 .history-title {
   padding-left: 120px;
-  font-size: 1.5em;
+  font-size: 40px;
   font-weight: bold;
   color: white;
 }
@@ -118,7 +123,7 @@
 .clear_history_btn {
   float: right;
   text-align: center;
-  font-size: 18px;
+  font-size: 30px;
   margin-right: 80px;
   color: white;
   border: none;
