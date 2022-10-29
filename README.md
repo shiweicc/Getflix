@@ -14,8 +14,6 @@
       <td>
         <img alt="React" src="https://img.shields.io/badge/react-61DAFB?&style=for-the-badge&logo=react&labelColor=black&logoColor=61DAFB" />
         <img alt="React Router" src="https://img.shields.io/badge/react%20router-CA4245?&style=for-the-badge&logo=react-router&labelColor=black&logoColor=CA4245" />
-   
-
         <img alt="Passport" src="https://img.shields.io/badge/-Passport-34E27A?style=for-the-badge&labelColor=black&logo=passport&logoColor=34E27A" />
       </td>
     </tr>
