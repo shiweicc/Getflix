@@ -41,37 +41,44 @@ app.post('/login', async (req, res) => {
     password
   } = req.body;
 
-
   try{
     const response =  await axios.post(LOGIN_URL, req.body);
     if (response.status === 200){
-
-  pool.query(
-    `SELECT * FROM users WHERE username = $1`, [username], (err, results) => {
-      if (err) {
-        throw err
-      }
-      if (results.rows.length > 0) {
-        let hashed = results.rows[0].password;
-        function compareHash(password, hashed) {
-          return bcrypt.compareSync(password, hashed)
-        }
-        if (compareHash(password, hashed)) {
-          responseData = {
-            id: results.rows[0].id,
-            email: results.rows[0].useremail
-          }
-          res.status(200).send(responseData)
-        } else {
-          res.status(400)
-        }
-      }
 
     }
     res.sendStatus(response.status)
   } catch (err) {
     console.log(err)
   }
+
+  // try{
+  //   const response =  await axios.post(LOGIN_URL, req.body);
+  //   if (response.status === 200){
+  // pool.query(
+  //   `SELECT * FROM users WHERE username = $1`, [username], (err, results) => {
+  //     if (err) {
+  //       throw err
+  //     }
+  //     if (results.rows.length > 0) {
+  //       let hashed = results.rows[0].password;
+  //       function compareHash(password, hashed) {
+  //         return bcrypt.compareSync(password, hashed)
+  //       }
+  //       if (compareHash(password, hashed)) {
+  //         responseData = {
+  //           id: results.rows[0].id,
+  //           email: results.rows[0].useremail
+  //         }
+  //         res.status(200).send(responseData)
+  //       } else {
+  //         res.status(400)
+  //       }
+  //     }
+  //   }
+  //   res.sendStatus(response.status)
+  // } catch (err) {
+  //   console.log(err)
+  // }
 })
 
 app.get('/logout', async function(req, res, next) {
