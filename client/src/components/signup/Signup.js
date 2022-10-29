@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import './signup.css'
 import axios from 'axios';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{3,23}$/;
+const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{7,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const SIGNUP_URL = 'http://localhost:3001/signup';
+const SIGNUP_URL = 'http://3.88.34.236:3001/signup';
 
 const Signup = () => {
   const navigate = useNavigate();
