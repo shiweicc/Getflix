@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/scrollbar";
 import "../main.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/scrollbar";
 import { Navigation, Scrollbar } from "swiper";
 import ClickTracker from '../../ClickTracker.jsx';
 
@@ -20,7 +20,7 @@ const Carousel = (props) => {
 
   return (
     <ClickTracker webpage={'Main-Carousel'} userName={userName} userId={userId}>
-    <div className='carousel'>
+    <div>
       <Swiper
         scrollbar={{
           hide: true,
