@@ -34,6 +34,7 @@ input[type='submit'] {
 .button-container {
   display: flex;
   justify-content: center;
+  border-style: none;
 }
 
 .login-form {
@@ -57,17 +58,19 @@ input[type='submit'] {
   color: #BF9D9D;
   font-size: 40px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 }
 
-.input-container {
+.input-container{
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 30px;
+  margin-top:20px;
   background-color: #fff;
   border: none;
 }
+
+
 
 .top {
   display: flex;
@@ -75,20 +78,20 @@ input[type='submit'] {
 }
 
 .back-btn {
-  margin-top: 10px;
+  position:fixed;
+	top:20px;
+	right:30px;
+  text-align: center;
+  background-color: #8A1E1E;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
   cursor: pointer;
-  font-size: 15px;
-  background: #8A1E1E;
-  border: 1px solid #8A1E1E;
-  color: #fff;
-  padding: 10px 20px;
-  position: relative;
-  left: 590px;
-  top: -165px;
-  height: fit-content;
-  font-size: 24px;
-  font-family: 'Lato', sans-serif;
-  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
 }
 
 .logo {

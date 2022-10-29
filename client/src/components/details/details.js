@@ -24,6 +24,7 @@ const Details = (props) => {
   const [recommended, setRecommended] = useState([])
   const [watchProviders, setWatchProviders] = useState([])
 
+
   useEffect(() => {
     selectMovie();
     loadRecommended();
@@ -34,14 +35,13 @@ const Details = (props) => {
   const selectMovie = async () => {
     await axios.get(`/details/${id}`)
       .then((res) => {
-        //console.log('here', res.data);
+        console.log('here', res.data);
         setMovie(res.data);
       })
       .catch((err) => {
-        console.log('details/recommended error', err)
+        console.log('error from movie details', err)
       })
   }
-
 
 
   const loadRecommended = async () => {
@@ -51,7 +51,7 @@ const Details = (props) => {
         setRecommended(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log('details/recommended error', err)
       })
   }
 
@@ -98,15 +98,13 @@ const Details = (props) => {
           <button id='home-btn' onClick={navigateHome}>Home</button>
         </div>
 
-        <style>{'body { background-color:black; }'}</style>
-        <div className='title'>
-          <h4>{title}</h4>
-        </div>
-        <div className='post'>
-          <img src={"https://image.tmdb.org/t/p/w400" + url}
-            onClick={selectMovie}
-          ></img>
-        </div>
+      <style>{'body { background-color:black; }'}</style>
+      <div className='detail_title'>
+        <h4>{title}</h4>
+      </div>
+      <div className='post'>
+        <img src={"https://image.tmdb.org/t/p/w400" + url} onClick={selectMovie}></img>
+      </div>
 
         <div className='overview'>
           <h1>OVERVIEW</h1>

@@ -176,11 +176,11 @@ app.get('/details/:movieId', (req, res) => {
   const id = req.params.movieId;
   let options = {
     method: 'GET',
-    url: `http://localhost:3008/details/${id}`
+    url: `http://54.146.186.66:3008/details/${id}`
   }
   axios.request(options)
     .then((response) => {
-      console.log(response.data);
+      //console.log(response.data);
       res.status(200).send(response.data)
     })
     .catch((error) => {
@@ -188,6 +188,22 @@ app.get('/details/:movieId', (req, res) => {
     })
 })
 
+app.get('/details/price/:movieId', (req, res) => {
+  //console.log(req.params.movieId);
+  const id = req.params.movieId;
+  let options = {
+    method: 'GET',
+    url: `http://54.146.186.66:3008/details/price/${id}`
+  }
+  axios.request(options)
+    .then((response) => {
+      // console.log(response.data);
+      res.status(200).send(response.data)
+    })
+    .catch((error) => {
+      res.status(404).send(error)
+    })
+})
 
 
 /********************* Recommendation *********************/

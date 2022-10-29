@@ -7,7 +7,9 @@ import UpdateUsername from "./components/profile/history/subComponents/UpdateUse
 import UpdatePwd from "./components/profile/history/subComponents/UpdatePwd.js";
 import Signup from "./components/signup/Signup.js";
 import Landing from "./components/landing/landing.js";
-import Details from "./components/details/details.js";
+//import Details from "./components/details/details.js";
+//details page backup
+import Details from "./components/details/detailsBackup.js";
 import axios from 'axios';
 
 import {
