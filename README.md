@@ -1,3 +1,18 @@
+# Project GetFlix
+
+## Description
+
+- Getflix is an online database of information related to movies – including an overview of the movie, a trailer, options to view the movie, and recommended movies that is similar to the current movie
+
+## How to Install and Run the Project
+- Download the project to your computer
+- Change direcrtory into /server
+- Run npm install
+- Run npm start
+- Open another terminal and cd into /src
+- Run npm install
+- Run npm start
+
 ## Tech Stack
 <table>
   <tbody>
@@ -59,3 +74,8 @@
     </tr>
   </tbody>
 </table>
+
+
+
+
+
