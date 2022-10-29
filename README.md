@@ -19,7 +19,7 @@
     </tr>
       <td>Database & Back End</td>
       <td>
-        <"Postgres">
+        <img alt="MySQL" src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white&labelColor=black"/>
         <img alt="Sequelize" src="https://img.shields.io/badge/-Sequelize-52B0E7?&style=for-the-badge&labelColor=black&logo=sequelize&logoColor=52B0E7"/>
         <img alt="NodeJS" src="https://img.shields.io/badge/-Node.js-339933?&style=for-the-badge&labelColor=black&logo=node.js&logoColor=339933"/>
       </td>
