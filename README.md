@@ -1,17 +1,48 @@
-# Project GetFlix
+# Getflix
 
-## Description
+> Don't know what movie to watch when you are bored? Create an account with Getflix and browse all the recent movies and keep track of your watch history.
 
-- Getflix is an online database of information related to movies – including an overview of the movie, a trailer, options to view the movie, and recommended movies similar to the current movie
+## Installation
+1. Fork the project and clone to your local repository
+2. In client and server directories, install all the packages and dependencies by running:
+  ``` npm install```
+3. In client directory, run webpack at local development mode:
+  ```npm run build ```
+4. Open another terminal, in server directory, launch the local server:
+  ```npm start ```
+6. Visit http://localhost:3000 to start the page
 
-## How to Install and Run the Project
-- Download the project to your computer
-- Change direcrtory into /server
-- Run npm install
-- Run npm start
-- Open another terminal and cd into /src
-- Run npm install
-- Run npm start
+
+## Feature Demos
+
+#### Landing Page
+
+Built by [David Truong](https://github.com/davidltruong)
+
+#### Authentication
+
+Built by [Chris Baharians](https://github.com/cbaharian) & [Miras Adilov](https://github.com/AdilovM)
+
+#### Main Page
+
+Built by [David Truong](https://github.com/davidltruong) & [Gene Yang](https://github.com/gyhcy)
+
+#### Detail Page
+
+Built by [Minwen Liu](https://github.com/tidibubu) & [Andrew Sawadichai](https://github.com/asawadichai)
+
+#### Profile Page
+
+Built by [Shiwei Chen](https://github.com/shiweicc) & [Miras Adilov](https://github.com/AdilovM)
+
+The profile page has features that allow the user to view and update current account information and browse and edit watch history. By clicking the 'Update username' or 'Update password' button, the user will be directed to other pages to update username or password. By browsing watch history in the carousel, the user can remove each movie from the history by clicking the 'X' button, or they can clear the history by clicking the 'Clear History' button on the right corner of the carousel.
+
+
+#### Click Tracking
+
+Built by [Gene Yang](https://github.com/gyhcy)
+
+
 
 ## Tech Stack
 <table>
@@ -54,7 +85,7 @@
          <tr>
       <td>Testing</td>
       <td>
-        <img alt="Jest" src="https://img.shields.io/badge/jest-C21325?&style=for-the-badge&logo=jest&labelColor=black&logoColor=C21325" />      
+        <img alt="Jest" src="https://img.shields.io/badge/jest-C21325?&style=for-the-badge&logo=jest&labelColor=black&logoColor=C21325" />
         </td>
     </tr>
      <tr>
@@ -75,7 +106,15 @@
   </tbody>
 </table>
 
+## Contributors
 
+- [Andrew Sawadichai](https://github.com/asawadichai) (Software Engineer)
+- [Chris Baharians](https://github.com/cbaharian) (Software Engineer)
+- [David Truong](https://github.com/davidltruong) (Software Engineer)
+- [Gene Yang](https://github.com/gyhcy) (Software Engineer)
+- [Minwen Liu](https://github.com/tidibubu) (UI Owner & Software Engineer)
+- [Miras Adilov](https://github.com/AdilovM) (Architecture Owner & Software Engineer)
+- [Shiwei Chen](https://github.com/shiweicc) (Product Manager & Software Engineer)
 
 
 
