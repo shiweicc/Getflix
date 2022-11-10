@@ -37,6 +37,7 @@ Built by [Shiwei Chen](https://github.com/shiweicc) & [Miras Adilov](https://git
 
 The profile page has features that allow the user to view and update current account information and browse and edit watch history. By clicking the 'Update username' or 'Update password' button, the user will be directed to other pages to update username or password. By browsing watch history in the carousel, the user can remove each movie from the history by clicking the 'X' button, or they can clear the history by clicking the 'Clear History' button on the right corner of the carousel.
 
+![Profile page](https://user-images.githubusercontent.com/61093624/201007517-fe12d9f8-1ae9-4728-881d-176d78fe40fd.png)
 
 #### Click Tracking
 
