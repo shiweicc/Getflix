@@ -27,9 +27,13 @@ Built by [Chris Baharians](https://github.com/cbaharian) & [Miras Adilov](https:
 
 Built by [David Truong](https://github.com/davidltruong) & [Gene Yang](https://github.com/gyhcy)
 
+<img width="1000" alt="main" src="https://user-images.githubusercontent.com/61093624/201435956-1a58782b-75f8-4551-b83b-6e4085c43ea4.png">
+
+
 #### Detail Page
 
 Built by [Minwen Liu](https://github.com/tidibubu) & [Andrew Sawadichai](https://github.com/asawadichai)
+
 
 #### Profile Page
 
